@@ -3,12 +3,11 @@
     <div class="hero-card__img-wrapper">
       <img class="hero-card__img" :src="hero.imgUrl" :alt="hero.title">
     </div>
-    <span class="hero-card__name s6">{{ hero.name }}</span>
     <span class="hero-card__title h3">{{ hero.title }}</span>
     <div class="hero-card__body">
-      <span class="hero-card__descr">{{ hero.descr }}</span>
+      <span class="hero-card__descr s5">{{ hero.descr }}</span>
     </div>
-    <router-link class="hero-card__link" to="#!">See more info</router-link>
+    <router-link class="hero-card__link s4" to="#!">See more info</router-link>
   </div>
 </template>
 
@@ -51,15 +50,9 @@ export default {
     object-fit: contain;
   }
 
-  &__name {
-    display: block;
-    margin: 24px 0 6px;
-    text-transform: uppercase;
-  }
-
   &__title {
+    margin: 24px 0 8px;
     display: block;
-    margin-bottom: 8px;
   }
 
   &__body {
