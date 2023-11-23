@@ -6,7 +6,7 @@
       </template>
       <template v-else>
         <template v-if="errorLoading === null">
-          <h2 class="heroes-view__title title h1">Страница героев</h2>
+          <h2 class="heroes-view__title title h1">Приложение Герои</h2>
           <HeroList :hero-list="heroList" />
         </template>
         <template v-else-if="errorLoading !== null">
@@ -48,7 +48,9 @@ export default {
     async getData() {
       try {
         this.startLoading()
-        this.getHeroes()
+        if (!this.heroList.length) {
+          this.getHeroes()
+        }
         this.endLoading()
       } catch (error) {
         this.endLoading()
@@ -60,4 +62,10 @@ export default {
 </script>
 
 <style lang="scss">
+.heroes-view {
+
+  &__title {
+    text-transform: uppercase;
+  }
+}
 </style>

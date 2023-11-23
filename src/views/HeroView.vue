@@ -56,8 +56,8 @@ export default {
     getHero() {
       try {
         this.startLoading()
-        const currentHeroRoute = this.$route.params.heroView
-        const currentHero = this.heroList.find((hero) => hero.alias === currentHeroRoute)
+        const currentHeroRouteName = this.$route.params.heroView
+        const currentHero = this.heroList.find((hero) => hero.alias === currentHeroRouteName)
         this.hero = currentHero
         this.endLoading()
       } catch (error) {
