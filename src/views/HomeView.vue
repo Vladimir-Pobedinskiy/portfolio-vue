@@ -1,7 +1,12 @@
 <template>
-  <div class="container">
-    <h2 class="title h2">{{ title }}</h2>
-  </div>
+  <section class="home-view">
+    <div class="container">
+      <h1 class="home-view__title h2">{{ title }}</h1>
+      <ul class="home-view__list">
+        <li class="home-view__item s4" v-for="(item, i) in list" :key="i">{{ item }}</li>
+      </ul>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -11,7 +16,13 @@ export default {
   },
   data() {
     return {
-      title: 'Home-page'
+      title: 'В этом портфолио реализовано:',
+      list: [
+        'Установка и настройка Vue CLI',
+        'Установка и настройка Vue-router и Vuex для Vue.js 3',
+        'Динамическая перерисовка без перезагрузки страницы',
+        'Работа с данными по технологии REST API'
+      ]
     }
   },
   methods: {
@@ -20,34 +31,28 @@ export default {
 </script>
 
 <style lang="scss">
-.title-line-clamp {
-  width: 100%;
-  max-width: 300px;
-  color: $color-vue;
-  @include line-clamp(3);
-}
+.home-view {
 
-.mb {
-  margin-bottom: 12px;
-}
+  &__title {
+    margin-bottom: 24px;
 
-.img-wrapper {
-  width: 100px;
-  height: 100px;
-}
-.img-wrapper img {
-  object-fit: contain;
-}
-.vk-wrapper {
-  width: fit-content;
-  transition: color 0.2s ease;
+    @media (min-width:$desktop) {
+      margin-bottom: 32px;
+    }
+  }
 
-  @media (min-width:$desktop) {
-    &:hover {
-      color: $color-vk;
-      cursor: pointer;
-      transition: color 0.3s ease;
+  &__list {
+    padding-left: 22px;
+  }
+
+  &__item {
+    margin-bottom: 8px;
+    list-style: disc;
+
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 }
+
 </style>
