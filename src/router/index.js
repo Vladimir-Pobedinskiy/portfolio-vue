@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import HomeView from '@/views/HomeView'
-import AboutView from '@/views/AboutView'
+import HeroesView from '@/views/HeroesView'
+import HeroView from '@/views/HeroView'
 import NotFoundView from '@/views/NotFoundView'
 
 const router = createRouter({
@@ -13,9 +14,14 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/about',
-      name: 'AboutView',
-      component: AboutView
+      path: '/heroes',
+      name: 'HeroesView',
+      component: HeroesView
+    },
+    {
+      path: '/:heroView',
+      name: 'HeroView',
+      component: HeroView
     },
     {
       path: '/:catchAll(.*)*',

@@ -58,7 +58,7 @@ export default {
     return {
       swiperOptions: {
         slidesPerView: 1.2,
-        spaceBetween: 16,
+        spaceBetween: 8,
         speed: 900,
         autoplay: {
           delay: 4000
@@ -98,7 +98,7 @@ export default {
           },
           1200: {
             slidesPerView: 3,
-            spaceBetween: 12
+            spaceBetween: 16
           }
         }
       }

@@ -1,16 +1,16 @@
 <template>
-  <div class="about-view">
+  <div class="heroes-view">
     <div class="container">
       <template v-if="loading">
         <loading :loading="loading" />
       </template>
       <template v-else>
         <template v-if="errorLoading === null">
-          <h2 class="about-view__title title h1">Страница героев</h2>
+          <h2 class="heroes-view__title title h1">Страница героев</h2>
           <HeroList :hero-list="heroList" />
         </template>
         <template v-else-if="errorLoading !== null">
-          <h2 class="about-view__title title h1">{{ errorLoading }}</h2>
+          <h2 class="heroes-view__title title h1">{{ errorLoading }}</h2>
         </template>
       </template>
     </div>
@@ -25,7 +25,7 @@ import HeroList from '@/components/Hero/HeroList.vue'
 
 export default {
   components: { loading, HeroList },
-  name: 'AboutView',
+  name: 'HeroesView',
   data() {
     return {
       heroList: [],

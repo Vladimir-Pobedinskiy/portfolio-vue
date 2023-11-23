@@ -13,7 +13,7 @@
         </li>
       </ul>
     </div>
-    <router-link class="hero-card__link s4" to="#!">See more info</router-link>
+    <router-link class="hero-card__link s4" :to="hero.alias">See more info</router-link>
   </div>
 </template>
 
@@ -66,12 +66,8 @@ export default {
     display: block;
   }
 
-  &__body {
-    margin-bottom: 16px;
-  }
-
   &__statistic-list {
-    margin-top: 20px 0 12px;
+    margin: 20px 0 12px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,7 +78,7 @@ export default {
   }
 
   &__statistic-item {
-    width: 33%;
+    flex: 1 1 33.3%;
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     padding: 20px 15px;
 
