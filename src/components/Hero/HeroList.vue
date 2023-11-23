@@ -203,4 +203,9 @@ export default {
   .hero-swiper__button--prev-icon {
     transform: rotate(-180deg);
   }
+
+  .swiper-wrapper {
+    will-change: transform;
+  }
+
 </style>
