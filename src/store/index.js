@@ -4,8 +4,7 @@ import { heroes } from './heroes'
 
 export const store = createStore({
   state: {
-    loading: false,
-    data: null
+    loading: false
   },
   mutations: {
     START_LOADING(state) {
@@ -13,9 +12,6 @@ export const store = createStore({
     },
     END_LOADING(state) {
       state.loading = false
-    },
-    CHANGE_DATA(state, payload) {
-      state.data = payload
     }
   },
   actions: {
@@ -24,17 +20,11 @@ export const store = createStore({
     },
     endLoading({ commit }) {
       commit('END_LOADING')
-    },
-    changeData({ commit }, payload) {
-      commit('CHANGE_DATA', payload)
     }
   },
   getters: {
     loading(state) {
       return state.loading
-    },
-    data(state) {
-      return state.data === null ? 'null' : state.data
     }
   },
   modules: {

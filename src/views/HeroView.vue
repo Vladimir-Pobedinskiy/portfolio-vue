@@ -3,7 +3,7 @@
     <loading :loading="loading" />
   </template>
   <template v-else>
-    <div class="hero-view container">
+    <div v-if="hero" class="hero-view container">
       <div class="hero-view__inner">
         <div class="hero-view__img-wrapper">
           <img :src="hero.imgUrl" :alt="hero.title">
