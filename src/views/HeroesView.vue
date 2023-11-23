@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import { mapActions, mapGetters } from 'vuex'
 import loading from '@/components/App/AppLoading'
 import HeroList from '@/components/Hero/HeroList.vue'
@@ -28,33 +27,31 @@ export default {
   name: 'HeroesView',
   data() {
     return {
-      heroList: [],
       errorLoading: null
     }
   },
   computed: {
     ...mapGetters({
-      loading: 'loading'
+      loading: 'loading',
+      heroList: 'heroes'
     })
   },
   mounted() {
-    this.getHeroes()
+    this.getData()
   },
   methods: {
     ...mapActions({
       startLoading: 'startLoading',
-      endLoading: 'endLoading'
+      endLoading: 'endLoading',
+      getHeroes: 'getHeroes'
     }),
-    async getHeroes() {
+    async getData() {
       try {
         this.startLoading()
-        const response = await axios.get('/api/heroes/')
-        this.heroList = response.data
-        this.errorLoading = null
+        this.getHeroes()
         this.endLoading()
       } catch (error) {
         this.endLoading()
-        this.errorLoading = 'Сервер не работает, извините за временные неудобства! Зайдите на сайт позже.'
         console.error('Error fetching heroes:', error)
       }
     }

@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import { navLinks } from './navLinks'
+import { heroes } from './heroes'
 
 export const store = createStore({
   state: {
@@ -37,6 +38,6 @@ export const store = createStore({
     }
   },
   modules: {
-    navLinks
+    navLinks, heroes
   }
 })
