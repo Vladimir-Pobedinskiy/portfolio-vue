@@ -18,7 +18,7 @@
             </li>
           </ul>
           <div>
-            <router-link to="/heroes" class="hero-view__back-link">Back to heroes</router-link>
+            <router-link class="hero-view__back-link" to="/heroes">Back to heroes</router-link>
           </div>
         </div>
       </div>
@@ -82,7 +82,7 @@ export default {
 
   &__img-wrapper {
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
   }
 
   &__info {
@@ -102,7 +102,7 @@ export default {
     color: $color-white;
     background-color: $color-orange;
     font-weight: 700;
-    border-radius: 14px;
+    border-radius: 12px;
   }
 
   &__statistic-item {
@@ -131,7 +131,7 @@ export default {
     width: 100%;
     max-width: 350px;
     border: 1px solid $color-orange;
-    border-radius: 14px;
+    border-radius: 12px;
     background-color: $color-orange;
     color: $color-white;
     cursor: pointer;

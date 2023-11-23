@@ -19,7 +19,7 @@ const router = createRouter({
       component: HeroesView
     },
     {
-      path: '/:heroView',
+      path: '/heroes/:heroView',
       name: 'HeroView',
       component: HeroView
     },
