@@ -57,10 +57,26 @@ export default {
 
   .nav-list {
     text-align: center;
+
+    @media (min-width:$tablet) {
+      flex-direction: row;
+    }
   }
 
   .nav-item {
-    margin-bottom: 16px;
+
+    @media (max-width:$tablet-for-maxWidth){
+      margin-bottom: 16px;
+    }
+
+    @media (min-width:$tablet) {
+      margin-right: 20px;
+      margin-bottom: 0;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 
 }

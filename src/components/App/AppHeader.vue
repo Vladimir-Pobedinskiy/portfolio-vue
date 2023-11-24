@@ -57,9 +57,11 @@ export default {
 
 <style lang="scss">
 .header {
+  position: relative;
   padding: 20px 0;
   min-height: 66px;
   background-color: $color-vue;
+  z-index: 1000;
 
   @media (min-width:$desktop) {
     padding: 25px 0;
@@ -72,21 +74,26 @@ export default {
     justify-content: space-between;
   }
 
+  &__logo {
+    position: relative;
+    z-index: 1001;
+  }
+
   &__nav-list-wrapper {
 
-    @media (max-width:$tablet-big-for-maxWidth){
+    @media (max-width:$desktop-for-maxWidth){
       position: fixed;
       left: 0;
-      top: 66px;
+      top: 0;
       height: 100vh;
       width: 100%;
-      padding: 24px 16px 150px;
+      padding: 94px 16px 150px;
       opacity: 0;
       visibility: hidden;
       overflow-y: auto;
-      z-index: 1000;
       transform: translateX(-200%);
       background-color: $color-vue;
+      z-index: 1000;
       transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
 
       &.active {
@@ -99,9 +106,17 @@ export default {
   }
 
   &__burger-btn {
+    z-index: 1001;
 
-    @media (min-width:$tablet-big) {
+    @media (min-width:$desktop) {
       display: none;
+    }
+  }
+
+  .nav-item {
+
+    @media (max-width: $desktop-for-maxWidth) {
+      text-transform: uppercase;
     }
   }
 

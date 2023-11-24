@@ -79,11 +79,11 @@ body.lock {
 .nav-list {
   display: flex;
 
-  @media (max-width:$tablet-big-for-maxWidth) {
+  @media (max-width:$desktop-for-maxWidth) {
     flex-direction: column;
   }
 
-  @media (min-width:$tablet-big) {
+  @media (min-width:$desktop) {
     align-items: center;
   }
 }
@@ -95,11 +95,7 @@ body.lock {
     margin-bottom: 0;
   }
 
-  @media (max-width: $tablet-big-for-maxWidth) {
-    text-transform: uppercase;
-  }
-
-  @media (min-width:$tablet-big) {
+  @media (min-width:$desktop) {
     margin-bottom: 0;
     margin-right: 20px;
 
@@ -118,7 +114,7 @@ body.lock {
 
 .router-link-active.router-link-exact-active.nav-link {
 
-  @media (min-width:$tablet-big) {
+  @media (min-width:$desktop) {
     border-bottom: 2px solid $color-black;
   }
 }
