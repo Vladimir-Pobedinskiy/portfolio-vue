@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import HeroCard from '@/components/Hero/HeroCard.vue'
+import HeroCard from '@/components/Hero/HeroCard'
 export default {
   name: 'HeroList',
   components: {

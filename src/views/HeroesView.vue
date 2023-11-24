@@ -16,7 +16,7 @@
 import { mapActions, mapGetters } from 'vuex'
 import loading from '@/components/App/AppLoading'
 import axios from 'axios'
-import HeroList from '@/components/Hero/HeroList.vue'
+import HeroList from '@/components/Hero/HeroList'
 
 export default {
   components: { loading, HeroList },
