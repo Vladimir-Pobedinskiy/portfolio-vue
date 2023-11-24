@@ -32,12 +32,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.title-line-clamp {
-  width: 100%;
-  max-width: 300px;
-  color: $color-vue;
-  @include line-clamp(3);
-}
-</style>
