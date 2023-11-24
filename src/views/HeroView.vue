@@ -3,22 +3,24 @@
     <loading :loading="loading" />
   </template>
   <template v-else>
-    <div v-if="hero" class="hero-view container">
-      <div class="hero-view__inner">
-        <div class="hero-view__img-wrapper">
-          <img :src="hero.imgUrl" :alt="hero.title">
-        </div>
-        <div class="hero-view__info">
-          <h1 class="hero-view__title h1">{{ hero.title }}</h1>
-          <p class="hero-view__descr s4">{{ hero.descr }}</p>
-          <ul class="hero-view__statistic-list">
-            <li v-for="(item, i) in hero.info" :key="i" class="hero-view__statistic-item">
-              <span class="hero-view__statistic-value h3"> {{ item.value }} </span>
-              <span class="hero-view__statistic-name p5"> {{ item.title }} </span>
-            </li>
-          </ul>
-          <div>
-            <router-link class="hero-view__back-link" :to="{ name: 'HeroesView' }">Back to heroes</router-link>
+    <div v-if="hero" class="hero-view offset-page">
+      <div class="container">
+        <div class="hero-view__inner">
+          <div class="hero-view__img-wrapper">
+            <img :src="hero.imgUrl" :alt="hero.title">
+          </div>
+          <div class="hero-view__info">
+            <h1 class="hero-view__title h1">{{ hero.title }}</h1>
+            <p class="hero-view__descr s4">{{ hero.descr }}</p>
+            <ul class="hero-view__statistic-list">
+              <li v-for="(item, i) in hero.info" :key="i" class="hero-view__statistic-item">
+                <span class="hero-view__statistic-value h3"> {{ item.value }} </span>
+                <span class="hero-view__statistic-name p5"> {{ item.title }} </span>
+              </li>
+            </ul>
+            <div>
+              <router-link class="hero-view__back-link" :to="{ name: 'HeroesView' }">Back to heroes</router-link>
+            </div>
           </div>
         </div>
       </div>

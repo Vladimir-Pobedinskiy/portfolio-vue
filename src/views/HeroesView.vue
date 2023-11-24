@@ -1,5 +1,5 @@
 <template>
-  <div class="heroes-view">
+  <div class="heroes-view offset-page">
     <div class="container">
       <template v-if="loading">
         <loading :loading="loading" />

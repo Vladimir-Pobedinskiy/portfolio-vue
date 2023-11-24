@@ -1,5 +1,5 @@
 <template>
-  <div class="not-found-view container">
+  <div class="not-found-view">
     <div class="not-found-view__inner">
       <div class="not-found-view__img-wrapper">
         <svg class="not-found-view__img" width="754px" height="304px">
@@ -24,6 +24,11 @@ export default {
 <style lang="scss">
 .not-found-view {
   height: 100%;
+  padding: 56px 16px;
+
+  @media (min-width:$desktop) {
+    padding: 120px 16px;
+  }
 
   &__inner {
     height: 100%;

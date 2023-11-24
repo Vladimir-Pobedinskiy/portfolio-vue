@@ -1,5 +1,5 @@
 <template>
-  <section class="home-view">
+  <section class="home-view offset-page">
     <div class="container">
       <h1 class="home-view__title h2">{{ title }}</h1>
       <ul class="home-view__list">

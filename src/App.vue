@@ -2,7 +2,7 @@
 
   <AppHeader />
 
-  <main class="main offset">
+  <main class="main">
     <router-view />
   </main>
 

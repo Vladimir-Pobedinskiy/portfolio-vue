@@ -67,6 +67,14 @@ body.lock {
 
 }
 
+.offset-page {
+  padding: 56px 0;
+
+  @media (min-width:$desktop) {
+    padding: 120px 0;
+  }
+}
+
 .title {
   margin-bottom: 24px;
 
