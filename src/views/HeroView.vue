@@ -29,6 +29,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import loading from '@/components/App/AppLoading'
+import axios from 'axios'
 export default {
   name: 'HeroView',
   components: {
@@ -41,8 +42,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      loading: 'loading',
-      heroList: 'heroes'
+      loading: 'loading'
     })
   },
   created() {
@@ -53,11 +53,12 @@ export default {
       startLoading: 'startLoading',
       endLoading: 'endLoading'
     }),
-    getHero() {
+    async getHero() {
       try {
         this.startLoading()
+        const response = await axios.get('/api/heroes/')
         const currentHeroRouteName = this.$route.params.heroView
-        const currentHero = this.heroList.find((hero) => hero.alias === currentHeroRouteName)
+        const currentHero = response.data.find((hero) => hero.alias === currentHeroRouteName)
         this.hero = currentHero
         this.endLoading()
       } catch (error) {

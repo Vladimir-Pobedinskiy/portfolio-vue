@@ -16,7 +16,6 @@ if (app.config.globalProperties.$store) {
   app.config.globalProperties.$store.dispatch('getNavLinks')
 }
 app.config.globalProperties.$hammer = Hammer
-
 app.use(SwiperPlugin)
 
 app.mount('#app')

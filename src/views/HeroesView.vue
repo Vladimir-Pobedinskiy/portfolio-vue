@@ -5,13 +5,8 @@
         <loading :loading="loading" />
       </template>
       <template v-else>
-        <template v-if="errorLoading === null">
-          <h2 class="heroes-view__title title h1">Приложение Герои</h2>
-          <HeroList :hero-list="heroList" />
-        </template>
-        <template v-else-if="errorLoading !== null">
-          <h2 class="heroes-view__title title h1">{{ errorLoading }}</h2>
-        </template>
+        <h2 class="heroes-view__title title h1">Приложение Герои</h2>
+        <HeroList :hero-list="heroList" />
       </template>
     </div>
   </div>
@@ -20,6 +15,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import loading from '@/components/App/AppLoading'
+import axios from 'axios'
 import HeroList from '@/components/Hero/HeroList.vue'
 
 export default {
@@ -27,13 +23,12 @@ export default {
   name: 'HeroesView',
   data() {
     return {
-      errorLoading: null
+      heroList: []
     }
   },
   computed: {
     ...mapGetters({
-      loading: 'loading',
-      heroList: 'heroes'
+      loading: 'loading'
     })
   },
   mounted() {
@@ -42,15 +37,13 @@ export default {
   methods: {
     ...mapActions({
       startLoading: 'startLoading',
-      endLoading: 'endLoading',
-      getHeroes: 'getHeroes'
+      endLoading: 'endLoading'
     }),
     async getData() {
       try {
         this.startLoading()
-        if (!this.heroList.length) {
-          this.getHeroes()
-        }
+        const response = await axios.get('/api/heroes/')
+        this.heroList = response.data
         this.endLoading()
       } catch (error) {
         this.endLoading()
