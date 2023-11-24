@@ -26,8 +26,6 @@ export default {
         'Работа с данными по технологии REST API'
       ]
     }
-  },
-  methods: {
   }
 }
 </script>

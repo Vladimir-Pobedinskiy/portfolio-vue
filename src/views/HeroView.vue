@@ -18,7 +18,7 @@
             </li>
           </ul>
           <div>
-            <router-link class="hero-view__back-link" to="/heroes">Back to heroes</router-link>
+            <router-link class="hero-view__back-link" :to="{ name: 'HeroesView' }">Back to heroes</router-link>
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@
         <div class="footer__top">
           <ul class="nav-list">
             <li v-for="(item, i) in navLinks" :key="i" class="nav-item">
-              <router-link class="nav-link" :to="`${item.url}`">{{ item.title }}</router-link>
+              <router-link class="nav-link p1" :to="`${item.url}`">{{ item.title }}</router-link>
             </li>
           </ul>
         </div>
@@ -37,6 +37,10 @@ export default {
   padding: 20px 0;
   background-color: $color-vue;
 
+  @media (min-width:$desktop) {
+    padding: 25px 0;
+  }
+
   &__inner {
     display: flex;
     flex-direction: column;
@@ -50,5 +54,14 @@ export default {
   &__title {
     font-size: 16px;
   }
+
+  .nav-list {
+    text-align: center;
+  }
+
+  .nav-item {
+    margin-bottom: 16px;
+  }
+
 }
 </style>
