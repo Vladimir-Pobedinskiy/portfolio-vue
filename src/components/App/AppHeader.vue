@@ -3,7 +3,7 @@
     <div class="container">
       <div class="header__inner">
         <router-link class="header__logo h4" :to="{ name: 'HomeView' }">PORTFOLIO</router-link>
-        <div class="header__nav-list-wrapper" :class="{ 'active': open === 'navigation' }">
+        <div ref="navigation" class="header__nav-list-wrapper" :class="{ 'active': open === 'navigation' }">
           <ul class="nav-list">
             <li v-for="(item, i) in navLinks" :key="i" class="nav-item">
               <router-link class="nav-link p1" :to="`${item.url}`">{{ item.title }}</router-link>
@@ -22,9 +22,15 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import { scrollController } from '@/utils/utils.js'
+import { screens, scrollController } from '@/utils/utils'
 export default {
   name: 'AppHeader',
+  data() {
+    return {
+      mc: null,
+      destroyScreen: parseInt(screens.desktop)
+    }
+  },
   computed: {
     ...mapGetters({
       navLinks: 'navLinks',
@@ -47,10 +53,34 @@ export default {
       }
     }
   },
+  mounted() {
+    this.setupHammer()
+    window.addEventListener('resize', this.handleWindowResize)
+  },
+  unmounted() {
+    window.removeEventListener('resize', this.handleWindowResize)
+  },
   methods: {
     ...mapActions({
       toggleOpen: 'toggleOpen'
-    })
+    }),
+    setupHammer() {
+      const hammer = this.$hammer
+      const nav = this.$refs.navigation
+
+      this.mc = new hammer.Manager(nav)
+      this.mc.add(new hammer.Swipe({ direction: hammer.DIRECTION_HORIZONTAL }))
+      this.mc.on('swipeleft', () => {
+        this.toggleOpen(this.open)
+      })
+    },
+    handleWindowResize() {
+      if (window.innerWidth >= this.destroyScreen) {
+        this.mc.set({ enable: false })
+      } else {
+        this.mc.set({ enable: true })
+      }
+    }
   }
 }
 </script>
