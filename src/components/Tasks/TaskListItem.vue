@@ -8,16 +8,18 @@
         </svg>
       </UIButton>
     </div>
-    <div v-if="task.date" class="task-list-item__footer">
+    <div class="task-list-item__footer">
+      <TaskTagList v-if="task.tags && task.tags.length" :tags="task.tags" isPreview />
       <span v-if="task.date" class="task-list-item__date p5">{{ task.date }}</span>
-      <!-- <TagList v-if="note.tag && note.tag.length > 0" :items="note.tag" :isPreview="true" /> -->
     </div>
   </div>
 </template>
 
 <script>
+import TaskTagList from '@/components/Tasks/TaskTagList'
 export default {
   name: 'TaskListItem',
+  components: { TaskTagList },
   emits: ['deleteCurrentTask'],
   props: {
     task: {
@@ -36,7 +38,7 @@ export default {
 <style lang="scss">
 .task-list-item {
     margin-bottom: 20px;
-    padding: 20px 20px;
+    padding: 20px;
     width: 100%;
     border-radius: 14px;
     background-color: $color-white;
@@ -57,12 +59,17 @@ export default {
   }
 
   &__title {
+    flex: 1 1 90%;
+    text-align: left;
+    overflow: hidden;
   }
 
   &__remove-btn {
+    margin-left: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 1 1 7%;
   }
 
   &__footer {

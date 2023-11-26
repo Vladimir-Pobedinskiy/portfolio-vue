@@ -4,11 +4,12 @@ export const tasks = {
   },
   mutations: {
     CHANGE_TASK_LIST(state, payload) {
-      const [textareaValue, dateTask] = payload
+      const [textareaValue, dateTask, tags] = payload
       state.taskList.push(
         {
           title: textareaValue,
-          date: dateTask
+          date: dateTask,
+          tags: [...tags]
         }
       )
     },

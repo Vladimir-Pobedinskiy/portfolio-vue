@@ -6,7 +6,8 @@
         <h2 class="tasks-view__title title h2">Список задач</h2>
         <div class="tasks-view__form-wrapper">
           <form class="tasks-view__form" @submit.prevent="onSubmit">
-            <textarea v-model="textareaValue" class="tasks-view__form-textarea" placeholder="Ведите новую задачу"></textarea>
+            <textarea v-model="textareaValue" class="tasks-view__form-textarea" placeholder="Ведите новую задачу" required></textarea>
+            <TaskTagList :tags="tags" @handleSelectedTag="handleSelectedTag" />
             <UIButton btn-class="tasks-view__form-btn btn" type="submit">Add new task</UIButton>
           </form>
         </div>
@@ -21,13 +22,16 @@
 
 <script>
 import TaskList from '@/components/Tasks/TaskList'
+import TaskTagList from '@/components/Tasks/TaskTagList'
 import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'TasksView',
-  components: { TaskList },
+  components: { TaskList, TaskTagList },
   data() {
     return {
-      textareaValue: ''
+      textareaValue: '',
+      tags: ['home', 'travel', 'work'],
+      selectedTags: []
     }
   },
   computed: {
@@ -51,8 +55,21 @@ export default {
 
       return `${day}.${month}.${year}, ${hours}:${minutes}:${seconds}`
     },
+    handleSelectedTag(selectedTag) {
+      if (!this.selectedTags.includes(selectedTag)) {
+        this.selectedTags.push(selectedTag)
+      } else {
+        const index = this.selectedTags.indexOf(selectedTag, 0)
+        this.selectedTags.splice(index, 1)
+      }
+      // console.log(this.selectedTags)
+    },
     onSubmit() {
-      this.changeTaskList([this.textareaValue, this.dateTask()])
+      if (this.textareaValue.length) {
+        this.changeTaskList([this.textareaValue, this.dateTask(), this.selectedTags])
+        this.textareaValue = ''
+        this.selectedTags.length = 0
+      }
     }
   }
 }
@@ -89,11 +106,11 @@ export default {
   }
 
   &__form-textarea {
-    margin-bottom: 24px;
     padding: 16px;
     width: 100%;
     max-width: 1000px;
     height: 150px;
+    border: 1px solid rgb(227, 221, 221);
     border-radius: 12px;
   }
 

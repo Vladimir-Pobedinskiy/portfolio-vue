@@ -1,0 +1,75 @@
+<template>
+  <div
+    class="task-tag-list-item"
+    :class="{ 'selected': selected && !isPreview, 'isPreview': isPreview }"
+    @click="handleSelectedTag"
+  >
+    {{ tag }}
+  </div>
+</template>
+
+<script>
+
+export default {
+  name: 'TaskTagListItem',
+  props: {
+    tag: {
+      type: String,
+      required: true
+    },
+    isPreview: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      selected: false
+    }
+  },
+  methods: {
+    handleSelectedTag() {
+      this.selected = !this.selected
+      this.$emit('handleSelectedTag', this.tag)
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+.task-tag-list-item {
+  margin-right: 10px;
+  padding: 8px 0;
+  width: 33.333%;
+  background-color: $color-white;
+  color: $color-black;
+  border: 1px solid rgb(227, 221, 221);
+  border-radius: 22px;
+  user-select: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+
+  &.selected {
+    background-color: $color-violet;
+    border-color: $color-violet;
+    color: $color-white;
+    transition: background-color 0.3s ease, color 0.2s ease, border-color 0.3s ease;
+  }
+
+  &.isPreview {
+    padding: 0;
+    width: fit-content;
+    border: none;
+    cursor: default;
+
+    &:before {
+      content: '#';
+    }
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+}
+</style>
