@@ -15,7 +15,6 @@
         <TaskList :task-list="taskList" @deleteCurrentTask="deleteCurrentTask" />
 
       </section>
-
     </div>
   </div>
 </template>
@@ -30,7 +29,11 @@ export default {
   data() {
     return {
       textareaValue: '',
-      tags: ['home', 'travel', 'work'],
+      tags: [
+        { title: 'home', selected: false },
+        { title: 'travel', selected: false },
+        { title: 'work', selected: false }
+      ],
       selectedTags: []
     }
   },
@@ -56,19 +59,33 @@ export default {
       return `${day}.${month}.${year}, ${hours}:${minutes}:${seconds}`
     },
     handleSelectedTag(selectedTag) {
-      if (!this.selectedTags.includes(selectedTag)) {
-        this.selectedTags.push(selectedTag)
-      } else {
-        const index = this.selectedTags.indexOf(selectedTag, 0)
-        this.selectedTags.splice(index, 1)
-      }
-      // console.log(this.selectedTags)
+      this.tags.forEach((item) => {
+        if (item.title === selectedTag) {
+          if (!item.selected) {
+            item.selected = true
+            this.selectedTags.push({
+              title: selectedTag
+            })
+          } else {
+            item.selected = false
+            const selectedIndex = this.selectedTags.findIndex(tag => tag.title === selectedTag)
+            if (selectedIndex !== -1) {
+              this.selectedTags.splice(selectedIndex, 1)
+            }
+          }
+        }
+      })
     },
     onSubmit() {
       if (this.textareaValue.length) {
         this.changeTaskList([this.textareaValue, this.dateTask(), this.selectedTags])
         this.textareaValue = ''
         this.selectedTags.length = 0
+        this.tags.forEach((item) => {
+          if (item.selected) {
+            item.selected = false
+          }
+        })
       }
     }
   }

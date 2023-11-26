@@ -1,10 +1,10 @@
 <template>
   <div
     class="task-tag-list-item"
-    :class="{ 'selected': selected && !isPreview, 'isPreview': isPreview }"
+    :class="{ 'selected': tag.selected && !isPreview, 'isPreview': isPreview }"
     @click="handleSelectedTag"
   >
-    {{ tag }}
+    {{ tag.title }}
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
   name: 'TaskTagListItem',
   props: {
     tag: {
-      type: String,
+      type: Object,
       required: true
     },
     isPreview: {
@@ -29,8 +29,7 @@ export default {
   },
   methods: {
     handleSelectedTag() {
-      this.selected = !this.selected
-      this.$emit('handleSelectedTag', this.tag)
+      this.$emit('handleSelectedTag', this.tag.title)
     }
   }
 }
