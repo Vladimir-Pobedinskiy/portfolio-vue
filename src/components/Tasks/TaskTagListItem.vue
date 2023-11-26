@@ -9,9 +9,9 @@
 </template>
 
 <script>
-
 export default {
   name: 'TaskTagListItem',
+  emits: ['handleSelectedTag'],
   props: {
     tag: {
       type: Object,
@@ -20,11 +20,6 @@ export default {
     isPreview: {
       type: Boolean,
       default: false
-    }
-  },
-  data() {
-    return {
-      selected: false
     }
   },
   methods: {

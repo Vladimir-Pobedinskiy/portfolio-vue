@@ -4,6 +4,7 @@
       <h1 class="tasks-view__title h1">Приложение cписок задач</h1>
       <section class="tasks-view__section">
         <h2 class="tasks-view__title title h2">Список задач</h2>
+
         <div class="tasks-view__form-wrapper">
           <form class="tasks-view__form" @submit.prevent="onSubmit">
             <textarea v-model="textareaValue" class="tasks-view__form-textarea" placeholder="Ведите новую задачу" required></textarea>
