@@ -119,7 +119,6 @@ export default {
     border-radius: 12px;
     background-color: $color-orange;
     color: $color-white;
-    cursor: pointer;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 
     @media (min-width:$desktop) {

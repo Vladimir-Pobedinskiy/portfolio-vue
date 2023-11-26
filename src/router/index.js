@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView'
 import HeroesView from '@/views/HeroesView'
 import HeroView from '@/views/HeroView'
+import TasksView from '@/views/TasksView'
 import NotFoundView from '@/views/NotFoundView'
 
 const router = createRouter({
@@ -22,6 +23,11 @@ const router = createRouter({
       path: '/heroes/:heroView',
       name: 'HeroView',
       component: HeroView
+    },
+    {
+      path: '/tasks',
+      name: 'TasksView',
+      component: TasksView
     },
     {
       path: '/:catchAll(.*)*',

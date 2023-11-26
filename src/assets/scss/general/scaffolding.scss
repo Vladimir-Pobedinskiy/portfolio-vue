@@ -71,7 +71,7 @@ body.lock {
   padding: 56px 0;
 
   @media (min-width:$desktop) {
-    padding: 120px 0;
+    padding: 90px 0;
   }
 }
 
@@ -110,13 +110,6 @@ body.lock {
     &:last-child {
       margin-right: 0;
     }
-  }
-}
-
-.nav-link {
-
-  @media (min-width:$desktop) {
-    cursor: pointer;
   }
 }
 

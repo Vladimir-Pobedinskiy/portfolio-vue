@@ -12,6 +12,7 @@
     <img src="@/assets/icons/icon-error-404.svg" alt="">
     <img src="@/assets/icons/icon-vk.svg" alt="">
     <img src="@/assets/icons/icon-arrow-slider.svg" alt="">
+    <img src="@/assets/icons/icon-close.svg" alt="">
   </div>
 
 </template>

@@ -10,7 +10,7 @@
       <p class="not-found-view__text p2">
         Запрашиваемая вами страница не существует. Возможно она была удалена или был введён неверный адрес в адресной строке.
       </p>
-      <router-link class="not-found-view__btn btn" :to="{ name: 'HomeView' }">На главную</router-link>
+      <UILink link-class="not-found-view__btn btn" :link-url="{ name: 'HomeView' }">На главную</UILink>
     </div>
   </div>
 </template>

@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'AppLoader',
+  name: 'AppLoading',
   props: {
     loading: {
       type: Boolean,

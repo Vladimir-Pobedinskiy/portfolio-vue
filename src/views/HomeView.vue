@@ -1,29 +1,26 @@
 <template>
-  <section class="home-view offset-page">
+  <div class="home-view offset-page">
     <div class="container">
-      <h1 class="home-view__title h2">{{ title }}</h1>
+      <h1 class="home-view__title h2">В этом портфолио реализовано:</h1>
       <ul class="home-view__list">
         <li class="home-view__item s4" v-for="(item, i) in list" :key="i">{{ item }}</li>
       </ul>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'HomeView',
-  components: {
-  },
   data() {
     return {
-      title: 'В этом портфолио реализовано:',
       list: [
         'Установка и настройка Vue CLI',
         'Установка и настройка Vue-router и Vuex',
         'Динамическая перерисовка без перезагрузки страницы',
-        'Обработка динамических роутов',
+        'Динамические маршруты',
         'Обработка несуществующих роутов',
-        'Работа с данными со стороннего API'
+        'Храниение и взаимодействие с данными из JSON Server'
       ]
     }
   }
