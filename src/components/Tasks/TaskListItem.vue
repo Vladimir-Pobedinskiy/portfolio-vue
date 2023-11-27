@@ -102,6 +102,7 @@ export default {
     align-items: center;
     flex: 1 1 90%;
     overflow: hidden;
+    z-index: 1;
   }
 
   &__title {
@@ -127,6 +128,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 2;
   }
 
   &__input {
