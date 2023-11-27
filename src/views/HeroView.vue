@@ -40,6 +40,26 @@ export default {
       hero: null
     }
   },
+  // beforeRouteEnter(to, from, next) {
+  //   const waitForData = async (vm) => {
+  //     await vm.getHero()
+  //     if (vm.$data.hero) {
+  //       const heroAliasFromData = vm.$data.hero.alias
+  //       const routeParams = to.params.heroView
+  //       if (heroAliasFromData === routeParams) {
+  //         next()
+  //       } else {
+  //         next({ name: 'NotFoundView' })
+  //       }
+  //     } else {
+  //       next({ name: 'NotFoundView' })
+  //     }
+  //   }
+
+  //   next(vm => {
+  //     waitForData(vm)
+  //   })
+  // },
   computed: {
     ...mapGetters({
       loading: 'loading'
