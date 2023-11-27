@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 import { navLinks } from './navLinks'
 import { menu } from './menu'
 import { tasks } from './tasks'
@@ -30,5 +31,11 @@ export const store = createStore({
   },
   modules: {
     navLinks, menu, tasks
-  }
+  },
+  plugins: [
+    createPersistedState({
+      // модули для сохранения в localStorage
+      paths: ['tasks']
+    })
+  ]
 })
