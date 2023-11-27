@@ -13,6 +13,7 @@
     <img src="@/assets/icons/icon-vk.svg" alt="">
     <img src="@/assets/icons/icon-arrow-slider.svg" alt="">
     <img src="@/assets/icons/icon-close.svg" alt="">
+    <img src="@/assets/icons/icon-edit.svg" alt="">
   </div>
 
 </template>

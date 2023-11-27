@@ -1,6 +1,11 @@
 <template>
   <div class="task-list">
-    <TaskListItem v-for="(task, index) in taskList" :key="index" :task="task" @deleteCurrentTask="deleteCurrentTask(index)" />
+    <TaskListItem
+      v-for="(task, index) in taskList" :key="index"
+      :task="task"
+      :currentIndex="index"
+      @deleteCurrentTask="deleteCurrentTask(index)"
+    />
   </div>
 </template>
 

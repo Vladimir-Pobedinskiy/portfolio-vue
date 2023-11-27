@@ -38,5 +38,9 @@ export default {
   width: 100%;
   max-width: 290px;
   display: flex;
+
+  @media (min-width:$desktop) {
+    margin: 20px 0 16px;
+  }
 }
 </style>
