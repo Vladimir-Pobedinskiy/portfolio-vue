@@ -19,14 +19,12 @@
 </template>
 
 <script>
-import AppHeader from '@/components/App/AppHeader.vue'
-import AppFooter from '@/components/App/AppFooter.vue'
+import AppHeader from '@/components/App/AppHeader'
+import AppFooter from '@/components/App/AppFooter'
 
 export default {
   name: 'App',
-  components: {
-    AppHeader, AppFooter
-  },
+  components: { AppHeader, AppFooter },
   data() {
     return {
       showIcons: false
