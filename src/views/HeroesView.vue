@@ -8,7 +8,7 @@
         <h1 class="heroes-view__title title h1">В этом приложении реализовано:</h1>
 
         <ul class="description-list">
-          <li class="description-item s4" v-for="(item, i) in descriptionList" :key="i">{{ item }}</li>
+          <li class="description-item p1" v-for="(item, i) in descriptionList" :key="i">{{ item }}</li>
         </ul>
 
         <HeroList :hero-list="heroList" />

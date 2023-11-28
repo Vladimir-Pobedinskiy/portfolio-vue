@@ -4,7 +4,7 @@
       <h1 class="tasks-view__title title h1">В этом приложении реализовано:</h1>
 
       <ul class="description-list">
-        <li class="description-item s4" v-for="(item, i) in descriptionList" :key="i">{{ item }}</li>
+        <li class="description-item p1" v-for="(item, i) in descriptionList" :key="i">{{ item }}</li>
       </ul>
 
       <section class="tasks-view__section offset">
