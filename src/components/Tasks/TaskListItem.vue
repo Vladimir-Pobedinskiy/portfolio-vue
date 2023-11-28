@@ -85,6 +85,10 @@ export default {
     background-color: $color-white;
     box-shadow: 0 30px 30px rgba(0, 0, 0, 0.04);
 
+    &:last-child {
+      margin-bottom: 0;
+    }
+
     @media (min-width:$mobile) {
       padding: 20px;
     }

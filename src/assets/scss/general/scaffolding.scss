@@ -58,6 +58,15 @@ body.lock {
   margin: 0 auto;
 }
 
+
+.offset-page {
+  padding: 56px 0;
+
+  @media (min-width:$desktop) {
+    padding: 90px 0;
+  }
+}
+
 .offset {
   padding: 28px 0;
 
@@ -68,10 +77,14 @@ body.lock {
 }
 
 .offset-page {
-  padding: 56px 0;
 
-  @media (min-width:$desktop) {
-    padding: 90px 0 30px;
+  .offset {
+    padding: 28px 0 10px;
+
+    @media (min-width:$desktop) {
+      padding: 60px 0 10px;
+    }
+
   }
 }
 
