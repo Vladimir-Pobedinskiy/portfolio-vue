@@ -1,9 +1,14 @@
 <template>
   <div class="tasks-view offset-page">
     <div class="container">
-      <h1 class="tasks-view__title h1">Приложение cписок задач</h1>
-      <section class="tasks-view__section">
-        <h2 class="tasks-view__title title h2">Список задач</h2>
+      <h1 class="tasks-view__title title h1">В этом приложении реализовано:</h1>
+
+      <ul class="description-list">
+        <li class="description-item s4" v-for="(item, i) in descriptionList" :key="i">{{ item }}</li>
+      </ul>
+
+      <section class="tasks-view__section offset">
+        <h2 class="tasks-view__title title h1">Список задач</h2>
 
         <div class="tasks-view__form-wrapper">
           <form class="tasks-view__form" @submit.prevent="onSubmit">
@@ -34,6 +39,11 @@ export default {
   components: { TaskList, TaskTagList },
   data() {
     return {
+      descriptionList: [
+        'Добавление, удаление, редактирование задач',
+        'Добавление в задачу hashtags и времени добавления',
+        'Хранение данных в Store и LocalStorage'
+      ],
       textareaValue: '',
       tags: [
         { title: 'home', selected: false },
@@ -102,16 +112,6 @@ export default {
 .tasks-view {
   height: 100%;
   background-color: $bg;
-
-  &__title {
-    margin-bottom: 24px;
-    text-align: center;
-    text-transform: uppercase;
-
-    @media (min-width:$desktop) {
-      margin-bottom: 48px;
-    }
-  }
 
   &__section {
     text-align: center;

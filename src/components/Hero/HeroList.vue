@@ -1,7 +1,7 @@
 <template>
-  <div class="hero-swiper">
+  <section class="hero-swiper offset">
     <div class="hero-swiper__top">
-      <span class="hero-swiper__title h2">Герои</span>
+      <h2 class="hero-swiper__title h1">Герои</h2>
       <div class="hero-swiper__navigation-wrapper">
         <span class="visually-hidden">Стрелки навигации по слайдеру</span>
         <div class="hero-swiper__button-prev swiper-button-prev">
@@ -38,7 +38,7 @@
 
       <div class="swiper-pagination hero-swiper__pagination"></div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

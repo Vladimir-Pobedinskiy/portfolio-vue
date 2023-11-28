@@ -71,15 +71,16 @@ body.lock {
   padding: 56px 0;
 
   @media (min-width:$desktop) {
-    padding: 90px 0;
+    padding: 90px 0 30px;
   }
 }
 
 .title {
   margin-bottom: 24px;
+  text-transform: uppercase;
 
   @media (min-width:$desktop) {
-    margin-bottom: 48px;
+    margin-bottom: 32px;
   }
 }
 
@@ -110,6 +111,20 @@ body.lock {
     &:last-child {
       margin-right: 0;
     }
+  }
+}
+
+// стили списка описания приложения
+.description-list {
+  padding-left: 22px;
+}
+
+.description-item {
+  margin-bottom: 8px;
+  list-style: disc;
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 

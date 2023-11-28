@@ -5,7 +5,12 @@
         <loading :loading="loading" />
       </template>
       <template v-else>
-        <h2 class="heroes-view__title title h1">Приложение Герои</h2>
+        <h1 class="heroes-view__title title h1">В этом приложении реализовано:</h1>
+
+        <ul class="description-list">
+          <li class="description-item s4" v-for="(item, i) in descriptionList" :key="i">{{ item }}</li>
+        </ul>
+
         <HeroList :hero-list="heroList" />
       </template>
     </div>
@@ -23,6 +28,11 @@ export default {
   name: 'HeroesView',
   data() {
     return {
+      descriptionList: [
+        'Храниение и взаимодействие с данными из JSON Server',
+        'Динамические маршруты',
+        'Слайдер'
+      ],
       heroList: []
     }
   },
@@ -53,12 +63,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.heroes-view {
-
-  &__title {
-    text-transform: uppercase;
-  }
-}
-</style>
