@@ -71,7 +71,6 @@ export default {
       if (this.inputValue.trim().length) {
         this.changeTaskItem([this.currentIndex, this.inputValue.trim()])
       }
-      this.inputValue = ''
     }
   }
 }
