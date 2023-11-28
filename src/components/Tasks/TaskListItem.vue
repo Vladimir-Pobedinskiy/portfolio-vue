@@ -79,15 +79,20 @@ export default {
 <style lang="scss">
 .task-list-item {
     margin-bottom: 20px;
-    padding: 20px;
+    padding: 12px;
     width: 100%;
     border-radius: 14px;
     background-color: $color-white;
     box-shadow: 0 30px 30px rgba(0, 0, 0, 0.04);
-    will-change: transform;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    @media (min-width:$mobile) {
+      padding: 20px;
+    }
 
     @media (min-width:$desktop) {
+      will-change: transform;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+
       &:hover {
         transform: translate(0, -3px);
         box-shadow: 0 30px 30px rgba(0, 0, 0, 0.06);
@@ -154,6 +159,10 @@ export default {
     align-items: center;
     justify-content: center;
     flex: 1 1 7%;
+
+    @media (max-width: 400px){
+      transform: translateY(150%);
+    }
   }
 
   &__footer {
