@@ -56,9 +56,6 @@ export default {
       taskList: 'taskList'
     })
   },
-  mounted() {
-    this.inputValue = this.task.title
-  },
   methods: {
     ...mapActions({
       changeTaskItem: 'changeTaskItem'
