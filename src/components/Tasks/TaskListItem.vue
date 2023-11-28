@@ -84,12 +84,14 @@ export default {
     border-radius: 14px;
     background-color: $color-white;
     box-shadow: 0 30px 30px rgba(0, 0, 0, 0.04);
-    transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+    will-change: transform;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 
     @media (min-width:$desktop) {
       &:hover {
         transform: translate(0, -3px);
         box-shadow: 0 30px 30px rgba(0, 0, 0, 0.06);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
       }
     }
 
