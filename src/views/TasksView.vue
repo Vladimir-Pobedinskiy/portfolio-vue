@@ -95,7 +95,6 @@ export default {
     onSubmit() {
       if (this.textareaValue.length) {
         this.changeTaskList([this.textareaValue.trim(), this.dateTask(), this.selectedTags])
-        console.log(this.taskList)
         this.textareaValue = ''
         this.selectedTags.length = 0
         this.tags.forEach((item) => {
