@@ -1,7 +1,7 @@
 <template>
   <div class="home-view offset-page">
     <div class="container">
-      <h1 class="home-view__title title h2">В этом портфолио реализовано:</h1>
+      <h1 class="home-view__title title h1">В этом портфолио реализовано:</h1>
       <ul class="description-list">
         <li class="description-item s4" v-for="(item, i) in descriptionList" :key="i">{{ item }}</li>
       </ul>
