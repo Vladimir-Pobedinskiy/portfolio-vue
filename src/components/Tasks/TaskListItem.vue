@@ -3,7 +3,7 @@
     <div class="task-list-item__header">
       <div class="task-list-item__title-wrapper">
         <span class="task-list-item__title p1">{{ task.title }}</span>
-        <button class="task-list-item__title-edit-btn" type="button" aria-label="Открыть редактирование задачи" @click="inputHiddenFlag = false">
+        <button class="task-list-item__title-edit-btn" type="button" aria-label="Открыть редактирование задачи" @click="openEditInput">
           <svg class="task-list-item__title-edit-icon" width="20px" height="20px">
             <use xlink:href="#icon-edit"></use>
           </svg>
@@ -56,12 +56,19 @@ export default {
       taskList: 'taskList'
     })
   },
+  mounted() {
+    this.inputValue = this.task.title
+  },
   methods: {
     ...mapActions({
       changeTaskItem: 'changeTaskItem'
     }),
     deleteCurrentTask(index) {
       this.$emit('deleteCurrentTask', index)
+    },
+    openEditInput() {
+      this.inputHiddenFlag = false
+      this.inputValue = this.task.title
     },
     editCurrentTask() {
       if (this.inputValue.trim().length) {
