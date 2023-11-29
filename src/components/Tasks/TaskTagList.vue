@@ -1,5 +1,5 @@
 <template>
-  <div class="task-tag-list">
+  <div class="task-tag-list" :class="{'not-preview': !isPreview }">
     <TaskTagListItem
       v-for="tag in tags" :key="tag"
       :tag="tag"
@@ -35,12 +35,15 @@ export default {
 <style lang="scss">
 .task-tag-list {
   margin: 16px 0;
-  width: 100%;
-  max-width: 290px;
   display: flex;
 
   @media (min-width:$desktop) {
     margin: 20px 0 16px;
   }
+}
+
+.task-tag-list.not-preview {
+  width: 100%;
+  max-width: 290px;
 }
 </style>
