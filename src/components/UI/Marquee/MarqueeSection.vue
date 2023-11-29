@@ -47,9 +47,6 @@ export default {
 </script>
 
 <style lang="scss">
-.marquee {
-  will-change: transform;
-}
 
 .marquee-section {
 

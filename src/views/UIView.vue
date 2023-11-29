@@ -68,7 +68,7 @@ export default {
         this.endLoading()
       } catch (error) {
         this.endLoading()
-        console.error('error from ui', error)
+        console.error('Error fetching UIView', error)
       }
     }
   }
@@ -78,19 +78,24 @@ export default {
 <style lang="scss">
 .hero-img-wrapper {
   padding: 10px;
-  width: 250px;
+  width: 15%;
   will-change: transform;
 
   @media (min-width:$mobile-big) {
-    width: 300px;
+    width: 17%;
   }
 
   @media (min-width:$tablet) {
-    width: 350px;
+    width: 20%;
   }
 
   @media (min-width:$tablet-big) {
-    width: 450px;
+    padding: 15px;
+    width: 25%;
+  }
+
+  @media (min-width:$two-K-Display) {
+    width: 35%;
   }
 }
 </style>
