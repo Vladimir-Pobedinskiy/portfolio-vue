@@ -1,5 +1,5 @@
 <template>
-  <template v-if="hero === null && loading">
+  <template v-if="loading">
     <loading :loading="loading" />
   </template>
   <template v-else>

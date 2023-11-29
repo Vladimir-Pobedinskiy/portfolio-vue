@@ -1,10 +1,10 @@
 <template>
-  <div class="heroes-view offset-page">
-    <div class="container">
-      <template v-if="loading">
-        <loading :loading="loading" />
-      </template>
-      <template v-else>
+  <template v-if="loading">
+    <loading :loading="loading" />
+  </template>
+  <template v-else>
+    <div class="heroes-view offset-page">
+      <div class="container">
         <h1 class="heroes-view__title title h1">В этом приложении реализовано:</h1>
 
         <ul class="description-list">
@@ -12,9 +12,9 @@
         </ul>
 
         <HeroList :hero-list="heroList" />
-      </template>
+      </div>
     </div>
-  </div>
+  </template>
 </template>
 
 <script>
@@ -41,7 +41,7 @@ export default {
       loading: 'loading'
     })
   },
-  mounted() {
+  created() {
     this.getData()
   },
   methods: {

@@ -4,6 +4,7 @@ import HomeView from '@/views/HomeView'
 import HeroesView from '@/views/HeroesView'
 import HeroView from '@/views/HeroView'
 import TasksView from '@/views/TasksView'
+import UIView from '@/views/UIView'
 import NotFoundView from '@/views/NotFoundView'
 
 const router = createRouter({
@@ -28,6 +29,11 @@ const router = createRouter({
       path: '/tasks',
       name: 'TasksView',
       component: TasksView
+    },
+    {
+      path: '/ui',
+      name: 'UIView',
+      component: UIView
     },
     {
       path: '/:catchAll(.*)*',

@@ -16,6 +16,10 @@
       {
         "title": "UI",
         "url": "/ui"
+      },
+      {
+        "title": "About me",
+        "url": "/about"
       }
     ]
   },
@@ -130,5 +134,29 @@
         }
       ]
     }
-  ]
+  ],
+  "ui": {
+    "marqueeImages": [
+      {
+        "imgUrl": "/img/hero/barbarian.png",
+        "title": "barbarian"
+      },
+      {
+        "imgUrl": "/img/hero/archer.png",
+        "title": "archer"
+      },
+      {
+        "imgUrl": "/img/hero/giant.png",
+        "title": "giant"
+      },
+      {
+        "imgUrl": "/img/hero/goblin.png",
+        "title": "goblin"
+      },
+      {
+        "imgUrl": "/img/hero/wizard.png",
+        "title": "wizard"
+      }
+    ]
+  }
 }
