@@ -23,6 +23,14 @@
       </div>
       <div v-if="$slots.body" class="modal-body">
         <slot name="body" />
+        <button
+          v-if="modalSettings.btnSaveClassName.length"
+          :class="modalSettings.btnSaveClassName"
+          type="button"
+          @click="showModal = false"
+        >
+        Сохранить
+      </button>
       </div>
     </div>
   </vue-final-modal>
@@ -67,7 +75,7 @@ export default {
 }
 .modal-content {
   position: relative;
-  padding: 40px 16px;
+  padding: 40px 16px 32px;
   width: 100%;
   max-width: 530px;
   max-height: 70%;

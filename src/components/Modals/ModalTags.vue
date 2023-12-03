@@ -6,7 +6,6 @@
       </template>
       <template #body>
         <TaskTagList :tags="tags" />
-        <UIButton btn-class="modal-tags-btn-save btn btn-small" type="button">Сохранить</UIButton>
       </template>
       <template #btnOpenModal>
         <svg class="modal-tags-btn-open-icon" width="20px" height="20px">
@@ -33,7 +32,8 @@ export default {
         hideOverlay: false, // Скрытие отображения наложения
         preventClick: false, // отмена закрытия по overlay
         zIndex: 1000,
-        btnOpenClassName: 'modal-tags-btn-open'
+        btnOpenClassName: 'modal-tags-btn-open',
+        btnSaveClassName: 'modal-tags-btn-save btn btn-small'
       },
       tags: [
         { title: 'home', selected: false },
