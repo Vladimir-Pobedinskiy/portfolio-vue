@@ -24,7 +24,7 @@
     <div class="task-list-item__footer">
       <div class="tag-list-wrapper">
         <TaskTagList v-if="task.tags && task.tags.length" :tags="task.tags" isPreview />
-        <ModalTags @editSelectedTags="editSelectedTags" />
+        <ModalTags @editSelectedTags="editSelectedTags" :current-tags="task.tags" />
       </div>
       <span v-if="task.date" class="task-list-item__date p5">{{ task.date }}</span>
     </div>

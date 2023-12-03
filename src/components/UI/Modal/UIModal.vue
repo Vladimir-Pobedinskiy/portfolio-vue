@@ -26,6 +26,7 @@
         <button
           v-if="modalSettings.btnSaveClassName.length"
           :class="modalSettings.btnSaveClassName"
+          :disabled="!selectedTags.length"
           type="button"
           @click="$emit('onSaveBtnClick'), showModal = false"
         >
@@ -34,7 +35,7 @@
       </div>
     </div>
   </vue-final-modal>
-  <button v-if="$slots.btnOpenModal" @click="showModal = true" :class="modalSettings.btnOpenClassName" aria-label="Открыть модальное окно">
+  <button v-if="$slots.btnOpenModal" @click="showModal = true" :class="btnOpenClassName" aria-label="Открыть модальное окно">
     <slot name="btnOpenModal" />
   </button>
 </template>
@@ -47,6 +48,14 @@ export default {
   props: {
     modalSettings: {
       type: Object,
+      required: true
+    },
+    selectedTags: {
+      type: Array,
+      required: false
+    },
+    btnOpenClassName: {
+      type: String,
       required: true
     }
   },
