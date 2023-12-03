@@ -14,7 +14,7 @@
           <form class="tasks-view__form" @submit.prevent="onSubmit">
             <textarea v-model="textareaValue" class="tasks-view__form-textarea" placeholder="Введите новую задачу" required></textarea>
             <TaskTagList :tags="tags" @handleSelectedTags="handleSelectedTags" />
-            <UIButton btn-class="tasks-view__form-btn btn" :disabled="!textareaValue" type="submit">Add new task</UIButton>
+            <UIButton btn-class="tasks-view__form-btn btn" :disabled="!textareaValue.trim()" type="submit">Add new task</UIButton>
           </form>
         </div>
 
