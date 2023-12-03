@@ -13,7 +13,7 @@
         <div class="tasks-view__form-wrapper">
           <form class="tasks-view__form" @submit.prevent="onSubmit">
             <textarea v-model="textareaValue" class="tasks-view__form-textarea" placeholder="Введите новую задачу" required></textarea>
-            <TaskTagList :tags="tags" @handleSelectedTag="handleSelectedTag" />
+            <TaskTagList :tags="tags" @handleSelectedTags="handleSelectedTags" />
             <UIButton btn-class="tasks-view__form-btn btn" type="submit">Add new task</UIButton>
           </form>
         </div>
@@ -74,23 +74,8 @@ export default {
 
       return `${day}.${month}.${year}, ${hours}:${minutes}:${seconds}`
     },
-    handleSelectedTag(selectedTag) {
-      this.tags.forEach((item) => {
-        if (item.title === selectedTag) {
-          if (!item.selected) {
-            item.selected = true
-            this.selectedTags.push({
-              title: selectedTag
-            })
-          } else {
-            item.selected = false
-            const selectedIndex = this.selectedTags.findIndex(tag => tag.title === selectedTag)
-            if (selectedIndex !== -1) {
-              this.selectedTags.splice(selectedIndex, 1)
-            }
-          }
-        }
-      })
+    handleSelectedTags(selectedTags) {
+      this.selectedTags = selectedTags
     },
     onSubmit() {
       if (this.textareaValue.length) {

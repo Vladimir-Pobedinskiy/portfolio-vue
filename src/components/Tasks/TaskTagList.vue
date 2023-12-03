@@ -14,6 +14,7 @@ import TaskTagListItem from '@/components/Tasks/TaskTagListItem'
 export default {
   name: 'TaskTagList',
   components: { TaskTagListItem },
+  emits: ['handleSelectedTags'],
   props: {
     tags: {
       type: Array,
@@ -24,9 +25,31 @@ export default {
       default: false
     }
   },
+  data() {
+    return {
+      selectedTags: []
+    }
+  },
   methods: {
     handleSelectedTag(selectedTag) {
-      this.$emit('handleSelectedTag', selectedTag)
+      this.tags.forEach((item) => {
+        if (item.title === selectedTag) {
+          if (!item.selected) {
+            item.selected = true
+            this.selectedTags.push({
+              title: selectedTag
+            })
+            this.$emit('handleSelectedTags', this.selectedTags)
+          } else {
+            item.selected = false
+            const selectedIndex = this.selectedTags.findIndex(tag => tag.title === selectedTag)
+            if (selectedIndex !== -1) {
+              this.selectedTags.splice(selectedIndex, 1)
+              this.$emit('handleSelectedTags', this.selectedTags)
+            }
+          }
+        }
+      })
     }
   }
 }
@@ -34,16 +57,17 @@ export default {
 
 <style lang="scss">
 .task-tag-list {
-  margin: 16px 0;
   display: flex;
+  align-items: center;
+}
+
+.task-tag-list.not-preview {
+  margin: 16px 0;
+  width: 100%;
+  max-width: 290px;
 
   @media (min-width:$desktop) {
     margin: 20px 0 16px;
   }
-}
-
-.task-tag-list.not-preview {
-  width: 100%;
-  max-width: 290px;
 }
 </style>

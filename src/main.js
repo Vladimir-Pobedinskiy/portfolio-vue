@@ -7,6 +7,7 @@ import './assets/scss/main.scss'
 
 import Hammer from 'hammerjs'
 import SwiperPlugin from './plugins/swiper'
+import { vfmPlugin } from 'vue-final-modal'
 
 // Глобальные компоненты
 import UIButton from '@/components/UI/UIButton'
@@ -22,6 +23,7 @@ if (app.config.globalProperties.$store) {
 
 app.config.globalProperties.$hammer = Hammer
 app.use(SwiperPlugin)
+app.use(vfmPlugin)
 
 // Регистрируем глобальные компоненты
 app.component('UIButton', UIButton)

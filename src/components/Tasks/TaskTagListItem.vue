@@ -35,6 +35,9 @@ export default {
   margin-right: 10px;
   padding: 8px 0;
   width: 33.333%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: $color-white;
   color: $color-black;
   border: 1px solid rgb(227, 221, 221);

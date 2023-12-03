@@ -22,7 +22,10 @@
       </UIButton>
     </div>
     <div class="task-list-item__footer">
-      <TaskTagList v-if="task.tags && task.tags.length" :tags="task.tags" isPreview />
+      <div class="tag-list-wrapper">
+        <TaskTagList v-if="task.tags && task.tags.length" :tags="task.tags" isPreview />
+        <ModalTags />
+      </div>
       <span v-if="task.date" class="task-list-item__date p5">{{ task.date }}</span>
     </div>
   </div>
@@ -30,10 +33,11 @@
 
 <script>
 import TaskTagList from '@/components/Tasks/TaskTagList'
+import ModalTags from '@/components/Modals/ModalTags'
 import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'TaskListItem',
-  components: { TaskTagList },
+  components: { TaskTagList, ModalTags },
   emits: ['deleteCurrentTask'],
   props: {
     task: {
@@ -78,31 +82,29 @@ export default {
 
 <style lang="scss">
 .task-list-item {
-    margin-bottom: 20px;
-    padding: 12px;
-    width: 100%;
-    border-radius: 14px;
-    background-color: $color-white;
-    box-shadow: 0 30px 30px rgba(0, 0, 0, 0.04);
+  margin-bottom: 20px;
+  padding: 12px;
+  width: 100%;
+  border-radius: 14px;
+  background-color: $color-white;
+  box-shadow: 0 30px 30px rgba(0, 0, 0, 0.04);
 
-    &:last-child {
-      margin-bottom: 0;
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (min-width:$mobile) {
+    padding: 20px;
+  }
+
+  @media (min-width:$desktop) {
+    transition: box-shadow 0.25s ease;
+
+    &:hover {
+      box-shadow: 0 30px 30px rgba(0, 0, 0, 0.06);
+      transition: box-shadow 0.25s ease;
     }
-
-    @media (min-width:$mobile) {
-      padding: 20px;
-    }
-
-    @media (min-width:$desktop) {
-      will-change: transform;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-
-      &:hover {
-        transform: translate(0, -3px);
-        box-shadow: 0 30px 30px rgba(0, 0, 0, 0.06);
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-      }
-    }
+  }
 
   &__header {
     position: relative;
@@ -172,6 +174,20 @@ export default {
   &__footer {
     margin-top: 10px;
     text-align: left;
+  }
+
+  .tag-list-wrapper {
+    margin: 16px 0;
+    width: 100%;
+    max-width: 290px;
+    display: flex;
+    align-items: center;
+    flex: 1 1 90%;
+    z-index: 1;
+
+    @media (min-width:$desktop) {
+      margin: 20px 0 16px;
+    }
   }
 }
 </style>
