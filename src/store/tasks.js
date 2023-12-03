@@ -21,6 +21,14 @@ export const tasks = {
         }
       })
     },
+    CHANGE_TASK_ITEM_TAGS(state, payload) {
+      const [index, selectedTags] = payload
+      state.taskList.forEach((item, i) => {
+        if (i === index) {
+          item.tags = [...selectedTags]
+        }
+      })
+    },
     DELETE_CURRENT_TASK(state, index) {
       state.taskList.splice(index, 1)
     }
@@ -31,6 +39,9 @@ export const tasks = {
     },
     changeTaskItem({ commit }, payload) {
       commit('CHANGE_TASK_ITEM', payload)
+    },
+    changeTaskItemTags({ commit }, payload) {
+      commit('CHANGE_TASK_ITEM_TAGS', payload)
     },
     deleteCurrentTask({ commit }, index) {
       commit('DELETE_CURRENT_TASK', index)

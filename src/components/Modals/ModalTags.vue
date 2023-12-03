@@ -1,11 +1,11 @@
 <template>
   <div class="modal-tags">
-    <UIModal :modal-settings="modalSettings">
+    <UIModal :modal-settings="modalSettings" @onSaveBtnClick="onSaveBtnClick">
       <template #header>
         <span class="modal-tags-title s2">Выберите теги</span>
       </template>
       <template #body>
-        <TaskTagList :tags="tags" />
+        <TaskTagList :tags="tags" @handleSelectedTags="handleSelectedTags" />
       </template>
       <template #btnOpenModal>
         <svg class="modal-tags-btn-open-icon" width="20px" height="20px">
@@ -22,6 +22,7 @@ import TaskTagList from '@/components/Tasks/TaskTagList'
 export default {
   name: 'ModalTags',
   components: { UIModal, TaskTagList },
+  emits: ['editSelectedTags'],
   data() {
     return {
       modalSettings: {
@@ -39,7 +40,20 @@ export default {
         { title: 'home', selected: false },
         { title: 'travel', selected: false },
         { title: 'work', selected: false }
-      ]
+      ],
+      selectedTags: []
+    }
+  },
+  methods: {
+    handleSelectedTags(selectedTags) {
+      this.selectedTags = selectedTags
+    },
+    onSaveBtnClick() {
+      this.$emit('editSelectedTags', this.selectedTags)
+      this.selectedTags.length = 0
+      this.tags.forEach((item) => {
+        item.selected = false
+      })
     }
   }
 }

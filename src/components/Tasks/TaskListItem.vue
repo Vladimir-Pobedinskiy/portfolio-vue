@@ -24,7 +24,7 @@
     <div class="task-list-item__footer">
       <div class="tag-list-wrapper">
         <TaskTagList v-if="task.tags && task.tags.length" :tags="task.tags" isPreview />
-        <ModalTags />
+        <ModalTags @editSelectedTags="editSelectedTags" />
       </div>
       <span v-if="task.date" class="task-list-item__date p5">{{ task.date }}</span>
     </div>
@@ -62,7 +62,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      changeTaskItem: 'changeTaskItem'
+      changeTaskItem: 'changeTaskItem',
+      changeTaskItemTags: 'changeTaskItemTags'
     }),
     deleteCurrentTask(index) {
       this.$emit('deleteCurrentTask', index)
@@ -75,6 +76,9 @@ export default {
       if (this.inputValue.trim().length) {
         this.changeTaskItem([this.currentIndex, this.inputValue.trim()])
       }
+    },
+    editSelectedTags(selectedTags) {
+      this.changeTaskItemTags([this.currentIndex, selectedTags])
     }
   }
 }
@@ -116,13 +120,14 @@ export default {
   &__title-wrapper {
     display: flex;
     align-items: center;
-    flex: 1 1 90%;
+    flex: 1 1 65%;
     overflow: hidden;
     z-index: 1;
   }
 
   &__title {
     text-align: left;
+    overflow: hidden;
   }
 
   &__title-edit-btn {
@@ -137,13 +142,14 @@ export default {
   }
 
   &__input-wrapper {
-    width: 60%;
+    width: 80%;
     position: absolute;
     left: 0;
     top: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: $color-white;
     z-index: 2;
   }
 
@@ -163,7 +169,7 @@ export default {
     margin-left: 10px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     flex: 1 1 7%;
 
     @media (max-width: 400px){

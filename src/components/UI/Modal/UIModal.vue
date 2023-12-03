@@ -27,7 +27,7 @@
           v-if="modalSettings.btnSaveClassName.length"
           :class="modalSettings.btnSaveClassName"
           type="button"
-          @click="showModal = false"
+          @click="$emit('onSaveBtnClick'), showModal = false"
         >
         Сохранить
       </button>
@@ -43,6 +43,7 @@ import { VueFinalModal } from 'vue-final-modal'
 export default {
   name: 'UIModal',
   components: { VueFinalModal },
+  emits: ['onSaveBtnClick'],
   props: {
     modalSettings: {
       type: Object,
