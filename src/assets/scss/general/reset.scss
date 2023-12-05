@@ -1,5 +1,3 @@
-@import 'variables.scss';
-
 *,
 *::after,
 *::before {
@@ -53,20 +51,14 @@ select {
 a {
   color: inherit;
   text-decoration: none;
-  
-  @media (min-width:$desktop) {  
-    cursor: pointer;
-  }
+  cursor: pointer;
 }
 
 button {
   padding: 0;
   border: 0;
   background-color: transparent;
-
-  @media (min-width:$desktop) {  
-    cursor: pointer;
-  }
+  cursor: pointer;
 }
 
 input {

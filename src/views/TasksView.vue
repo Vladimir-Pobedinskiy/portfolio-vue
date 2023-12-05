@@ -41,7 +41,8 @@ export default {
     return {
       descriptionList: [
         'Добавление, удаление, редактирование задач',
-        'Добавление в задачу hashtags и времени добавления',
+        'Добавление и редактирование hashtags',
+        'Добавление времени добавления',
         'Хранение данных в Store и LocalStorage'
       ],
       textareaValue: '',
