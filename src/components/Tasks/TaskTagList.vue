@@ -14,7 +14,6 @@ import TaskTagListItem from '@/components/Tasks/TaskTagListItem'
 export default {
   name: 'TaskTagList',
   components: { TaskTagListItem },
-  emits: ['handleSelectedTags'],
   props: {
     tags: {
       type: Array,
@@ -25,6 +24,7 @@ export default {
       default: false
     }
   },
+  emits: ['handleSelectedTags'],
   data() {
     return {
       selectedTags: []

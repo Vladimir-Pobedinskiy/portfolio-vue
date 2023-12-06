@@ -44,7 +44,6 @@ import { VueFinalModal } from 'vue-final-modal'
 export default {
   name: 'UIModal',
   components: { VueFinalModal },
-  emits: ['onSaveBtnClick'],
   props: {
     modalSettings: {
       type: Object,
@@ -59,6 +58,7 @@ export default {
       required: true
     }
   },
+  emits: ['onSaveBtnClick'],
   data() {
     return {
       showModal: false

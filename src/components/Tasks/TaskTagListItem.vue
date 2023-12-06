@@ -11,7 +11,6 @@
 <script>
 export default {
   name: 'TaskTagListItem',
-  emits: ['handleSelectedTag'],
   props: {
     tag: {
       type: Object,
@@ -22,6 +21,7 @@ export default {
       default: false
     }
   },
+  emits: ['handleSelectedTag'],
   methods: {
     handleSelectedTag() {
       this.$emit('handleSelectedTag', this.tag.title)

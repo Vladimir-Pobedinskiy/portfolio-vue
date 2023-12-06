@@ -28,13 +28,13 @@ import TaskTagList from '@/components/Tasks/TaskTagList'
 export default {
   name: 'ModalTags',
   components: { UIModal, TaskTagList },
-  emits: ['editSelectedTags'],
   props: {
     currentTags: {
       type: Array,
       required: true
     }
   },
+  emits: ['editSelectedTags'],
   data() {
     return {
       modalSettings: {

@@ -38,7 +38,6 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'TaskListItem',
   components: { TaskTagList, ModalTags },
-  emits: ['deleteCurrentTask'],
   props: {
     task: {
       type: Object,
@@ -49,6 +48,7 @@ export default {
       required: false
     }
   },
+  emits: ['deleteCurrentTask'],
   data() {
     return {
       inputHiddenFlag: true,
