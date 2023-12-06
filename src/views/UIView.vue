@@ -78,15 +78,15 @@ export default {
 <style lang="scss">
 .hero-img-wrapper {
   padding: 10px;
-  width: 15%;
+  width: 250px;
   will-change: transform;
 
   @media (min-width:$mobile-big) {
-    width: 17%;
+    width: 300px;
   }
 
   @media (min-width:$tablet) {
-    width: 20%;
+    width: 350px;
   }
 
   @media (min-width:$tablet-big) {

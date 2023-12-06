@@ -137,9 +137,12 @@ body.lock {
   }
 }
 
-.router-link-active.router-link-exact-active.nav-link {
+.nav-link {
 
-  @media (min-width:$desktop) {
-    border-bottom: 2px solid $color-black;
+  &.active {
+
+    @media (min-width:$desktop) {
+      border-bottom: 2px solid $color-black;
+    }
   }
 }

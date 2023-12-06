@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
+
 import { navLinks } from './navLinks'
 import { menu } from './menu'
 import { tasks } from './tasks'

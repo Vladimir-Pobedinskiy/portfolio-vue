@@ -7,7 +7,7 @@ import TasksView from '@/views/TasksView'
 import UIView from '@/views/UIView'
 import NotFoundView from '@/views/NotFoundView'
 
-const router = createRouter({
+export const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes: [
     {
@@ -40,9 +40,7 @@ const router = createRouter({
       name: 'NotFoundView',
       component: NotFoundView
     }
-  ]
+  ],
+  linkActiveClass: 'active',
+  linkExactActiveClass: 'active'
 })
-
-// router.beforeEach((to, from, next) => {})
-
-export default router

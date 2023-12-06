@@ -6,7 +6,7 @@
         <div ref="navigation" class="header__nav-list-wrapper" :class="{ 'active': open === 'navigation' }">
           <ul class="nav-list">
             <li v-for="(item, i) in navLinks" :key="i" class="nav-item">
-              <router-link class="nav-link p1" :to="`${item.url}`">{{ item.title }}</router-link>
+              <router-link class="nav-link p1 hover-to-right" :to="`${item.url}`">{{ item.title }}</router-link>
             </li>
           </ul>
         </div>
@@ -43,13 +43,11 @@ export default {
         this.toggleOpen(this.open)
       }
     },
-    open: {
-      handler(value) {
-        if (value === 'navigation') {
-          scrollController.disabledScroll()
-        } else {
-          scrollController.enabledScroll()
-        }
+    open(value) {
+      if (value === 'navigation') {
+        scrollController.disabledScroll()
+      } else {
+        scrollController.enabledScroll()
       }
     }
   },
