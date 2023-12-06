@@ -1,6 +1,6 @@
 <template>
   <template v-if="loading">
-    <loading :loading="loading" />
+    <AppLoading :loading="loading" />
   </template>
   <template v-else>
     <div class="ui-view offset-page">
@@ -23,12 +23,12 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import loading from '@/components/App/AppLoading'
+import AppLoading from '@/components/App/AppLoading'
 import axios from 'axios'
 import UIMarquee from '@/components/UI/Marquee/UIMarquee'
 export default {
   name: 'UIView',
-  components: { loading, UIMarquee },
+  components: { AppLoading, UIMarquee },
   data() {
     return {
       descriptionList: [

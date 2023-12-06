@@ -1,6 +1,6 @@
 <template>
   <template v-if="loading">
-    <loading :loading="loading" />
+    <AppLoading :loading="loading" />
   </template>
   <template v-else>
     <div v-if="hero" class="hero-view offset-page">
@@ -30,11 +30,11 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import loading from '@/components/App/AppLoading'
+import AppLoading from '@/components/App/AppLoading'
 import axios from 'axios'
 export default {
   name: 'HeroView',
-  components: { loading },
+  components: { AppLoading },
   data() {
     return {
       hero: null
