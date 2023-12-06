@@ -11,11 +11,11 @@
         </ul>
       </div>
 
-      <MarqueeSection :marquee-images="marqueeImages" :marquee-settings="marqueeSettings" class-name="hero-img-wrapper" >
+      <UIMarquee :marquee-images="marqueeImages" :marquee-settings="marqueeSettings" class-name="hero-img-wrapper" >
         <template #title>
           <h2 class="marquee-title h2">Бесконечная строка героев</h2>
         </template>
-      </MarqueeSection>
+      </UIMarquee>
 
     </div>
   </template>
@@ -25,10 +25,10 @@
 import { mapActions, mapGetters } from 'vuex'
 import loading from '@/components/App/AppLoading'
 import axios from 'axios'
-import MarqueeSection from '@/components/UI/Marquee/MarqueeSection'
+import UIMarquee from '@/components/UI/Marquee/UIMarquee'
 export default {
   name: 'UIView',
-  components: { loading, MarqueeSection },
+  components: { loading, UIMarquee },
   data() {
     return {
       descriptionList: [

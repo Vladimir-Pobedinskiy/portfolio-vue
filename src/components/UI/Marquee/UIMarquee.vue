@@ -27,7 +27,7 @@
 <script>
 import { Vue3Marquee } from 'vue3-marquee'
 export default {
-  name: 'MarqueeSection',
+  name: 'UIMarquee',
   components: { Vue3Marquee },
   props: {
     marqueeImages: {
