@@ -74,8 +74,6 @@ export default {
   top: 0;
   width: 100%;
   height: 100%;
-}
-.modal-container.vfm__container {
   display: flex;
   justify-content: center;
   align-items: center;
