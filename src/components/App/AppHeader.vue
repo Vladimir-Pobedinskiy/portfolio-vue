@@ -89,7 +89,7 @@ export default {
   padding: 20px 0;
   min-height: 66px;
   background-color: $color-vue;
-  z-index: 1000;
+  z-index: 998;
 
   @media (min-width:$desktop) {
     padding: 25px 0;
@@ -104,7 +104,7 @@ export default {
 
   &__logo {
     position: relative;
-    z-index: 1001;
+    z-index: 999;
   }
 
   &__nav-list-wrapper {
@@ -121,7 +121,7 @@ export default {
       overflow-y: auto;
       transform: translateX(-200%);
       background-color: $color-vue;
-      z-index: 1000;
+      z-index: 998;
       transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
 
       &.active {
@@ -134,7 +134,7 @@ export default {
   }
 
   &__burger-btn {
-    z-index: 1001;
+    z-index: 999;
 
     @media (min-width:$desktop) {
       display: none;

@@ -43,8 +43,6 @@ export default {
         clickToClose: true, // Включено закрытие модального окна при нажатии на наложение модального окна
         escToClose: true, // Нажмите esc, чтобы закрыть модальное окно
         hideOverlay: false, // Скрытие отображения наложения
-        preventClick: false, // отмена закрытия по overlay
-        zIndex: 1000,
         btnSaveClassName: 'modal-tags-btn-save btn btn-small'
       },
       tags: [

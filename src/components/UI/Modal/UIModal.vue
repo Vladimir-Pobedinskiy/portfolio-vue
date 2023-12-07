@@ -1,16 +1,17 @@
 <template>
-  <vue-final-modal
+  <VueFinalModal
     v-model="showModal"
-    classes="modal-container"
+    class="modal-container"
     content-class="modal-content"
     overlay-class="modal-overlay"
-    :name="modalSettings.name"
+    content-transition="vfm-fade"
+    overlay-transition="vfm-fade"
+    swipe-to-close="left"
+    :modalId="modalSettings.name"
     :lock-scroll="modalSettings.lockScroll"
     :click-to-close="modalSettings.clickToClose"
     :esc-to-close="modalSettings.escToClose"
     :hide-overlay="modalSettings.hideOverlay"
-    :prevent-click="modalSettings.preventClick"
-    :z-index="modalSettings.zIndex"
   >
     <div class="modal-inner">
       <button class="modal-close-btn" @click="showModal = false" aria-label="Закрыть модальное окно">
@@ -34,7 +35,7 @@
       </button>
       </div>
     </div>
-  </vue-final-modal>
+  </VueFinalModal>
   <button v-if="$slots.btnOpenModal" @click="showModal = true" :class="btnOpenClassName" aria-label="Открыть модальное окно">
     <slot name="btnOpenModal" />
   </button>
@@ -81,6 +82,7 @@ export default {
 .modal-overlay.vfm__overlay {
   background-color: rgba(0, 0, 0, 0.8);
 }
+
 .modal-content {
   position: relative;
   padding: 40px 16px 32px;
