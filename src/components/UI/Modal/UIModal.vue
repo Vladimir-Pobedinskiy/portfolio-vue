@@ -24,15 +24,6 @@
       </div>
       <div v-if="$slots.body" class="modal-body">
         <slot name="body" />
-        <button
-          v-if="modalSettings.btnSaveClassName.length"
-          :class="modalSettings.btnSaveClassName"
-          :disabled="!selectedTags.length"
-          type="button"
-          @click="$emit('onSaveBtnClick'), showModal = false"
-        >
-        Сохранить
-      </button>
       </div>
     </div>
   </VueFinalModal>
@@ -59,7 +50,6 @@ export default {
       required: true
     }
   },
-  emits: ['onSaveBtnClick'],
   data() {
     return {
       showModal: false

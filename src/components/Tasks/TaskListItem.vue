@@ -79,6 +79,7 @@ export default {
     },
     editSelectedTags(selectedTags) {
       this.changeTaskItemTags([this.currentIndex, selectedTags])
+      this.$vfm.closeAll('ModalTags')
     }
   }
 }

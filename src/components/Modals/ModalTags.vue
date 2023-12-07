@@ -2,7 +2,6 @@
   <div class="modal-tags">
     <UIModal
       :modal-settings="modalSettings"
-      @onSaveBtnClick="onSaveBtnClick"
       :selected-tags="selectedTags"
       :btnOpenClassName="currentTags.length ? 'modal-tags-btn-open' : 'btn btn-small'"
     >
@@ -11,6 +10,9 @@
       </template>
       <template #body>
         <TaskTagList :tags="tags" @handleSelectedTags="handleSelectedTags" />
+        <button class="modal-tags-btn-save btn btn-small" :disabled="!selectedTags.length" type="button" @click="editSelectedTags">
+          Сохранить
+        </button>
       </template>
       <template #btnOpenModal>
         <svg v-if="currentTags.length" class="modal-tags-btn-open-icon" width="20px" height="20px">
@@ -38,12 +40,11 @@ export default {
   data() {
     return {
       modalSettings: {
-        name: 'modal-tags',
+        name: 'ModalTags',
         lockScroll: true, // Отключена прокрутка тела во время отображения модального окна
         clickToClose: true, // Включено закрытие модального окна при нажатии на наложение модального окна
         escToClose: true, // Нажмите esc, чтобы закрыть модальное окно
-        hideOverlay: false, // Скрытие отображения наложения
-        btnSaveClassName: 'modal-tags-btn-save btn btn-small'
+        hideOverlay: false // Скрытие отображения наложения
       },
       tags: [
         { title: 'home', selected: false },
@@ -57,7 +58,7 @@ export default {
     handleSelectedTags(selectedTags) {
       this.selectedTags = selectedTags
     },
-    onSaveBtnClick() {
+    editSelectedTags() {
       this.$emit('editSelectedTags', this.selectedTags)
       this.selectedTags.length = 0
       this.tags.forEach((item) => {
