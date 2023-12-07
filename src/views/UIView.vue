@@ -68,6 +68,7 @@ export default {
         this.endLoading()
       } catch (error) {
         this.endLoading()
+        this.$vfm.open('ModalError')
         console.error('Error fetching UIView', error)
       }
     }

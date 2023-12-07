@@ -8,6 +8,8 @@
 
   <AppFooter />
 
+  <ModalError />
+
   <div v-if="showIcons" class="img-wrapper visually-hidden">
     <img src="@/assets/icons/icon-error-404.svg" alt="">
     <img src="@/assets/icons/icon-vk.svg" alt="">
@@ -21,10 +23,11 @@
 <script>
 import AppHeader from '@/components/App/AppHeader'
 import AppFooter from '@/components/App/AppFooter'
+import ModalError from '@/components/Modals/ModalError'
 
 export default {
   name: 'App',
-  components: { AppHeader, AppFooter },
+  components: { AppHeader, AppFooter, ModalError },
   data() {
     return {
       showIcons: false
