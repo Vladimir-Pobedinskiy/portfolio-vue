@@ -33,3 +33,17 @@ export const scrollController = {
   }
 
 }
+
+/* Показ пароля */
+export function passwordVisibility(event) {
+  const toggle = event.currentTarget
+  const input = toggle.nextElementSibling
+
+  if (input.type === 'password') {
+    input.setAttribute('type', 'text')
+    toggle.setAttribute('data-show', true)
+  } else {
+    input.setAttribute('type', 'password')
+    toggle.setAttribute('data-show', false)
+  }
+}

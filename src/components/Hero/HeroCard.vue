@@ -38,7 +38,7 @@ export default {
   max-width: 442px;
   display: flex;
   flex-direction: column;
-  border-radius: 12px;
+  border-radius: 16px;
   text-align: center;
   border: 1px solid rgb(227, 221, 221);
 
@@ -46,8 +46,8 @@ export default {
     width: 100%;
     max-width: 442px;
     height: 250px;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
     overflow: hidden;
 
     @media (min-width:$mobile-big) {
@@ -78,7 +78,7 @@ export default {
     color: $color-white;
     background-color: $color-orange;
     font-weight: 700;
-    border-radius: 12px;
+    border-radius: 16px;
   }
 
   &__statistic-item {
@@ -116,7 +116,7 @@ export default {
     padding: 8px 16px;
     width: 100%;
     border: 1px solid $color-orange;
-    border-radius: 12px;
+    border-radius: 16px;
     background-color: $color-orange;
     color: $color-white;
     transition: background-color 0.3s ease, border-color 0.3s ease;

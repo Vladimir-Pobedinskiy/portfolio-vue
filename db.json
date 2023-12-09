@@ -20,6 +20,14 @@
       {
         "title": "About me",
         "url": "/about"
+      },
+      {
+        "title": "Login",
+        "url": "/login"
+      },
+      {
+        "title": "Sign up",
+        "url": "/registration"
       }
     ]
   },

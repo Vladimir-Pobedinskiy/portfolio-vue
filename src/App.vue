@@ -16,6 +16,8 @@
     <img src="@/assets/icons/icon-arrow-slider.svg" alt="">
     <img src="@/assets/icons/icon-close.svg" alt="">
     <img src="@/assets/icons/icon-edit.svg" alt="">
+    <img src="@/assets/icons/icon-eye-input-password.svg" alt="">
+    <img src="@/assets/icons/icon-eye-input-password-hidden.svg" alt="">
   </div>
 
 </template>

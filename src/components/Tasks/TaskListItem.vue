@@ -90,7 +90,7 @@ export default {
   margin-bottom: 20px;
   padding: 12px;
   width: 100%;
-  border-radius: 14px;
+  border-radius: 16px;
   background-color: $color-white;
   box-shadow: 0 30px 30px rgba(0, 0, 0, 0.04);
 
@@ -156,9 +156,9 @@ export default {
 
   &__input {
     flex: 1 1 80%;
-    padding: 6px 8px;
+    padding: 8px;
     border: 1px solid rgb(227, 221, 221);
-    border-radius: 10px;
+    border-radius: 12px;
   }
 
   &__btn-close-input {

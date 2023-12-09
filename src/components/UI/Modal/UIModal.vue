@@ -81,7 +81,7 @@ export default {
   max-height: 70%;
   overflow-y: auto;
   background-color: $color-white;
-  border-radius: 12px;
+  border-radius: 16px;
 }
 .modal-close-btn {
   position: absolute;

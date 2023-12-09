@@ -162,7 +162,7 @@ export default {
       width: 80px;
       height: 40px;
       background-color: $color-gray-dark;
-      border-radius: 4px;
+      border-radius: 16px;
       color: $color-white;
       transition: background-color 0.3s ease, border-color 0.3s ease;
 
