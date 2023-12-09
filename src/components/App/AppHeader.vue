@@ -23,6 +23,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import { screens, scrollController } from '@/utils/utils'
+import Hammer from 'hammerjs'
 export default {
   name: 'AppHeader',
   data() {
@@ -53,6 +54,7 @@ export default {
   },
   mounted() {
     this.setupHammer()
+    this.handleWindowResize()
     window.addEventListener('resize', this.handleWindowResize)
   },
   unmounted() {
@@ -63,14 +65,12 @@ export default {
       toggleOpen: 'toggleOpen'
     }),
     setupHammer() {
-      const hammer = this.$hammer
-      const nav = this.$refs.navigation
-
-      this.mc = new hammer.Manager(nav)
-      this.mc.add(new hammer.Swipe({ direction: hammer.DIRECTION_HORIZONTAL }))
-      this.mc.on('swipeleft', () => {
+      const hammer = new Hammer.Manager(this.$refs.navigation)
+      hammer.add(new Hammer.Swipe({ direction: Hammer.DIRECTION_HORIZONTAL }))
+      hammer.on('swipeleft', () => {
         this.toggleOpen(this.open)
       })
+      this.mc = hammer
     },
     handleWindowResize() {
       if (window.innerWidth >= this.destroyScreen) {

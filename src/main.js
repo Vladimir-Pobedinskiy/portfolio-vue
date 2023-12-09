@@ -5,7 +5,6 @@ import { router } from './router'
 import { store } from './store'
 import './assets/scss/main.scss'
 
-import Hammer from 'hammerjs'
 import SwiperPlugin from './plugins/swiper'
 import { createVfm } from 'vue-final-modal'
 import 'vue-final-modal/style.css'
@@ -22,7 +21,6 @@ if (app.config.globalProperties.$store) {
   app.config.globalProperties.$store.dispatch('getNavLinks')
 }
 
-app.config.globalProperties.$hammer = Hammer
 app.use(SwiperPlugin)
 const vfm = createVfm()
 app.use(vfm)
