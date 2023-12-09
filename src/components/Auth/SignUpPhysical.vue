@@ -41,22 +41,6 @@
       <div class="sign-up__form-item">
         <div class="sign-up__form-label-wrap label-wrap">
           <label class="label">
-            <button
-              class="toggle-password-visibility-btn"
-              data-show="false"
-              type="button"
-              tabindex="1"
-              :disabled="loading"
-              @click="togglePasswordVisibility"
-            >
-              <svg width="24px" height="24px">
-                <use xlink:href="#icon-eye-input-password"></use>
-              </svg>
-              <svg width="24px" height="24px">
-                <use xlink:href="#icon-eye-input-password-hidden"></use>
-              </svg>
-            </button>
-
             <input
               v-model="form.user.password"
               class="label__input l-input"
@@ -69,12 +53,7 @@
             <span class="label__input-title l-input">Пароль </span>
             <span v-if="errors" class="error-message marker">{{ errors }}</span>
           </label>
-        </div>
-      </div>
-      <div class="sign-up__form-item">
-        <div class="sign-up__form-label-wrap label-wrap">
-          <label class="label">
-            <button
+          <button
               class="toggle-password-visibility-btn"
               data-show="false"
               type="button"
@@ -89,7 +68,11 @@
                 <use xlink:href="#icon-eye-input-password-hidden"></use>
               </svg>
             </button>
-
+        </div>
+      </div>
+      <div class="sign-up__form-item">
+        <div class="sign-up__form-label-wrap label-wrap">
+          <label class="label">
             <input
               v-model="form.user.repeatPassword"
               class="label__input l-input"
@@ -102,6 +85,21 @@
             <span class="label__input-title l-input">Повторите пароль</span>
             <span v-if="errors" class="error-message marker">{{ errors }}</span>
           </label>
+          <button
+              class="toggle-password-visibility-btn"
+              data-show="false"
+              type="button"
+              tabindex="1"
+              :disabled="loading"
+              @click="togglePasswordVisibility"
+            >
+              <svg width="24px" height="24px">
+                <use xlink:href="#icon-eye-input-password"></use>
+              </svg>
+              <svg width="24px" height="24px">
+                <use xlink:href="#icon-eye-input-password-hidden"></use>
+              </svg>
+            </button>
         </div>
       </div>
 
