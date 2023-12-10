@@ -7,7 +7,14 @@
       <div class="login__form-item">
         <div class="login__form-label-wrap label-wrap">
           <label class="label">
-            <input v-model="form.user.tel" v-imask="{ mask: '+7 (000) 000-00-00' }" class="label__input l-input" type="tel" name="tel" placeholder="+7 ">
+            <input
+              v-model="form.user.tel"
+              v-imask="{ mask: '+7 (000) 000-00-00' }"
+              class="label__input l-input"
+              type="tel"
+              name="tel"
+              placeholder="+7 "
+            >
             <span class="label__input-title l-input">Телефон </span>
             <span v-if="errors" class="error-message marker">{{ errors }}</span>
           </label>
