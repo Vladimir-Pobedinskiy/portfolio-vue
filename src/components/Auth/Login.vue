@@ -3,18 +3,18 @@
     <AppLoading :loading="loading" />
   </template>
   <div class="login">
-    <form ref="form" action="#" name="login" method="POST" class="login__form" @submit.prevent="onSubmit">
+    <Form ref="form" action="#" name="login" method="POST" class="login__form" @submit.prevent="onSubmit">
       <div class="login__form-item">
         <div class="login__form-label-wrap label-wrap">
           <label class="label">
-            <input
+            <Field
               v-model="form.user.tel"
               v-imask="{ mask: '+7 (000) 000-00-00' }"
               class="label__input l-input"
               type="tel"
               name="tel"
               placeholder="+7 "
-            >
+            />
             <span class="label__input-title l-input">Телефон </span>
             <span v-if="errors" class="error-message marker">{{ errors }}</span>
           </label>
@@ -23,7 +23,7 @@
       <div class="login__form-item">
         <div class="login__form-label-wrap label-wrap">
           <label class="label">
-            <input
+            <Field
               v-model="form.user.password"
               class="label__input l-input"
               type="password"
@@ -31,7 +31,7 @@
               placeholder=" "
               autocomplete="off"
               :disabled="loading"
-            >
+            />
             <span class="label__input-title l-input">Пароль </span>
             <span v-if="errors" class="error-message marker">{{ errors }}</span>
           </label>
@@ -66,20 +66,21 @@
           Зарегистрироваться
         </button>
       </div>
-    </form>
+    </Form>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
-import AppLoading from '@/components/App/AppLoading'
+import { Form, Field } from 'vee-validate'
 import { passwordVisibility } from '@/utils/utils'
 import { IMaskDirective } from 'vue-imask'
+import { mapGetters, mapActions } from 'vuex'
+import AppLoading from '@/components/App/AppLoading'
 import axios from 'axios'
 
 export default {
   name: 'AuthLogin',
-  components: { AppLoading },
+  components: { AppLoading, Form, Field },
   directives: {
     imask: IMaskDirective // Регистрируем директиву IMaskDirective - это директива, предоставляемая библиотекой vue-imask
   },

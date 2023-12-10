@@ -3,11 +3,11 @@
     <AppLoading :loading="loading" />
   </template>
   <div class="sign-up">
-    <form ref="form" action="#" name="sign-up-form" method="POST" class="sign-up__form" @submit.prevent="onSubmit">
+    <Form ref="form" action="#" name="sign-up-form" method="POST" class="sign-up__form" @submit.prevent="onSubmit">
       <div class="sign-up__form-item">
         <div class="sign-up__form-label-wrap label-wrap">
           <label class="label">
-            <input v-model="form.user.surname" class="label__input l-input" type="text" name="surname" placeholder=" ">
+            <Field v-model="form.user.surname" class="label__input l-input" type="text" name="surname" placeholder=" " />
             <span class="label__input-title l-input">Фамилия</span>
             <span v-if="errors" class="error-message marker">{{ errors }}</span>
           </label>
@@ -16,7 +16,7 @@
       <div class="sign-up__form-item">
         <div class="sign-up__form-label-wrap label-wrap">
           <label class="label">
-            <input v-model="form.user.name" class="label__input l-input" type="text" name="name" placeholder=" ">
+            <Field v-model="form.user.name" class="label__input l-input" type="text" name="name" placeholder=" " />
             <span class="label__input-title l-input">Имя</span>
             <span v-if="errors" class="error-message marker">{{ errors }}</span>
           </label>
@@ -25,14 +25,14 @@
       <div class="sign-up__form-item">
         <div class="sign-up__form-label-wrap label-wrap">
           <label class="label">
-            <input
+            <Field
               v-model="form.user.tel"
               v-imask="{ mask: '+7 (000) 000-00-00' }"
               class="label__input l-input"
               type="tel"
               name="tel"
               placeholder="+7 "
-            >
+            />
             <span class="label__input-title l-input">Телефон </span>
             <span v-if="errors" class="error-message marker">{{ errors }}</span>
           </label>
@@ -41,16 +41,16 @@
       <div class="sign-up__form-item">
         <div class="sign-up__form-label-wrap label-wrap">
           <label class="label">
-            <input v-model="form.user.email" class="label__input l-input" type="email" name="email" placeholder=" ">
+            <Field v-model="form.user.email" class="label__input l-input" type="email" name="email" placeholder=" " :rules="validateEmail" />
             <span class="label__input-title l-input">Электронная почта</span>
-            <span v-if="errors" class="error-message marker">{{ errors }}</span>
+            <ErrorMessage class="error-message marker" name="email" />
           </label>
         </div>
       </div>
       <div class="sign-up__form-item">
         <div class="sign-up__form-label-wrap label-wrap">
           <label class="label">
-            <input
+            <Field
               v-model="form.user.password"
               class="label__input l-input"
               type="password"
@@ -58,7 +58,7 @@
               placeholder=" "
               autocomplete="off"
               :disabled="loading"
-            >
+            />
             <span class="label__input-title l-input">Пароль </span>
             <span v-if="errors" class="error-message marker">{{ errors }}</span>
           </label>
@@ -82,7 +82,7 @@
       <div class="sign-up__form-item">
         <div class="sign-up__form-label-wrap label-wrap">
           <label class="label">
-            <input
+            <Field
               v-model="form.user.repeatPassword"
               class="label__input l-input"
               type="password"
@@ -90,7 +90,7 @@
               placeholder=" "
               autocomplete="off"
               :disabled="loading"
-            >
+            />
             <span class="label__input-title l-input">Повторите пароль</span>
             <span v-if="errors" class="error-message marker">{{ errors }}</span>
           </label>
@@ -124,20 +124,21 @@
           Войдите
         </button>
       </div>
-    </form>
+    </Form>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
-import AppLoading from '@/components/App/AppLoading'
+import { Form, Field, ErrorMessage } from 'vee-validate'
 import { passwordVisibility } from '@/utils/utils'
 import { IMaskDirective } from 'vue-imask'
+import { mapGetters, mapActions } from 'vuex'
+import AppLoading from '@/components/App/AppLoading'
 import axios from 'axios'
 
 export default {
   name: 'AuthSignUpPhysical',
-  components: { AppLoading },
+  components: { AppLoading, Form, Field, ErrorMessage },
   directives: {
     imask: IMaskDirective
   },
@@ -168,6 +169,16 @@ export default {
     }),
     togglePasswordVisibility(event) {
       passwordVisibility(event)
+    },
+    validateEmail(value) {
+      if (!value) {
+        return 'Обязательно для заполнения'
+      }
+      const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
+      if (!regex.test(value)) {
+        return 'Неверный формат'
+      }
+      return true
     },
     async onSubmit() {
       try {
