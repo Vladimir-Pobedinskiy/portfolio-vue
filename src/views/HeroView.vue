@@ -14,8 +14,8 @@
             <p class="hero-view__descr s4">{{ hero.descr }}</p>
             <ul class="hero-view__statistic-list">
               <li v-for="(item, i) in hero.info" :key="i" class="hero-view__statistic-item">
-                <span class="hero-view__statistic-value h3"> {{ item.value }} </span>
-                <span class="hero-view__statistic-name p5"> {{ item.title }} </span>
+                <span class="hero-view__statistic-value h3">{{ item.value }}</span>
+                <span class="hero-view__statistic-name p5">{{ item.title }}</span>
               </li>
             </ul>
             <div>

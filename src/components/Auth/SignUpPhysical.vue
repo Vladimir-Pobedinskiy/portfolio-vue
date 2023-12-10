@@ -138,6 +138,9 @@ import axios from 'axios'
 export default {
   name: 'AuthSignUpPhysical',
   components: { AppLoading },
+  directives: {
+    imask: IMaskDirective
+  },
   data() {
     return {
       form: {
@@ -157,10 +160,6 @@ export default {
     ...mapGetters({
       loading: 'loading'
     })
-  },
-  directives: {
-    // Регистрируем директиву IMaskDirective - это директива, предоставляемая библиотекой vue-imask
-    imask: IMaskDirective
   },
   methods: {
     ...mapActions({

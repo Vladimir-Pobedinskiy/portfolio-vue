@@ -8,8 +8,8 @@
       <span class="hero-card__descr s5">{{ hero.descr }}</span>
       <ul class="hero-card__statistic-list">
         <li v-for="(item, i) in hero.info" :key="i" class="hero-card__statistic-item">
-          <span class="hero-card__statistic-value h3"> {{ item.value }} </span>
-          <span class="hero-card__statistic-name p5"> {{ item.title }} </span>
+          <span class="hero-card__statistic-value h3">{{ item.value }}</span>
+          <span class="hero-card__statistic-name p5">{{ item.title }}</span>
         </li>
       </ul>
     </div>
