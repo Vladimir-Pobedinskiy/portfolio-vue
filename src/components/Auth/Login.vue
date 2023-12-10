@@ -55,7 +55,9 @@
         Войти
       </UIButton>
       <div class="login__sign-up-wrapper">
-        <UILink link-class="login__sign-up-link" :link-url="{ name: 'RegistrationView' }">Зарегистрироваться</UILink>
+        <button class="login__sign-up-btn" type="button" :disabled="loading" @click="$router.push('/registration/')">
+          Зарегистрироваться
+        </button>
       </div>
     </form>
   </div>
@@ -148,7 +150,7 @@ export default {
     margin-right: 20px;
   }
 
-  &__sign-up-link {
+  &__sign-up-btn {
     background-color: transparent;
     transition: color 0.3s ease;
   }

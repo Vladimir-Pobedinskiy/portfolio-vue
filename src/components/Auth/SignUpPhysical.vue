@@ -113,7 +113,9 @@
       </span>
       <div class="sign-up__sign-up-wrapper">
         <span class="sign-up__sign-up-title p3">Вы уже зарегистрированы?</span>
-        <UILink link-class="sign-up__sign-up-link" :link-url="{ name: 'LoginView' }">Войдите</UILink>
+        <button class="sign-up__sign-up-btn" type="button" :disabled="loading" @click="$router.push('/login/')">
+          Войдите
+        </button>
       </div>
     </form>
   </div>
@@ -207,7 +209,7 @@ export default {
     margin-right: 20px;
   }
 
-  &__sign-up-link {
+  &__sign-up-btn {
     position: relative;
     background-color: transparent;
     transition: color 0.3s ease;
