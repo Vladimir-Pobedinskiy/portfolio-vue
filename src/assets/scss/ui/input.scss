@@ -156,11 +156,6 @@
 
 }
 
-input[name="password"],
-input[name="repeatPassword"] {
-  padding-right: 62px;
-}
-
 .error-message {
   padding-top: 2px;
   padding-left: 6px;
@@ -214,6 +209,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 input[name="password"],
 input[name="repeatPassword"] {
+  padding-right: 62px;
   letter-spacing: 1px;
 }
 
