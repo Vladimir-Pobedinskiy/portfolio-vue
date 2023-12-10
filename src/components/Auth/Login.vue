@@ -1,6 +1,9 @@
 <template>
+  <template v-if="loading">
+    <AppLoading :loading="loading" />
+  </template>
   <div class="login">
-    <form action="#" name="login" method="POST" class="login__form" @submit.prevent="handleSubmit(onSubmit)">
+    <form ref="form" action="#" name="login" method="POST" class="login__form" @submit.prevent="onSubmit">
       <div class="login__form-item">
         <div class="login__form-label-wrap label-wrap">
           <label class="label">
@@ -60,11 +63,14 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import AppLoading from '@/components/App/AppLoading'
 import { passwordVisibility } from '@/utils/utils'
 import { IMaskDirective } from 'vue-imask'
+import axios from 'axios'
 
 export default {
   name: 'AuthLogin',
+  components: { AppLoading },
   data() {
     return {
       form: {
@@ -96,9 +102,14 @@ export default {
     async onSubmit() {
       try {
         this.startLoading()
+        await axios.post('/api/login/', { ...this.form })
+        this.form.user.tel = ''
+        this.form.user.password = ''
+        this.$refs.form.reset()
+        this.endLoading()
       } catch (error) {
         this.endLoading()
-        console.error('Error fetching login:', error)
+        console.error('Error fetching AuthLogin:', error)
       }
     }
   }

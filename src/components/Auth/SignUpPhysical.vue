@@ -1,7 +1,9 @@
 <template>
+  <template v-if="loading">
+    <AppLoading :loading="loading" />
+  </template>
   <div class="sign-up">
-    <form action="#" name="sign-up-form" method="POST" class="sign-up__form" @submit.prevent="handleSubmit(onSubmit)">
-
+    <form ref="form" action="#" name="sign-up-form" method="POST" class="sign-up__form" @submit.prevent="onSubmit">
       <div class="sign-up__form-item">
         <div class="sign-up__form-label-wrap label-wrap">
           <label class="label">
@@ -119,12 +121,14 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import AppLoading from '@/components/App/AppLoading'
 import { passwordVisibility } from '@/utils/utils'
 import { IMaskDirective } from 'vue-imask'
+import axios from 'axios'
 
 export default {
   name: 'AuthSignUpPhysical',
-
+  components: { AppLoading },
   data() {
     return {
       form: {
@@ -160,9 +164,18 @@ export default {
     async onSubmit() {
       try {
         this.startLoading()
+        await axios.post('/api/registration/', { ...this.form })
+        this.form.user.surname = ''
+        this.form.user.name = ''
+        this.form.user.tel = ''
+        this.form.user.email = ''
+        this.form.user.password = ''
+        this.form.user.repeatPassword = ''
+        this.$refs.form.reset()
+        this.endLoading()
       } catch (error) {
         this.endLoading()
-        console.error('Error fetching registration:', error)
+        console.error('Error fetching AuthSignUpPhysical:', error)
       }
     }
   }
