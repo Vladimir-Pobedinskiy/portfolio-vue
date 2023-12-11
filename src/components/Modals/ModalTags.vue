@@ -15,9 +15,7 @@
         </button>
       </template>
       <template #btnOpenModal>
-        <svg v-if="currentTags.length" class="modal-tags-btn-open-icon" width="20px" height="20px">
-          <use xlink:href="#icon-edit"></use>
-        </svg>
+        <UIIcon v-if="currentTags.length"  icon-name="icon:icon-edit" class-name="icon-edit" width="23px" height="23px" />
         <span v-else class="p3">Добавить теги</span>
       </template>
     </UIModal>
@@ -70,6 +68,7 @@ export default {
 </script>
 
 <style lang="scss">
+
   .modal-tags-btn-open-icon {
     width: 20px;
     height: 20px;
@@ -85,4 +84,5 @@ export default {
     margin-top: 24px;
     width: 100%;
   }
+
 </style>

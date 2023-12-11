@@ -4,9 +4,7 @@
       <div class="task-list-item__title-wrapper">
         <span class="task-list-item__title p1">{{ task.title }}</span>
         <button class="task-list-item__title-edit-btn" type="button" aria-label="Открыть редактирование задачи" @click="openEditInput">
-          <svg class="task-list-item__title-edit-icon" width="20px" height="20px">
-            <use xlink:href="#icon-edit"></use>
-          </svg>
+          <UIIcon icon-name="icon:icon-edit" class-name="icon-edit" width="23px" height="23px" />
         </button>
       </div>
       <div class="task-list-item__input-wrapper" :class="{ 'visually-hidden': inputHiddenFlag }">
@@ -16,9 +14,7 @@
         </button>
       </div>
       <UIButton btn-class="task-list-item__remove-btn" type="button" aria-label="Закрыть задачу" @click="deleteCurrentTask">
-        <svg class="task-list-item__remove-btn-icon" width="24px" height="24px">
-          <use xlink:href="#icon-close"></use>
-        </svg>
+        <UIIcon icon-name="icon:icon-close" class-name="icon-close" width="24px" height="24px" />
       </UIButton>
     </div>
     <div class="task-list-item__footer">
@@ -133,11 +129,6 @@ export default {
 
   &__title-edit-btn {
     margin-left: 20px;
-    width: 20px;
-    height: 20px;
-  }
-
-  &__title-edit-icon {
     width: 20px;
     height: 20px;
   }

@@ -6,15 +6,11 @@
         <span class="visually-hidden">Стрелки навигации по слайдеру</span>
         <div class="hero-swiper__button-prev swiper-button-prev">
           <span class="visually-hidden">К предыдущему слайду</span>
-          <svg class="hero-swiper__button-icon hero-swiper__button--prev-icon" width="48px" height="10px">
-            <use xlink:href="#icon-arrow-slider"></use>
-          </svg>
+          <UIIcon icon-name="icon:icon-arrow-slider" class-name="hero-swiper__button-icon hero-swiper__button--prev-icon" width="12px" height="12px" />
         </div>
         <div class="hero-swiper__button-next swiper-button-next">
           <span class="visually-hidden">К следующему слайду</span>
-          <svg class="hero-swiper__button-icon hero-swiper__button--next-icon" width="48px" height="10px">
-            <use xlink:href="#icon-arrow-slider"></use>
-          </svg>
+          <UIIcon icon-name="icon:icon-arrow-slider" class-name="hero-swiper__button-icon hero-swiper__button--next-icon" width="12px" height="12px" />
         </div>
       </div>
     </div>
@@ -148,6 +144,11 @@ export default {
       display: flex;
       flex-direction: column;
       height: auto!important;
+    }
+
+    &__button-icon {
+      width: 36px;
+      height: 36px;
     }
   }
 

@@ -5,9 +5,6 @@
       <ul class="description-list">
         <li class="description-item p1" v-for="(item, i) in descriptionList" :key="i">{{ item }}</li>
       </ul>
-      <UIIcon icon-name="icon:arrow-rotate" class-name="icon" width="24px" height="24px" />
-      <UIIcon icon-name="icon:icon-eye-input-password-hidden" class-name="icon-eye-password-hidden" width="24px" height="24px" />
-      <UIIcon icon-name="icon:icon-eye-input-password" class-name="icon-eye-password" width="24px" height="24px" />
     </div>
   </div>
 </template>
@@ -32,29 +29,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.icon {
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $color-vue;
-  fill: $color-white;
-  stroke: $color-vue;
-}
-
-.icon-eye-password-hidden {
-  width: 24px;
-  height: 24px;
-  fill: $color-white;
-  stroke: $color-gray-medium;
-}
-.icon-eye-password {
-  width: 24px;
-  height: 24px;
-  fill: $color-white;
-  stroke: $color-gray-medium;
-}
-</style>

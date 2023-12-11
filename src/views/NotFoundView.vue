@@ -2,9 +2,7 @@
   <div class="not-found-view">
     <div class="not-found-view__inner">
       <div class="not-found-view__img-wrapper">
-        <svg class="not-found-view__img" width="754px" height="304px">
-          <use xlink:href="#icon-error-404"></use>
-        </svg>
+        <UIIcon icon-name="icon:icon-error-404" class-name="not-found-view__img" width="6500px" height="404px" />
       </div>
       <h2 class="not-found-view__title h3">Запрашиваемая страница не найдена</h2>
       <p class="not-found-view__text p2">
@@ -43,13 +41,14 @@ export default {
     margin-bottom: 48px;
     padding: 0 16px;
     width: 100%;
-    max-width: 550px;
+    max-width: 650px;
     color: $color-vue;
   }
 
   &__img {
     width: 100%;
-    height: 100%;
+    max-width: 650px;
+    height: 404px;
     object-fit: cover;
   }
 

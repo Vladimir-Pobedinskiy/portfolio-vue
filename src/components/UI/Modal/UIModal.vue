@@ -15,9 +15,7 @@
   >
     <div class="modal-inner">
       <button class="modal-close-btn" @click="showModal = false" aria-label="Закрыть модальное окно">
-        <svg class="modal-close-btn-icon" width="24px" height="24px">
-          <use xlink:href="#icon-close"></use>
-        </svg>
+        <UIIcon icon-name="icon:icon-close" class-name="icon-close" width="24px" height="24px" />
       </button>
       <div v-if="$slots.header" class="modal-header">
         <slot name="header" />

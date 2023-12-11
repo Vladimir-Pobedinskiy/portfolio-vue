@@ -70,13 +70,9 @@
               :disabled="loading"
               @click="togglePasswordVisibility"
             >
-              <svg width="24px" height="24px">
-                <use xlink:href="#icon-eye-input-password"></use>
-              </svg>
-              <svg width="24px" height="24px">
-                <use xlink:href="#icon-eye-input-password-hidden"></use>
-              </svg>
-            </button>
+            <UIIcon icon-name="icon:icon-eye-input-password-hidden" class-name="icon-eye-password-hidden" width="24px" height="24px" fill="none" />
+            <UIIcon icon-name="icon:icon-eye-input-password" class-name="icon-eye-password" width="24px" height="24px" />
+          </button>
         </div>
       </div>
       <div class="sign-up__form-item">
@@ -102,13 +98,9 @@
               :disabled="loading"
               @click="togglePasswordVisibility"
             >
-              <svg width="24px" height="24px">
-                <use xlink:href="#icon-eye-input-password"></use>
-              </svg>
-              <svg width="24px" height="24px">
-                <use xlink:href="#icon-eye-input-password-hidden"></use>
-              </svg>
-            </button>
+            <UIIcon icon-name="icon:icon-eye-input-password-hidden" class-name="icon-eye-password-hidden" width="24px" height="24px" fill="none" />
+            <UIIcon icon-name="icon:icon-eye-input-password" class-name="icon-eye-password" width="24px" height="24px" />
+          </button>
         </div>
       </div>
 
