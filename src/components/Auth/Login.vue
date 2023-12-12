@@ -3,9 +3,17 @@
     <AppLoading :loading="loading" />
   </template>
   <div class="login">
-    <Form ref="form" action="#" name="login" method="POST" class="login__form" @submit.prevent="onSubmit">
+    <Form
+      name="login"
+      action="#"
+      method="POST"
+      class="login__form"
+      :validation-schema="schema"
+      @submit="onSubmit"
+      v-slot="{ errors }"
+    >
       <div class="login__form-item">
-        <div class="login__form-label-wrap label-wrap">
+        <div class="login__form-label-wrap label-wrap" :class="{'error': errors.tel }">
           <label class="label">
             <Field
               v-model="form.user.tel"
@@ -15,13 +23,13 @@
               name="tel"
               placeholder="+7 "
             />
-            <span class="label__input-title l-input">Телефон </span>
-            <span v-if="errors" class="error-message marker">{{ errors }}</span>
+            <span class="label__input-title l-input">Телефон</span>
+            <span class="error-message marker">{{ errors.tel }}</span>
           </label>
         </div>
       </div>
       <div class="login__form-item">
-        <div class="login__form-label-wrap label-wrap">
+        <div class="login__form-label-wrap label-wrap" :class="{'error': errors.password }">
           <label class="label">
             <Field
               v-model="form.user.password"
@@ -32,8 +40,8 @@
               autocomplete="off"
               :disabled="loading"
             />
-            <span class="label__input-title l-input">Пароль </span>
-            <span v-if="errors" class="error-message marker">{{ errors }}</span>
+            <span class="label__input-title l-input">Пароль</span>
+            <span class="error-message marker">{{ errors.password }}</span>
           </label>
           <button
               class="toggle-password-visibility-btn"
@@ -54,7 +62,7 @@
           Забыли пароль?
         </button>
       </div>
-      <UIButton btn-class="login__btn-submit btn" type="submit" :disabled="loading">
+      <UIButton btn-class="login__btn-submit btn" type="submit" :disabled="loading" >
         Войти
       </UIButton>
       <div class="login__sign-up-wrapper">
@@ -68,6 +76,7 @@
 
 <script>
 import { Form, Field } from 'vee-validate'
+import * as Yup from 'yup'
 import { passwordVisibility } from '@/utils/utils'
 import { IMaskDirective } from 'vue-imask'
 import { mapGetters, mapActions } from 'vuex'
@@ -88,7 +97,10 @@ export default {
           password: ''
         }
       },
-      errors: null
+      schema: Yup.object().shape({
+        tel: Yup.string().required('Телефон обязателен для заполнения'),
+        password: Yup.string().required('Пароль обязателен для заполнения').min(6, 'Пароль должен содержать минимум 6 символов')
+      })
     }
   },
   computed: {
@@ -104,15 +116,18 @@ export default {
     togglePasswordVisibility(event) {
       passwordVisibility(event)
     },
-    async onSubmit() {
+    async onSubmit(values, actions) {
       try {
         this.startLoading()
         await axios.post('/api/login/', { ...this.form })
         this.form.user.tel = ''
         this.form.user.password = ''
-        this.$refs.form.reset()
+        actions.resetForm()
         this.endLoading()
       } catch (error) {
+        if (error.statusCode === 422) {
+          actions.setErrors(error.data.errors)
+        }
         this.endLoading()
         console.error('Error fetching AuthLogin:', error)
       }

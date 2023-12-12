@@ -2,7 +2,7 @@
   <div class="not-found-view">
     <div class="not-found-view__inner">
       <div class="not-found-view__img-wrapper">
-        <UIIcon icon-name="icon:icon-error-404" class-name="not-found-view__img" width="6500px" height="404px" />
+        <UIIcon icon-name="icon:icon-error-404" class-name="not-found-view__img" width="650" height="404" />
       </div>
       <h2 class="not-found-view__title h3">Запрашиваемая страница не найдена</h2>
       <p class="not-found-view__text p2">
