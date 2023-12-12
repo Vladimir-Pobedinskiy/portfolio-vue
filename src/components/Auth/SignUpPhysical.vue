@@ -13,37 +13,25 @@
       v-slot="{ errors }"
     >
       <div class="sign-up__form-item">
-        <div class="sign-up__form-label-wrap label-wrap" :class="{'error': errors.surname }">
+        <div class="sign-up__form-label-wrap label-wrap" :class="{ 'error': errors.surname }">
           <label class="label">
-            <Field
-              v-model.trim="form.user.surname"
-              class="label__input l-input"
-              type="text"
-              name="surname"
-              placeholder=" "
-            />
+            <Field v-model.trim="form.user.surname" class="label__input l-input" type="text" name="surname" placeholder=" " />
             <span class="label__input-title l-input">Фамилия</span>
             <span class="error-message marker">{{ errors.surname }}</span>
           </label>
         </div>
       </div>
       <div class="sign-up__form-item">
-        <div class="sign-up__form-label-wrap label-wrap" :class="{'error': errors.name }">
+        <div class="sign-up__form-label-wrap label-wrap" :class="{ 'error': errors.name }">
           <label class="label">
-            <Field
-              v-model.trim="form.user.name"
-              class="label__input l-input"
-              type="text"
-              name="name"
-              placeholder=" "
-            />
+            <Field v-model.trim="form.user.name" class="label__input l-input" type="text" name="name" placeholder=" " />
             <span class="label__input-title l-input">Имя</span>
             <span class="error-message marker">{{ errors.name }}</span>
           </label>
         </div>
       </div>
       <div class="sign-up__form-item">
-        <div class="sign-up__form-label-wrap label-wrap" :class="{'error': errors.tel }">
+        <div class="sign-up__form-label-wrap label-wrap" :class="{ 'error': errors.tel }">
           <label class="label">
             <Field
               v-model="form.user.tel"
@@ -59,22 +47,16 @@
         </div>
       </div>
       <div class="sign-up__form-item">
-        <div class="sign-up__form-label-wrap label-wrap" :class="{'error': errors.email }">
+        <div class="sign-up__form-label-wrap label-wrap" :class="{ 'error': errors.email }">
           <label class="label">
-            <Field
-              v-model="form.user.email"
-              class="label__input l-input"
-              type="email"
-              name="email"
-              placeholder=" "
-            />
+            <Field v-model="form.user.email" class="label__input l-input" type="email" name="email" placeholder=" " />
             <span class="label__input-title l-input">Электронная почта</span>
             <span class="error-message marker">{{ errors.email }}</span>
           </label>
         </div>
       </div>
       <div class="sign-up__form-item">
-        <div class="sign-up__form-label-wrap label-wrap" :class="{'error': errors.password }">
+        <div class="sign-up__form-label-wrap label-wrap" :class="{ 'error': errors.password }">
           <label class="label">
             <Field
               v-model="form.user.password"
@@ -89,20 +71,20 @@
             <span class="error-message marker">{{ errors.password }}</span>
           </label>
           <button
-              class="toggle-password-visibility-btn"
-              data-show="false"
-              type="button"
-              tabindex="1"
-              :disabled="loading"
-              @click="togglePasswordVisibility"
-            >
-            <UIIcon icon-name="icon:icon-eye-input-password-hidden" class-name="icon-eye-password-hidden" width="24px" height="24px" fill="none" />
+            class="toggle-password-visibility-btn"
+            data-show="false"
+            type="button"
+            tabindex="1"
+            :disabled="loading"
+            @click="togglePasswordVisibility"
+          >
+            <UIIcon icon-name="icon:icon-eye-input-password-hidden" class-name="icon-eye-password-hidden" width="24px" height="24px" />
             <UIIcon icon-name="icon:icon-eye-input-password" class-name="icon-eye-password" width="24px" height="24px" />
           </button>
         </div>
       </div>
       <div class="sign-up__form-item">
-        <div class="sign-up__form-label-wrap label-wrap" :class="{'error': errors.repeatPassword }">
+        <div class="sign-up__form-label-wrap label-wrap" :class="{ 'error': errors.repeatPassword }">
           <label class="label">
             <Field
               v-model="form.user.repeatPassword"
@@ -117,14 +99,14 @@
             <span class="error-message marker">{{ errors.repeatPassword }}</span>
           </label>
           <button
-              class="toggle-password-visibility-btn"
-              data-show="false"
-              type="button"
-              tabindex="1"
-              :disabled="loading"
-              @click="togglePasswordVisibility"
-            >
-            <UIIcon icon-name="icon:icon-eye-input-password-hidden" class-name="icon-eye-password-hidden" width="24px" height="24px" fill="none" />
+            class="toggle-password-visibility-btn"
+            data-show="false"
+            type="button"
+            tabindex="1"
+            :disabled="loading"
+            @click="togglePasswordVisibility"
+          >
+            <UIIcon icon-name="icon:icon-eye-input-password-hidden" class-name="icon-eye-password-hidden" width="24px" height="24px" />
             <UIIcon icon-name="icon:icon-eye-input-password" class-name="icon-eye-password" width="24px" height="24px" />
           </button>
         </div>
@@ -176,7 +158,7 @@ export default {
       schema: Yup.object().shape({
         surname: Yup.string().nullable(),
         name: Yup.string().required('Имя обязателено для заполнения'),
-        tel: Yup.string().required('Телефон обязателен для заполнения'),
+        tel: Yup.string().required('Телефон обязателен для заполнения').min(18, 'Неверный формат номера телефона'),
         email: Yup.string().required('Email обязателен для заполнения').email('Неверный формат электронной почты'),
         password: Yup.string().required('Пароль обязателен для заполнения').min(6, 'Пароль должен содержать минимум 6 символов'),
         repeatPassword: Yup.string().required('Повторный пароль обязателен для заполнения').min(6, 'Пароль должен содержать минимум 6 символов')

@@ -13,7 +13,7 @@
       v-slot="{ errors }"
     >
       <div class="login__form-item">
-        <div class="login__form-label-wrap label-wrap" :class="{'error': errors.tel }">
+        <div class="login__form-label-wrap label-wrap" :class="{ 'error': errors.tel }">
           <label class="label">
             <Field
               v-model="form.user.tel"
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="login__form-item">
-        <div class="login__form-label-wrap label-wrap" :class="{'error': errors.password }">
+        <div class="login__form-label-wrap label-wrap" :class="{ 'error': errors.password }">
           <label class="label">
             <Field
               v-model="form.user.password"
@@ -44,14 +44,14 @@
             <span class="error-message marker">{{ errors.password }}</span>
           </label>
           <button
-              class="toggle-password-visibility-btn"
-              data-show="false"
-              type="button"
-              tabindex="1"
-              :disabled="loading"
-              @click="togglePasswordVisibility"
-            >
-            <UIIcon icon-name="icon:icon-eye-input-password-hidden" class-name="icon-eye-password-hidden" width="24px" height="24px" fill="none" />
+            class="toggle-password-visibility-btn"
+            data-show="false"
+            type="button"
+            tabindex="1"
+            :disabled="loading"
+            @click="togglePasswordVisibility"
+          >
+            <UIIcon icon-name="icon:icon-eye-input-password-hidden" class-name="icon-eye-password-hidden" width="24px" height="24px" />
             <UIIcon icon-name="icon:icon-eye-input-password" class-name="icon-eye-password" width="24px" height="24px" />
           </button>
         </div>
@@ -98,7 +98,7 @@ export default {
         }
       },
       schema: Yup.object().shape({
-        tel: Yup.string().required('Телефон обязателен для заполнения'),
+        tel: Yup.string().required('Телефон обязателен для заполнения').min(18, 'Неверный формат номера телефона'),
         password: Yup.string().required('Пароль обязателен для заполнения').min(6, 'Пароль должен содержать минимум 6 символов')
       })
     }

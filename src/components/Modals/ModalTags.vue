@@ -69,20 +69,23 @@ export default {
 
 <style lang="scss">
 
-  .modal-tags-btn-open-icon {
-    width: 20px;
-    height: 20px;
-  }
+.modal-tags-btn-open {
+  margin-left: 20px;
+}
 
-  .modal-tags-btn-open {
-    margin-left: 20px;
-    width: 20px;
-    height: 20px;
-  }
+.modal-tags-btn-open-icon {
+  width: 23px;
+  height: 23px;
+}
 
-  .modal-tags-btn-save.btn.btn-small {
-    margin-top: 24px;
-    width: 100%;
-  }
+.modal-tags-btn-open {
+  width: 24px;
+  height: 24px;
+}
+
+.modal-tags-btn-save.btn.btn-small {
+  margin-top: 24px;
+  width: 100%;
+}
 
 </style>
