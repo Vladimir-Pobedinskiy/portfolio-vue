@@ -3,27 +3,47 @@
     <AppLoading :loading="loading" />
   </template>
   <div class="sign-up">
-    <Form ref="form" action="#" name="sign-up-form" method="POST" class="sign-up__form" @submit.prevent="onSubmit">
+    <Form
+      name="sign-up-form"
+      action="#"
+      method="POST"
+      class="sign-up__form"
+      :validation-schema="schema"
+      @submit="onSubmit"
+      v-slot="{ errors }"
+    >
       <div class="sign-up__form-item">
-        <div class="sign-up__form-label-wrap label-wrap">
+        <div class="sign-up__form-label-wrap label-wrap" :class="{'error': errors.surname }">
           <label class="label">
-            <Field v-model="form.user.surname" class="label__input l-input" type="text" name="surname" placeholder=" " />
+            <Field
+              v-model.trim="form.user.surname"
+              class="label__input l-input"
+              type="text"
+              name="surname"
+              placeholder=" "
+            />
             <span class="label__input-title l-input">Фамилия</span>
-            <span v-if="errors" class="error-message marker">{{ errors }}</span>
+            <span class="error-message marker">{{ errors.surname }}</span>
           </label>
         </div>
       </div>
       <div class="sign-up__form-item">
-        <div class="sign-up__form-label-wrap label-wrap">
+        <div class="sign-up__form-label-wrap label-wrap" :class="{'error': errors.name }">
           <label class="label">
-            <Field v-model="form.user.name" class="label__input l-input" type="text" name="name" placeholder=" " />
+            <Field
+              v-model.trim="form.user.name"
+              class="label__input l-input"
+              type="text"
+              name="name"
+              placeholder=" "
+            />
             <span class="label__input-title l-input">Имя</span>
-            <span v-if="errors" class="error-message marker">{{ errors }}</span>
+            <span class="error-message marker">{{ errors.name }}</span>
           </label>
         </div>
       </div>
       <div class="sign-up__form-item">
-        <div class="sign-up__form-label-wrap label-wrap">
+        <div class="sign-up__form-label-wrap label-wrap" :class="{'error': errors.tel }">
           <label class="label">
             <Field
               v-model="form.user.tel"
@@ -34,21 +54,27 @@
               placeholder="+7 "
             />
             <span class="label__input-title l-input">Телефон </span>
-            <span v-if="errors" class="error-message marker">{{ errors }}</span>
+            <span class="error-message marker">{{ errors.tel }}</span>
           </label>
         </div>
       </div>
       <div class="sign-up__form-item">
-        <div class="sign-up__form-label-wrap label-wrap">
+        <div class="sign-up__form-label-wrap label-wrap" :class="{'error': errors.email }">
           <label class="label">
-            <Field v-model="form.user.email" class="label__input l-input" type="email" name="email" placeholder=" " :rules="validateEmail" />
+            <Field
+              v-model="form.user.email"
+              class="label__input l-input"
+              type="email"
+              name="email"
+              placeholder=" "
+            />
             <span class="label__input-title l-input">Электронная почта</span>
-            <ErrorMessage class="error-message marker" name="email" />
+            <span class="error-message marker">{{ errors.email }}</span>
           </label>
         </div>
       </div>
       <div class="sign-up__form-item">
-        <div class="sign-up__form-label-wrap label-wrap">
+        <div class="sign-up__form-label-wrap label-wrap" :class="{'error': errors.password }">
           <label class="label">
             <Field
               v-model="form.user.password"
@@ -60,7 +86,7 @@
               :disabled="loading"
             />
             <span class="label__input-title l-input">Пароль </span>
-            <span v-if="errors" class="error-message marker">{{ errors }}</span>
+            <span class="error-message marker">{{ errors.password }}</span>
           </label>
           <button
               class="toggle-password-visibility-btn"
@@ -76,7 +102,7 @@
         </div>
       </div>
       <div class="sign-up__form-item">
-        <div class="sign-up__form-label-wrap label-wrap">
+        <div class="sign-up__form-label-wrap label-wrap" :class="{'error': errors.repeatPassword }">
           <label class="label">
             <Field
               v-model="form.user.repeatPassword"
@@ -88,7 +114,7 @@
               :disabled="loading"
             />
             <span class="label__input-title l-input">Повторите пароль</span>
-            <span v-if="errors" class="error-message marker">{{ errors }}</span>
+            <span class="error-message marker">{{ errors.repeatPassword }}</span>
           </label>
           <button
               class="toggle-password-visibility-btn"
@@ -121,7 +147,8 @@
 </template>
 
 <script>
-import { Form, Field, ErrorMessage } from 'vee-validate'
+import { Form, Field } from 'vee-validate'
+import * as Yup from 'yup'
 import { passwordVisibility } from '@/utils/utils'
 import { IMaskDirective } from 'vue-imask'
 import { mapGetters, mapActions } from 'vuex'
@@ -130,7 +157,7 @@ import axios from 'axios'
 
 export default {
   name: 'AuthSignUpPhysical',
-  components: { AppLoading, Form, Field, ErrorMessage },
+  components: { AppLoading, Form, Field },
   directives: {
     imask: IMaskDirective
   },
@@ -146,7 +173,14 @@ export default {
           repeatPassword: ''
         }
       },
-      errors: null
+      schema: Yup.object().shape({
+        surname: Yup.string().nullable(),
+        name: Yup.string().required('Имя обязателено для заполнения'),
+        tel: Yup.string().required('Телефон обязателен для заполнения'),
+        email: Yup.string().required('Email обязателен для заполнения').email('Неверный формат электронной почты'),
+        password: Yup.string().required('Пароль обязателен для заполнения').min(6, 'Пароль должен содержать минимум 6 символов'),
+        repeatPassword: Yup.string().required('Повторный пароль обязателен для заполнения').min(6, 'Пароль должен содержать минимум 6 символов')
+      })
     }
   },
   computed: {
@@ -162,17 +196,7 @@ export default {
     togglePasswordVisibility(event) {
       passwordVisibility(event)
     },
-    validateEmail(value) {
-      if (!value) {
-        return 'Обязательно для заполнения'
-      }
-      const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
-      if (!regex.test(value)) {
-        return 'Неверный формат'
-      }
-      return true
-    },
-    async onSubmit() {
+    async onSubmit(values, actions) {
       try {
         this.startLoading()
         await axios.post('/api/registration/', { ...this.form })
@@ -182,9 +206,12 @@ export default {
         this.form.user.email = ''
         this.form.user.password = ''
         this.form.user.repeatPassword = ''
-        this.$refs.form.reset()
+        actions.resetForm()
         this.endLoading()
       } catch (error) {
+        if (error.statusCode === 422) {
+          actions.setErrors(error.data.errors)
+        }
         this.endLoading()
         console.error('Error fetching AuthSignUpPhysical:', error)
       }
