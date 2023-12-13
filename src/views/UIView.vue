@@ -11,25 +11,25 @@
         </ul>
       </div>
 
-      <div class="ui-accordion offset">
-        <div class="container">
-          <h2 class="ui-accordion__title section-title h2">{{ accordion.title }}</h2>
-
-          <UIAccordion
-            :accordion-list="accordion.accordionList"
-            @onAccordionItem="onAccordionItem"
-            :isOneOpen="isOneOpen"
-            ref="accordion"
-          />
-
-        </div>
-      </div>
-
       <UIMarquee :marquee-images="marqueeImages" :marquee-settings="marqueeSettings" class-name="hero-img-wrapper" >
         <template #title>
           <h2 class="marquee-title h2">Бесконечная строка героев</h2>
         </template>
       </UIMarquee>
+
+      <div class="ui-accordion offset">
+        <div class="container">
+          <h2 class="ui-accordion__title section-title h2">{{ accordion.title }}</h2>
+          <UIAccordion :accordion-list="accordion.accordionList" />
+        </div>
+      </div>
+
+      <div class="ui-accordion offset">
+        <div class="container">
+          <h2 class="ui-accordion__title section-title h2">{{ accordion2.title }}</h2>
+          <UIAccordion :accordion-list="accordion2.accordionList" :isOneOpen="true" />
+        </div>
+      </div>
 
     </div>
   </template>
@@ -62,7 +62,7 @@ export default {
       },
       marqueeImages: [],
       accordion: {},
-      isOneOpen: false
+      accordion2: {}
     }
   },
   computed: {
@@ -84,48 +84,12 @@ export default {
         const response = await axios.get('/api/ui/')
         this.marqueeImages = response.data.marqueeImages
         this.accordion = response.data.accordion
+        this.accordion2 = response.data.accordion2
         this.endLoading()
       } catch (error) {
         this.endLoading()
         this.$vfm.open('ModalError')
         console.error('Error fetching UIView', error)
-      }
-    },
-    onAccordionItem(payload) {
-      if (!this.isOneOpen) {
-        const [item, index] = payload
-        const accordionItemRefsBody = this.$refs.accordion.$refs.accordionItem
-        accordionItemRefsBody.forEach((itemRef, i) => {
-          if (i === index) {
-            if (!item.selected) {
-              item.selected = true
-              itemRef.$refs.body.style.maxHeight = `${itemRef.$refs.body.scrollHeight}px`
-            } else {
-              item.selected = false
-              itemRef.$refs.body.style.maxHeight = null
-            }
-          }
-        })
-      } else if (this.isOneOpen) {
-        const [item, index] = payload
-        const accordionItemRefsBody = this.$refs.accordion.$refs.accordionItem
-        accordionItemRefsBody.forEach((itemRef, i) => {
-          if (i === index) {
-            if (!item.selected) {
-              this.accordion.accordionList.forEach((elem) => {
-                elem.selected = false
-              })
-              accordionItemRefsBody.forEach((itemRef, i) => {
-                itemRef.$refs.body.style.maxHeight = null
-              })
-              item.selected = true
-              itemRef.$refs.body.style.maxHeight = `${itemRef.$refs.body.scrollHeight}px`
-            } else if (item.selected) {
-              item.selected = false
-              itemRef.$refs.body.style.maxHeight = null
-            }
-          }
-        })
       }
     }
   }

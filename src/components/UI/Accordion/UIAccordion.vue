@@ -1,5 +1,5 @@
 <template>
-  <div ref="accordion" class="accordion">
+  <div class="accordion">
     <UIAccordionItem
       v-for="(item, index) in accordionList"
       :key="index"
@@ -30,7 +30,41 @@ export default {
   },
   methods: {
     onAccordionItem(payload) {
-      this.$emit('onAccordionItem', payload)
+      if (!this.isOneOpen) {
+        const [item, index] = payload
+        const accordionItemRefsBody = this.$refs.accordionItem
+        accordionItemRefsBody.forEach((itemRef, i) => {
+          if (i === index) {
+            if (!item.selected) {
+              item.selected = true
+              itemRef.$refs.body.style.maxHeight = `${itemRef.$refs.body.scrollHeight}px`
+            } else {
+              item.selected = false
+              itemRef.$refs.body.style.maxHeight = null
+            }
+          }
+        })
+      } else if (this.isOneOpen) {
+        const [item, index] = payload
+        const accordionItemRefsBody = this.$refs.accordionItem
+        accordionItemRefsBody.forEach((itemRef, i) => {
+          if (i === index) {
+            if (!item.selected) {
+              this.accordionList.forEach((elem) => {
+                elem.selected = false
+              })
+              accordionItemRefsBody.forEach((itemRef, i) => {
+                itemRef.$refs.body.style.maxHeight = null
+              })
+              item.selected = true
+              itemRef.$refs.body.style.maxHeight = `${itemRef.$refs.body.scrollHeight}px`
+            } else if (item.selected) {
+              item.selected = false
+              itemRef.$refs.body.style.maxHeight = null
+            }
+          }
+        })
+      }
     }
   }
 }
