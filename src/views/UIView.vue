@@ -5,10 +5,17 @@
   <template v-else>
     <div class="ui-view offset-page">
       <div class="container">
-        <h1 class="ui-view__title title h1">В UI компонентах реализовано:</h1>
+        <h1 class="ui-view__title h1">В UI компонентах реализовано:</h1>
         <ul class="description-list">
           <li class="description-item p1" v-for="(item, i) in descriptionList" :key="i">{{ item }}</li>
         </ul>
+      </div>
+
+      <div class="ui-accordion offset">
+        <div class="container">
+          <h2 class="ui-accordion__title title h2">{{ accordion.title }}</h2>
+          <UIAccordion :accordion-list="accordion.accordionList" />
+        </div>
       </div>
 
       <UIMarquee :marquee-images="marqueeImages" :marquee-settings="marqueeSettings" class-name="hero-img-wrapper" >
@@ -25,14 +32,16 @@
 import { mapActions, mapGetters } from 'vuex'
 import AppLoading from '@/components/App/AppLoading'
 import axios from 'axios'
+import UIAccordion from '@/components/UI/Accordion/UIAccordion'
 import UIMarquee from '@/components/UI/Marquee/UIMarquee'
 export default {
   name: 'UIView',
-  components: { AppLoading, UIMarquee },
+  components: { AppLoading, UIAccordion, UIMarquee },
   data() {
     return {
       descriptionList: [
         'Храниение и взаимодействие с данными из JSON Server',
+        'Компонент: "Аккордион"',
         'Компонент: "Бесконечная строка"'
       ],
       marqueeSettings: {
@@ -44,7 +53,8 @@ export default {
         gradientColor: [240, 250, 230],
         gradientLength: '30px'
       },
-      marqueeImages: []
+      marqueeImages: [],
+      accordion: {}
     }
   },
   computed: {
@@ -65,6 +75,7 @@ export default {
         this.startLoading()
         const response = await axios.get('/api/ui/')
         this.marqueeImages = [...response.data.marqueeImages]
+        this.accordion = { ...response.data.accordion }
         this.endLoading()
       } catch (error) {
         this.endLoading()
