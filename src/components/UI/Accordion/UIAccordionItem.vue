@@ -54,7 +54,7 @@ export default {
 
 .accordion-item {
   padding-top: 24px;
-  padding-bottom: 8px;
+  padding-bottom: 6px;
   border-bottom: 1px solid $color-black;
 
   &:first-child {
@@ -66,11 +66,6 @@ export default {
       transform: rotate(0);
       transition: transform 0.4s ease;
     }
-  }
-
-  @media (min-width:$desktop) {
-    padding-top: 0;
-    border-bottom: 0;
   }
 
   &__header {
