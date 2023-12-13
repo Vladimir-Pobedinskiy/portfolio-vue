@@ -53,7 +53,7 @@ export default {
               this.accordionList.forEach((elem) => {
                 elem.selected = false
               })
-              accordionItemRefsBody.forEach((itemRef, i) => {
+              accordionItemRefsBody.forEach((itemRef) => {
                 itemRef.$refs.body.style.maxHeight = null
               })
               item.selected = true

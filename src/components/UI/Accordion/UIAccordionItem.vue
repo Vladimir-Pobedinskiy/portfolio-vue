@@ -1,6 +1,6 @@
 <template>
-  <div ref="accordionItem" class="accordion-item" @click="onAccordionItem($event)" :class="{ 'active': item.selected }">
-    <div class="accordion-item__header h4">
+  <div ref="accordionItem" class="accordion-item" :class="{ 'active': item.selected }">
+    <div class="accordion-item__header h4" @click="onAccordionItem">
       <span class="accordion-item__title h4">{{ item.title }}</span>
       <div class="accordion-item__header-icon-wrapper">
         <UIIcon icon-name="mdi-close" class-name="accordion-item__header-icon icon-close" width="32px" height="32px" />
@@ -39,7 +39,7 @@ export default {
     }
   },
   methods: {
-    onAccordionItem(event) {
+    onAccordionItem() {
       if (!this.isOneOpen) {
         this.$emit('onAccordionItem', [this.item, this.currentIndex])
       } else {
