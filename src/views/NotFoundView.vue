@@ -38,7 +38,7 @@ export default {
   }
 
   &__logo-wrapper {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     padding: 0 16px;
     color: $color-vue;
 
@@ -49,7 +49,7 @@ export default {
 
   &__logo {
     font-family: $font;
-    font-size: 140px;
+    font-size: 150px;
     line-height: 1;
     font-weight: 500;
     color: $color-vue;
