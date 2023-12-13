@@ -5,7 +5,7 @@
   <template v-else>
     <div class="ui-view offset-page">
       <div class="container">
-        <h1 class="ui-view__title h1">В UI компонентах реализовано:</h1>
+        <h1 class="ui-view__title title h1">В UI компонентах реализовано:</h1>
         <ul class="description-list">
           <li class="description-item p1" v-for="(item, i) in descriptionList" :key="i">{{ item }}</li>
         </ul>
@@ -13,8 +13,15 @@
 
       <div class="ui-accordion offset">
         <div class="container">
-          <h2 class="ui-accordion__title title h2">{{ accordion.title }}</h2>
-          <UIAccordion :accordion-list="accordion.accordionList" />
+          <h2 class="ui-accordion__title section-title h2">{{ accordion.title }}</h2>
+
+          <UIAccordion
+            :accordion-list="accordion.accordionList"
+            @onAccordionItem="onAccordionItem"
+            :isOneOpen="isOneOpen"
+            ref="accordion"
+          />
+
         </div>
       </div>
 
@@ -54,7 +61,8 @@ export default {
         gradientLength: '30px'
       },
       marqueeImages: [],
-      accordion: {}
+      accordion: {},
+      isOneOpen: false
     }
   },
   computed: {
@@ -74,13 +82,50 @@ export default {
       try {
         this.startLoading()
         const response = await axios.get('/api/ui/')
-        this.marqueeImages = [...response.data.marqueeImages]
-        this.accordion = { ...response.data.accordion }
+        this.marqueeImages = response.data.marqueeImages
+        this.accordion = response.data.accordion
         this.endLoading()
       } catch (error) {
         this.endLoading()
         this.$vfm.open('ModalError')
         console.error('Error fetching UIView', error)
+      }
+    },
+    onAccordionItem(payload) {
+      if (!this.isOneOpen) {
+        const [item, index] = payload
+        const accordionItemRefsBody = this.$refs.accordion.$refs.accordionItem
+        accordionItemRefsBody.forEach((itemRef, i) => {
+          if (i === index) {
+            if (!item.selected) {
+              item.selected = true
+              itemRef.$refs.body.style.maxHeight = `${itemRef.$refs.body.scrollHeight}px`
+            } else {
+              item.selected = false
+              itemRef.$refs.body.style.maxHeight = null
+            }
+          }
+        })
+      } else if (this.isOneOpen) {
+        const [item, index] = payload
+        const accordionItemRefsBody = this.$refs.accordion.$refs.accordionItem
+        accordionItemRefsBody.forEach((itemRef, i) => {
+          if (i === index) {
+            if (!item.selected) {
+              this.accordion.accordionList.forEach((elem) => {
+                elem.selected = false
+              })
+              accordionItemRefsBody.forEach((itemRef, i) => {
+                itemRef.$refs.body.style.maxHeight = null
+              })
+              item.selected = true
+              itemRef.$refs.body.style.maxHeight = `${itemRef.$refs.body.scrollHeight}px`
+            } else if (item.selected) {
+              item.selected = false
+              itemRef.$refs.body.style.maxHeight = null
+            }
+          }
+        })
       }
     }
   }

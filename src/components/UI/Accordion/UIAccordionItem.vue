@@ -1,9 +1,9 @@
 <template>
-  <div class="accordion-item">
+  <div ref="accordionItem" class="accordion-item" @click="onAccordionItem($event)" :class="{ 'active': item.selected }">
     <div class="accordion-item__header h4">
       <span class="accordion-item__title h4">{{ item.title }}</span>
       <div class="accordion-item__header-icon-wrapper">
-        <UIIcon icon-name="mdi-close" class-name="icon-close" width="32px" height="32px" />
+        <UIIcon icon-name="mdi-close" class-name="accordion-item__header-icon icon-close" width="32px" height="32px" />
       </div>
     </div>
 
@@ -20,15 +20,32 @@ export default {
     item: {
       type: Object,
       required: true
+    },
+    currentIndex: {
+      type: Number,
+      required: true
+    },
+    accordionList: {
+      type: Array,
+      required: true
+    },
+    isOneOpen: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
     }
   },
-  watch: {
-  },
   methods: {
+    onAccordionItem(event) {
+      if (!this.isOneOpen) {
+        this.$emit('onAccordionItem', [this.item, this.currentIndex])
+      } else {
+        this.$emit('onAccordionItem', [this.item, this.currentIndex])
+      }
+    }
   }
 }
 </script>
@@ -38,11 +55,15 @@ export default {
 .accordion-item {
   padding-top: 24px;
   padding-bottom: 8px;
-  border-bottom: 1px solid $color-gray-light;
+  border-bottom: 1px solid $color-black;
+
+  &:first-child {
+    border-top: 1px solid $color-gray-medium;
+  }
 
   &.active {
-    .accordion__header-icon.accordion-icon-arrow {
-      transform: rotate(180deg);
+    .accordion-item__header-icon{
+      transform: rotate(0);
       transition: transform 0.4s ease;
     }
   }
@@ -59,43 +80,25 @@ export default {
     align-items: center;
     justify-content: space-between;
     text-transform: uppercase;
-    cursor: pointer;
 
     @media (min-width:$desktop) {
       margin-bottom: 20px;
-      cursor: text;
+      cursor: pointer;
     }
   }
 
   &__body {
     display: flex;
     flex-direction: column;
-
-    @media (max-width:$desktop-for-maxWidth){
-      overflow: hidden;
-      max-height: 0;
-      will-change: max-height;
-      transition: max-height 0.4s ease-in-out;
-    }
-
-    @media (min-width:$desktop) {
-      margin-bottom: 0;
-    }
+    overflow: hidden;
+    max-height: 0;
+    will-change: max-height;
+    transition: max-height 0.4s ease-in-out;
   }
 
-  &__body a {
-    margin-bottom: 8px;
-
-    &:last-child {
-      margin-bottom: 16px;
-    }
-
-    @media (min-width:$desktop) {
-
-      &:last-child {
-        margin-bottom: 8px;
-      }
-    }
+  &__header-icon {
+    transform: rotate(-45deg);
+    transition: transform 0.4s ease;
   }
 }
 </style>

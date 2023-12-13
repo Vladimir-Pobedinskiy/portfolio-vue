@@ -99,6 +99,14 @@ body.lock {
   }
 }
 
+.section-title {
+  margin-bottom: 24px;
+
+  @media (min-width:$desktop) {
+    margin-bottom: 32px;
+  }
+}
+
 
 .nav-list {
   display: flex;

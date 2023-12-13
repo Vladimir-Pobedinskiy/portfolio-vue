@@ -1,6 +1,15 @@
 <template>
-  <div class="accordion">
-    <UIAccordionItem v-for="(item, index) in accordionList" :key="index" :item="item" />
+  <div ref="accordion" class="accordion">
+    <UIAccordionItem
+      v-for="(item, index) in accordionList"
+      :key="index"
+      :item="item"
+      :isOneOpen="isOneOpen"
+      :accordionList="accordionList"
+      :currentIndex="index"
+      @onAccordionItem="onAccordionItem"
+      ref="accordionItem"
+    />
   </div>
 </template>
 
@@ -13,19 +22,15 @@ export default {
     accordionList: {
       type: Array,
       required: true
+    },
+    isOneOpen: {
+      type: Boolean,
+      default: false
     }
-  },
-  data() {
-    return {
-
-    }
-  },
-  mounted() {
-  },
-  beforeUnmounted() {
   },
   methods: {
-    handlerToggle() {
+    onAccordionItem(payload) {
+      this.$emit('onAccordionItem', payload)
     }
   }
 }
