@@ -6,11 +6,11 @@
         <span class="visually-hidden">Стрелки навигации по слайдеру</span>
         <div class="hero-swiper__button-prev swiper-button-prev">
           <span class="visually-hidden">К предыдущему слайду</span>
-          <UIIcon icon-name="icon:icon-arrow-slider" class-name="hero-swiper__button-icon hero-swiper__button--prev-icon" width="12px" height="12px" />
+          <UIIcon icon-name="mdi-arrow-forward" class-name="hero-swiper__button-icon hero-swiper__button--prev-icon" width="34px" height="34px" />
         </div>
         <div class="hero-swiper__button-next swiper-button-next">
           <span class="visually-hidden">К следующему слайду</span>
-          <UIIcon icon-name="icon:icon-arrow-slider" class-name="hero-swiper__button-icon hero-swiper__button--next-icon" width="12px" height="12px" />
+          <UIIcon icon-name="mdi-arrow-forward" class-name="hero-swiper__button-icon hero-swiper__button--next-icon" width="34px" height="34px" />
         </div>
       </div>
     </div>
@@ -122,7 +122,7 @@ export default {
 
     &__navigation-wrapper {
       width: 100%;
-      max-width: 180px;
+      max-width: 130px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -147,9 +147,10 @@ export default {
     }
 
     &__button-icon {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
     }
+
   }
 
   .hero-swiper__button-prev.swiper-button-prev,
@@ -160,10 +161,10 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 80px;
-      height: 40px;
+      width: 54px;
+      height: 54px;
       background-color: $color-gray-dark;
-      border-radius: 16px;
+      border-radius: 50%;
       color: $color-white;
       transition: background-color 0.3s ease, border-color 0.3s ease;
 

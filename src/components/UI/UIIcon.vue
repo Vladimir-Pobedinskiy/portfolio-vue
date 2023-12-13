@@ -4,6 +4,7 @@
 
 <script>
 import { Icon } from '@iconify/vue'
+import * as mdi from '@iconify-json/mdi'
 export default {
   name: 'UIIcon',
   components: { Icon },
@@ -23,6 +24,11 @@ export default {
     height: {
       type: String,
       required: true
+    }
+  },
+  computed: {
+    icon() {
+      return mdi[this.iconName]
     }
   }
 }

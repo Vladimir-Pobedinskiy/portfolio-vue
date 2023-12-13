@@ -1,8 +1,8 @@
 <template>
   <div class="not-found-view">
     <div class="not-found-view__inner">
-      <div class="not-found-view__img-wrapper">
-        <UIIcon icon-name="icon:icon-error-404" class-name="not-found-view__img" width="650" height="404" />
+      <div class="not-found-view__logo-wrapper">
+        <span class="not-found-view__logo">404</span>
       </div>
       <h2 class="not-found-view__title h3">Запрашиваемая страница не найдена</h2>
       <p class="not-found-view__text p2">
@@ -37,19 +37,30 @@ export default {
     text-align: center;
   }
 
-  &__img-wrapper {
-    margin-bottom: 48px;
+  &__logo-wrapper {
+    margin-bottom: 24px;
     padding: 0 16px;
-    width: 100%;
-    max-width: 650px;
     color: $color-vue;
+
+    @media (min-width:$tablet) {
+      margin-bottom: 32px;
+    }
   }
 
-  &__img {
-    width: 100%;
-    max-width: 650px;
-    height: 404px;
-    object-fit: cover;
+  &__logo {
+    font-family: $font;
+    font-size: 140px;
+    line-height: 1;
+    font-weight: 500;
+    color: $color-vue;
+
+    @media (min-width:$mobile) {
+      font-size: 200px;
+    }
+
+    @media (min-width:$tablet) {
+      font-size: 280px;
+    }
   }
 
   &__title {
@@ -57,9 +68,13 @@ export default {
   }
 
   &__text {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     width: 100%;
     max-width: 675px;
+
+    @media (min-width:$desktop) {
+      margin-bottom: 32px;
+    }
   }
 
   &__btn {
