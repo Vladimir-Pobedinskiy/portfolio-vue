@@ -14,7 +14,7 @@
         </button>
       </div>
       <UIButton btn-class="task-list-item__remove-btn" type="button" aria-label="Закрыть задачу" @click="deleteCurrentTask">
-        <UIIcon icon-name="icon:icon-close" class-name="icon-close" width="24px" height="24px" />
+        <UIIcon icon-name="mdi-close" class-name="icon-close" width="32px" height="32px" />
       </UIButton>
     </div>
     <div class="task-list-item__footer">
