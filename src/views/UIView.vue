@@ -20,7 +20,7 @@
       <div class="ui-accordion offset">
         <div class="container">
           <h2 class="ui-accordion__title section-title h2">{{ accordion.title }}</h2>
-          <UIAccordion :accordion-list="accordion.accordionList" init-item-open="all" />
+          <UIAccordion :accordion-list="accordion.accordionList" />
         </div>
       </div>
 
@@ -48,8 +48,8 @@ export default {
     return {
       descriptionList: [
         'Храниение и взаимодействие с данными из JSON Server',
-        'Компонент: "Аккордион"',
-        'Компонент: "Бесконечная строка"'
+        'Компонент: "Бесконечная строка"',
+        'Компонент: "Аккордион"'
       ],
       marqueeSettings: {
         duration: 40,
