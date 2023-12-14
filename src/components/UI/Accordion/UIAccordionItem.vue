@@ -8,7 +8,7 @@
     </div>
 
     <div ref="body" class="accordion-item__body">
-      <div v-safe-html.p="item.text" class="user-content p4"></div>
+      <div v-dompurify-html="item.text" class="user-content p4"></div>
     </div>
   </div>
 </template>

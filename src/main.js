@@ -9,7 +9,7 @@ import '@/plugins/iconify-vue'
 import SwiperPlugin from '@/plugins/swiper'
 import { createVfm } from 'vue-final-modal'
 import 'vue-final-modal/style.css'
-import VueSafeHtml from 'vue-safe-html'
+import VueDOMPurifyHTML from 'vue-dompurify-html'
 
 // Глобальные компоненты
 import UIButton from '@/components/UI/UIButton'
@@ -27,7 +27,7 @@ if (app.config.globalProperties.$store) {
 app.use(SwiperPlugin)
 const vfm = createVfm()
 app.use(vfm)
-app.use(VueSafeHtml)
+app.use(VueDOMPurifyHTML)
 
 // Регистрируем глобальные компоненты
 app.component('UIButton', UIButton)
