@@ -21,14 +21,6 @@ addCollection({
     'icon-close': {
       body: '<path d="M21.875 6.125L6.125 21.875" stroke="#151719" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21.875 21.875L6.125 6.125" stroke="#151719" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
       viewBox: '0 0 24 24'
-    },
-    'icon-arrow-slider': {
-      body: '<path fill-rule="evenodd" clip-rule="evenodd" d="M5.75736 0.696722L10.5303 5.46969C10.8232 5.76259 10.8232 6.23746 10.5303 6.53035L5.75736 11.3033C5.46446 11.5962 4.98959 11.5962 4.6967 11.3033C4.4038 11.0104 4.4038 10.5356 4.6967 10.2427L8.18934 6.75002L2 6.75002C1.58579 6.75002 1.25 6.41424 1.25 6.00002C1.25 5.58581 1.58579 5.25002 2 5.25002L8.18934 5.25002L4.6967 1.75738C4.40381 1.46449 4.40381 0.989615 4.6967 0.696721C4.98959 0.403828 5.46447 0.403828 5.75736 0.696722Z" fill="white"/>',
-      viewBox: '0 0 36 36'
-    },
-    'icon-error-404': {
-      body: '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v4a1 1 0 0 0 1 1h3m0-5v10m3-9v8a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1m7-1v4a1 1 0 0 0 1 1h3m0-5v10"/>',
-      viewBox: '0 0 750 304'
     }
   },
   width: 24,

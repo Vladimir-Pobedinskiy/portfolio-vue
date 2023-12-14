@@ -7,7 +7,7 @@
       </div>
     </div>
 
-    <div ref="body" class="accordion-item__body">
+    <div v-if="$slots.content" ref="body" class="accordion-item__body">
       <slot name="content" />
     </div>
   </div>
@@ -26,6 +26,7 @@ export default {
       required: true
     }
   },
+  emits: ['onAccordionItem'],
   methods: {
     onAccordionItem() {
       this.$emit('onAccordionItem', [this.item, this.currentIndex])
