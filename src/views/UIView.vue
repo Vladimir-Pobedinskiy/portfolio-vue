@@ -20,14 +20,14 @@
       <div class="ui-accordion offset">
         <div class="container">
           <h2 class="ui-accordion__title section-title h2">{{ accordion.title }}</h2>
-          <UIAccordion :accordion-list="accordion.accordionList" />
+          <UIAccordion :accordion-list="accordion.accordionList" init-item-open="all" />
         </div>
       </div>
 
       <div class="ui-accordion offset">
         <div class="container">
           <h2 class="ui-accordion__title section-title h2">{{ accordion2.title }}</h2>
-          <UIAccordion :accordion-list="accordion2.accordionList" :isOneOpen="true" />
+          <UIAccordion :accordion-list="accordion2.accordionList" :is-only-one-open="true" init-item-open="1" />
         </div>
       </div>
 

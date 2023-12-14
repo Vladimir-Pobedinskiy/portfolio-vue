@@ -1,14 +1,14 @@
 <template>
-  <div ref="accordionItem" class="accordion-item" :class="{ 'active': item.selected }">
+  <div class="accordion-item" :class="{ 'active': item.selected }">
     <div class="accordion-item__header h4" @click="onAccordionItem">
-      <span class="accordion-item__title h4">{{ item.title }}</span>
+      <slot name="header" />
       <div class="accordion-item__header-icon-wrapper">
         <UIIcon icon-name="mdi-close" class-name="accordion-item__header-icon icon-close" width="32px" height="32px" />
       </div>
     </div>
 
     <div ref="body" class="accordion-item__body">
-      <div v-dompurify-html="item.text" class="user-content p4"></div>
+      <slot name="content" />
     </div>
   </div>
 </template>
@@ -24,27 +24,11 @@ export default {
     currentIndex: {
       type: Number,
       required: true
-    },
-    accordionList: {
-      type: Array,
-      required: true
-    },
-    isOneOpen: {
-      type: Boolean,
-      default: false
-    }
-  },
-  data() {
-    return {
     }
   },
   methods: {
     onAccordionItem() {
-      if (!this.isOneOpen) {
-        this.$emit('onAccordionItem', [this.item, this.currentIndex])
-      } else {
-        this.$emit('onAccordionItem', [this.item, this.currentIndex])
-      }
+      this.$emit('onAccordionItem', [this.item, this.currentIndex])
     }
   }
 }

@@ -1,15 +1,24 @@
+/**
+  isOnlyOneOpen (true) - открывается один item, остальные закрываются
+  initItemOpen - задает какой item будет открытым при рендеринге страницы (варианты: index, all), если ничего не задано то все items закрыты
+*/
 <template>
   <div class="accordion">
     <UIAccordionItem
       v-for="(item, index) in accordionList"
       :key="index"
       :item="item"
-      :isOneOpen="isOneOpen"
-      :accordionList="accordionList"
       :currentIndex="index"
       @onAccordionItem="onAccordionItem"
       ref="accordionItem"
-    />
+    >
+    <template #header>
+      <span class="accordion-item-title h4">{{ item.title }}</span>
+    </template>
+    <template #content>
+      <div v-dompurify-html="item.text" class="user-content p4"></div>
+    </template>
+  </UIAccordionItem>
   </div>
 </template>
 
@@ -23,14 +32,35 @@ export default {
       type: Array,
       required: true
     },
-    isOneOpen: {
+    isOnlyOneOpen: {
       type: Boolean,
       default: false
+    },
+    initItemOpen: {
+      type: String,
+      required: false
     }
   },
+  mounted() {
+    this.initAccordion()
+  },
   methods: {
+    initAccordion() {
+      const accordionItemRefsBody = this.$refs.accordionItem
+      this.accordionList.forEach((elem, index) => {
+        accordionItemRefsBody.forEach((itemRef, i) => {
+          if (index === i && i === Number(this.initItemOpen)) {
+            elem.selected = true
+            itemRef.$refs.body.style.maxHeight = `${itemRef.$refs.body.scrollHeight}px`
+          } else if (index === i && this.initItemOpen === 'all') {
+            elem.selected = true
+            itemRef.$refs.body.style.maxHeight = `${itemRef.$refs.body.scrollHeight}px`
+          }
+        })
+      })
+    },
     onAccordionItem(payload) {
-      if (!this.isOneOpen) {
+      if (!this.isOnlyOneOpen) {
         const [item, index] = payload
         const accordionItemRefsBody = this.$refs.accordionItem
         accordionItemRefsBody.forEach((itemRef, i) => {
@@ -44,7 +74,7 @@ export default {
             }
           }
         })
-      } else if (this.isOneOpen) {
+      } else {
         const [item, index] = payload
         const accordionItemRefsBody = this.$refs.accordionItem
         accordionItemRefsBody.forEach((itemRef, i) => {
@@ -69,3 +99,8 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+  .accordion-item-title {
+    margin-right: 15px;
+  }
+</style>
