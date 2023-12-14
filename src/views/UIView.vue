@@ -119,4 +119,13 @@ export default {
     width: 35%;
   }
 }
+
+.ui-accordion__title.section-title {
+  margin-bottom: 32px;
+
+  @media (min-width:$desktop) {
+    margin-bottom: 48px;
+  }
+}
+
 </style>

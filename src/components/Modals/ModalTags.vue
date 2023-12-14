@@ -3,7 +3,7 @@
     <UIModal
       :modal-settings="modalSettings"
       :selected-tags="selectedTags"
-      :btnOpenClassName="currentTags.length ? 'modal-tags-btn-open' : 'btn btn-small'"
+      :btn-open-class-name="currentTags.length ? 'modal-tags-btn-open' : 'btn btn-small'"
     >
       <template #header>
         <span class="modal-tags-title s2">Выберите теги</span>

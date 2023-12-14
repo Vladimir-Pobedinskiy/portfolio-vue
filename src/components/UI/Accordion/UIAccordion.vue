@@ -8,7 +8,7 @@
       v-for="(item, index) in accordionList"
       :key="index"
       :item="item"
-      :currentIndex="index"
+      :current-index="index"
       @onAccordionItem="onAccordionItem"
       ref="accordionItem"
     >

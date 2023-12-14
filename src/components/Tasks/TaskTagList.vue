@@ -3,7 +3,7 @@
     <TaskTagListItem
       v-for="tag in tags" :key="tag"
       :tag="tag"
-      :isPreview="isPreview"
+      :is-preview="isPreview"
       @handleSelectedTag="handleSelectedTag"
     />
   </div>

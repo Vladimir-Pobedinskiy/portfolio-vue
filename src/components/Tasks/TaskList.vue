@@ -3,7 +3,7 @@
     <TaskListItem
       v-for="(task, index) in taskList" :key="index"
       :task="task"
-      :currentIndex="index"
+      :current-index="index"
       @deleteCurrentTask="deleteCurrentTask(index)"
     />
   </div>
