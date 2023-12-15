@@ -31,6 +31,18 @@
         </div>
       </div>
 
+      <UITabs>
+        <UITabPanel>
+          <p>111111111111</p>
+        </UITabPanel>
+        <UITabPanel>
+          <p>222222222222</p>
+        </UITabPanel>
+        <UITabPanel>
+          <p>333333</p>
+        </UITabPanel>
+      </UITabs>
+
     </div>
   </template>
 </template>
@@ -39,11 +51,13 @@
 import { mapActions, mapGetters } from 'vuex'
 import AppLoading from '@/components/App/AppLoading'
 import axios from 'axios'
-import UIAccordion from '@/components/UI/Accordion/UIAccordion'
 import UIMarquee from '@/components/UI/Marquee/UIMarquee'
+import UIAccordion from '@/components/UI/Accordion/UIAccordion'
+import UITabs from '@/components/UI/Tabs/UITabs'
+import UITabPanel from '@/components/UI/Tabs/UITabPanel'
 export default {
   name: 'UIView',
-  components: { AppLoading, UIAccordion, UIMarquee },
+  components: { AppLoading, UIAccordion, UIMarquee, UITabs, UITabPanel },
   data() {
     return {
       descriptionList: [
