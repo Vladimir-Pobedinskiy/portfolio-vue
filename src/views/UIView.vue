@@ -20,46 +20,14 @@
       <div class="ui-accordion offset">
         <div class="container">
           <h2 class="ui-accordion__title section-title h2">{{ accordion.title }}</h2>
-          <UIAccordion>
-            <UIAccordionItem
-              v-for="(item, index) in accordion.accordionList"
-              :key="index"
-              :item="item"
-              :accordion-list="accordion.accordionList"
-              :current-index="index"
-              ref="accordionItem"
-            >
-              <template #header>
-                <span class="accordion-item-title h4">{{ item.title }}</span>
-              </template>
-              <template #content>
-                <div v-dompurify-html="item.text" class="user-content p4"></div>
-              </template>
-            </UIAccordionItem>
-          </UIAccordion>
+          <UIAccordion :accordion-list="accordion.accordionList" />
         </div>
       </div>
 
       <div class="ui-accordion offset">
         <div class="container">
           <h2 class="ui-accordion__title section-title h2">{{ accordion2.title }}</h2>
-          <UIAccordion :is-only-one-open="true" init-item-open="1">
-            <UIAccordionItem
-              v-for="(item, index) in accordion2.accordionList"
-              :key="index"
-              :item="item"
-              :accordion-list="accordion2.accordionList"
-              :current-index="index"
-              ref="accordionItem"
-            >
-              <template #header>
-                <span class="accordion-item-title h4">{{ item.title }}</span>
-              </template>
-              <template #content>
-                <div v-dompurify-html="item.text" class="user-content p4"></div>
-              </template>
-            </UIAccordionItem>
-          </UIAccordion>
+          <UIAccordion :accordion-list="accordion2.accordionList" :is-only-one-open="true" init-item-open="1" />
         </div>
       </div>
 
@@ -72,11 +40,10 @@ import { mapActions, mapGetters } from 'vuex'
 import AppLoading from '@/components/App/AppLoading'
 import axios from 'axios'
 import UIAccordion from '@/components/UI/Accordion/UIAccordion'
-import UIAccordionItem from '@/components/UI/Accordion/UIAccordionItem'
 import UIMarquee from '@/components/UI/Marquee/UIMarquee'
 export default {
   name: 'UIView',
-  components: { AppLoading, UIAccordion, UIAccordionItem, UIMarquee },
+  components: { AppLoading, UIAccordion, UIMarquee },
   data() {
     return {
       descriptionList: [
