@@ -1,5 +1,5 @@
 <template>
-  <div class="accordion-item" :class="{ 'active': item.selected }">
+  <div class="accordion-item" :class="{ 'active': isOpen }">
     <div class="accordion-item__header h4" @click="onAccordionItem">
       <slot name="header" />
       <div class="accordion-item__header-icon-wrapper">
@@ -17,19 +17,29 @@
 export default {
   name: 'UIAccordionItem',
   props: {
-    item: {
-      type: Object,
-      required: true
-    },
     currentIndex: {
       type: Number,
       required: true
     }
   },
-  emits: ['onAccordionItem'],
+  data() {
+    return {
+      isOpen: false
+    }
+  },
+  watch: {
+    isOpen(value) {
+      if (value) {
+        this.$refs.body.style.maxHeight = `${this.$refs.body.scrollHeight}px`
+      } else {
+        this.$refs.body.style.maxHeight = null
+      }
+    }
+  },
   methods: {
     onAccordionItem() {
-      this.$emit('onAccordionItem', [this.item, this.currentIndex])
+      this.$parent.handlerAccordionItem(this.currentIndex, this.$refs.body)
+      this.isOpen = !this.isOpen
     }
   }
 }
