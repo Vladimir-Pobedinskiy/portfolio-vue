@@ -1,50 +1,54 @@
 <template>
-  <div class="tasks-view offset-page">
-    <div class="container">
-      <h1 class="tasks-view__title title h1">В этом приложении реализовано:</h1>
+    <template v-if="loading">
+    <AppLoading :loading="loading" />
+  </template>
+  <template v-else>
+    <div class="tasks-view offset-page-br">
+      <div class="container">
+        <UIBreadcrumbs :breadcrumbs="breadcrumbs" />
+        <h1 class="tasks-view__title title h1">В этом приложении реализовано:</h1>
 
-      <ul class="description-list">
-        <li class="description-item p1" v-for="(item, i) in descriptionList" :key="i">{{ item }}</li>
-      </ul>
+        <ul class="description-list">
+          <li class="description-item p1" v-for="(item, i) in descriptionList" :key="i">{{ item }}</li>
+        </ul>
 
-      <section class="tasks-view__section offset">
-        <h2 class="tasks-view__title title h1">Список задач</h2>
+        <section class="tasks-view__section offset">
+          <h2 class="tasks-view__title title h1">Список задач</h2>
 
-        <div class="tasks-view__form-wrapper">
-          <form class="tasks-view__form" @submit.prevent="onSubmit">
-            <textarea v-model="textareaValue" class="tasks-view__form-textarea" placeholder="Введите новую задачу" required></textarea>
-            <TaskTagList :tags="tags" @handleSelectedTags="handleSelectedTags" />
-            <UIButton btn-class="tasks-view__form-btn btn" :disabled="!textareaValue.trim()" type="submit">Add new task</UIButton>
-          </form>
-        </div>
+          <div class="tasks-view__form-wrapper">
+            <form class="tasks-view__form" @submit.prevent="onSubmit">
+              <textarea v-model="textareaValue" class="tasks-view__form-textarea" placeholder="Введите новую задачу" required></textarea>
+              <TaskTagList :tags="tags" @handleSelectedTags="handleSelectedTags" />
+              <UIButton btn-class="tasks-view__form-btn btn" :disabled="!textareaValue.trim()" type="submit">Add new task</UIButton>
+            </form>
+          </div>
 
-        <template v-if="taskList.length">
-          <TaskList :task-list="taskList" @deleteCurrentTask="deleteCurrentTask" />
-        </template>
-        <template v-else>
-          <p class="h3">Список задач пуст! Введите вашу первую задачу!</p>
-        </template>
+          <template v-if="taskList.length">
+            <TaskList :task-list="taskList" @deleteCurrentTask="deleteCurrentTask" />
+          </template>
+          <template v-else>
+            <p class="h3">Список задач пуст! Введите вашу первую задачу!</p>
+          </template>
 
-      </section>
+        </section>
+      </div>
     </div>
-  </div>
+  </template>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+import AppLoading from '@/components/App/AppLoading'
+import axios from 'axios'
 import TaskList from '@/components/Tasks/TaskList'
 import TaskTagList from '@/components/Tasks/TaskTagList'
-import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'TasksView',
-  components: { TaskList, TaskTagList },
+  components: { AppLoading, TaskList, TaskTagList },
   data() {
     return {
-      descriptionList: [
-        'Добавление, удаление, редактирование задач',
-        'Добавление и редактирование hashtags',
-        'Добавление времени добавления',
-        'Хранение данных в Store и LocalStorage'
-      ],
+      breadcrumbs: [],
+      descriptionList: [],
       textareaValue: '',
       tags: [
         { title: 'home', selected: false },
@@ -56,14 +60,33 @@ export default {
   },
   computed: {
     ...mapGetters({
+      loading: 'loading',
       taskList: 'taskList'
     })
   },
+  created() {
+    this.getData()
+  },
   methods: {
     ...mapActions({
+      startLoading: 'startLoading',
+      endLoading: 'endLoading',
       changeTaskList: 'changeTaskList',
       deleteCurrentTask: 'deleteCurrentTask'
     }),
+    async getData() {
+      try {
+        this.startLoading()
+        const response = await axios.get('/api/tasks/')
+        this.descriptionList = response.data.descriptionList
+        this.breadcrumbs = response.data.breadcrumbs
+        this.endLoading()
+      } catch (error) {
+        this.endLoading()
+        this.$vfm.open('ModalError')
+        console.error('Error fetching UIView', error)
+      }
+    },
     dateTask() {
       const currentDate = new Date()
       const day = String(currentDate.getDate()).padStart(2, '0')

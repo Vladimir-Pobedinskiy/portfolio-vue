@@ -15,6 +15,7 @@ import VueDOMPurifyHTML from 'vue-dompurify-html'
 import UIButton from '@/components/UI/UIButton'
 import UILink from '@/components/UI/UILink'
 import UIIcon from '@/components/UI/UIIcon'
+import UIBreadcrumbs from '@/components/UI/Breadcrumbs/UIBreadcrumbs'
 
 const app = createApp(App)
 app.use(router)
@@ -33,5 +34,6 @@ app.use(VueDOMPurifyHTML)
 app.component('UIButton', UIButton)
 app.component('UILink', UILink)
 app.component('UIIcon', UIIcon)
+app.component('UIBreadcrumbs', UIBreadcrumbs)
 
 app.mount('#app')

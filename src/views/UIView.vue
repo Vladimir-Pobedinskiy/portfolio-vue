@@ -3,8 +3,9 @@
     <AppLoading :loading="loading" />
   </template>
   <template v-else>
-    <div class="ui-view offset-page">
+    <div class="ui-view offset-page-br">
       <div class="container">
+        <UIBreadcrumbs :breadcrumbs="breadcrumbs" />
         <h1 class="ui-view__title title h1">В UI компонентах реализовано:</h1>
         <ul class="description-list">
           <li class="description-item p1" v-for="(item, i) in descriptionList" :key="i">{{ item }}</li>
@@ -60,11 +61,8 @@ export default {
   components: { AppLoading, UIAccordion, UIMarquee, UITabs, UITabPanel },
   data() {
     return {
-      descriptionList: [
-        'Храниение и взаимодействие с данными из JSON Server',
-        'Компонент: "Бесконечная строка"',
-        'Компонент: "Аккордион"'
-      ],
+      breadcrumbs: [],
+      descriptionList: [],
       marqueeSettings: {
         duration: 40,
         pauseOnHover: true,
@@ -96,6 +94,8 @@ export default {
       try {
         this.startLoading()
         const response = await axios.get('/api/ui/')
+        this.descriptionList = response.data.descriptionList
+        this.breadcrumbs = response.data.breadcrumbs
         this.marqueeImages = response.data.marqueeImages
         this.accordion = response.data.accordion
         this.accordion2 = response.data.accordion2

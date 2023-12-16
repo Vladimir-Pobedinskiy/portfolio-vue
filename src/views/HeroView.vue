@@ -58,7 +58,7 @@ export default {
         this.startLoading()
         const response = await axios.get('/api/heroes/')
         const currentHeroRouteName = this.$route.params.heroView
-        const currentHero = response.data.find((hero) => hero.alias === currentHeroRouteName)
+        const currentHero = response.data.heroList.find((hero) => hero.alias === currentHeroRouteName)
         this.hero = currentHero
         if (currentHero === undefined) {
           this.$router.push({ name: 'NotFoundView' })

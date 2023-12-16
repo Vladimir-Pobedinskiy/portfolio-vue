@@ -3,8 +3,9 @@
     <AppLoading :loading="loading" />
   </template>
   <template v-else>
-    <div class="heroes-view offset-page">
+    <div class="heroes-view offset-page-br">
       <div class="container">
+        <UIBreadcrumbs :breadcrumbs="breadcrumbs" />
         <h1 class="heroes-view__title title h1">В этом приложении реализовано:</h1>
 
         <ul class="description-list">
@@ -28,11 +29,8 @@ export default {
   name: 'HeroesView',
   data() {
     return {
-      descriptionList: [
-        'Храниение и взаимодействие с данными из JSON Server',
-        'Динамические маршруты',
-        'Слайдер'
-      ],
+      breadcrumbs: [],
+      descriptionList: [],
       heroList: []
     }
   },
@@ -53,7 +51,9 @@ export default {
       try {
         this.startLoading()
         const response = await axios.get('/api/heroes/')
-        this.heroList = response.data
+        this.breadcrumbs = response.data.breadcrumbs
+        this.descriptionList = response.data.descriptionList
+        this.heroList = response.data.heroList
         this.endLoading()
       } catch (error) {
         this.endLoading()

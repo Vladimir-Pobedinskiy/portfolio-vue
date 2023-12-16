@@ -69,6 +69,14 @@ body.lock {
   }
 }
 
+.offset-page-br {
+  padding: 32px 0 56px;
+
+  @media (min-width:$desktop) {
+    padding: 64px 0 90px;
+  }
+}
+
 .offset {
   padding: 28px 0;
 
