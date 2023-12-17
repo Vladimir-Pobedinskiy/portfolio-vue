@@ -55,10 +55,7 @@ export default {
   &__item:not(:last-of-type) {
     position: relative;
     margin-right: 18px;
-
-    &:first-child {
-      color: $color-gray-medium;
-    }
+    color: $color-gray-medium;
   }
 
   li:not(:last-of-type) {

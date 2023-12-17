@@ -21,14 +21,7 @@
       <div class="ui-accordion offset">
         <div class="container">
           <h2 class="ui-accordion__title section-title h2">{{ accordion.title }}</h2>
-          <UIAccordion :accordion-list="accordion.accordionList" />
-        </div>
-      </div>
-
-      <div class="ui-accordion offset">
-        <div class="container">
-          <h2 class="ui-accordion__title section-title h2">{{ accordion2.title }}</h2>
-          <UIAccordion :accordion-list="accordion2.accordionList" :is-only-one-open="true" init-item-open="1" />
+          <UIAccordion :accordion-list="accordion.accordionList" :is-only-one-open="true" init-item-open="1" />
         </div>
       </div>
 
@@ -73,8 +66,7 @@ export default {
         gradientLength: '30px'
       },
       marqueeImages: [],
-      accordion: {},
-      accordion2: {}
+      accordion: {}
     }
   },
   computed: {
@@ -98,7 +90,6 @@ export default {
         this.breadcrumbs = response.data.breadcrumbs
         this.marqueeImages = response.data.marqueeImages
         this.accordion = response.data.accordion
-        this.accordion2 = response.data.accordion2
         this.endLoading()
       } catch (error) {
         this.endLoading()
