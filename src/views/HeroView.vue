@@ -39,7 +39,7 @@ export default {
   data() {
     return {
       breadcrumbs: [],
-      hero: null
+      hero: {}
     }
   },
   computed: {
