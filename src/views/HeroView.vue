@@ -87,6 +87,7 @@ export default {
   }
 
   &__img-wrapper {
+    margin-bottom: 24px;
     width: 100%;
     max-width: 450px;
   }
