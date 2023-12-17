@@ -68,9 +68,6 @@ export default {
       margin-left: 4px;
       top: 50%;
       transform: translateY(-50%);
-      background-repeat: no-repeat;
-      background-position: right right;
-      background-size: 10px 21px;
       width: 10px;
       height: 21px;
     }
@@ -92,9 +89,6 @@ export default {
         margin-left: 4px;
         top: 50%;
         transform: translateY(-50%);
-        background-repeat: no-repeat;
-        background-position: right right;
-        background-size: 10px 21px;
         width: 10px;
         height: 21px;
       }

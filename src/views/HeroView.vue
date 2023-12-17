@@ -3,8 +3,9 @@
     <AppLoading :loading="loading" />
   </template>
   <template v-else>
-    <div v-if="hero" class="hero-view offset-page">
-      <div class="container">
+    <div class="container">
+      <div v-if="hero" class="hero-view offset-page-br">
+        <UIBreadcrumbs :breadcrumbs="breadcrumbs" />
         <div class="hero-view__inner">
           <div class="hero-view__img-wrapper">
             <img :src="hero.imgUrl" :alt="hero.title">
@@ -37,6 +38,7 @@ export default {
   components: { AppLoading },
   data() {
     return {
+      breadcrumbs: [],
       hero: null
     }
   },
@@ -56,17 +58,14 @@ export default {
     async getHero() {
       try {
         this.startLoading()
-        const response = await axios.get('/api/heroes/')
         const currentHeroRouteName = this.$route.params.heroView
-        const currentHero = response.data.heroList.find((hero) => hero.alias === currentHeroRouteName)
-        this.hero = currentHero
-        if (currentHero === undefined) {
-          this.$router.push({ name: 'NotFoundView' })
-        }
+        const response = await axios.get(`/api/${currentHeroRouteName}/`)
+        this.breadcrumbs = response.data.breadcrumbs
+        this.hero = response.data.description
         this.endLoading()
       } catch (error) {
         this.endLoading()
-        this.$vfm.open('ModalError')
+        this.$router.push({ name: 'NotFoundView' })
         console.error('Error fetching hero:', error)
       }
     }
@@ -76,8 +75,10 @@ export default {
 
 <style lang="scss">
 .hero-view {
+  height: 100%;
 
   &__inner {
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;

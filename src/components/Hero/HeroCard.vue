@@ -13,7 +13,7 @@
         </li>
       </ul>
     </div>
-    <router-link class="hero-card__link s4" :to="`heroes/${hero.alias}`">See more info</router-link>
+    <router-link class="hero-card__link s4" :to="`${$route.path}/${hero.alias}`">See more info</router-link>
   </div>
 </template>
 

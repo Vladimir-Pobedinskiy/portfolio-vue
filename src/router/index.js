@@ -56,3 +56,11 @@ export const router = createRouter({
   linkActiveClass: 'active',
   linkExactActiveClass: 'active'
 })
+
+router.beforeEach((to, from, next) => {
+  if (window.scrollY !== 0) {
+    window.scrollTo(0, 0)
+  }
+
+  next()
+})
