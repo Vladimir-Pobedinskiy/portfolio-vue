@@ -1,10 +1,6 @@
 <template>
   <div class="modal-tags">
-    <UIModal
-      :modal-settings="modalSettings"
-      :selected-tags="selectedTags"
-      :btn-open-class-name="currentTags.length ? 'modal-tags-btn-open' : 'btn btn-small'"
-    >
+    <UIModal v-model="showModal" :modal-settings="modalSettings" @closeModal="closeModal">
       <template #header>
         <span class="modal-tags-title s2">Выберите теги</span>
       </template>
@@ -14,11 +10,12 @@
           Сохранить
         </button>
       </template>
-      <template #btnOpenModal>
-        <UIIcon v-if="currentTags.length"  icon-name="icon:icon-edit" class-name="icon-edit" width="23px" height="23px" />
-        <span v-else class="p3">Добавить теги</span>
-      </template>
     </UIModal>
+
+    <button :class="currentTags.length ? 'modal-tags-btn-open' : 'btn btn-small'" aria-label="Открыть модальное окно" @click="openModal">
+      <UIIcon v-if="currentTags.length" icon-name="mdi-edit-outline" class-name="icon-edit" width="32px" height="32px" />
+      <span v-else class="p3">Добавить теги</span>
+    </button>
   </div>
 </template>
 
@@ -37,10 +34,11 @@ export default {
   emits: ['editSelectedTags'],
   data() {
     return {
+      showModal: false,
       modalSettings: {
         name: 'ModalTags',
-        lockScroll: true, // Отключена прокрутка тела во время отображения модального окна
-        clickToClose: true, // Включено закрытие модального окна при нажатии на наложение модального окна
+        lockScroll: true, // Прокрутка body во время отображения модального окна
+        clickToClose: true, // Закрытие модального окна при нажатии на наложение модального окна
         escToClose: true, // Нажмите esc, чтобы закрыть модальное окно
         hideOverlay: false // Скрытие отображения наложения
       },
@@ -53,6 +51,12 @@ export default {
     }
   },
   methods: {
+    openModal() {
+      this.showModal = true
+    },
+    closeModal() {
+      this.showModal = false
+    },
     handleSelectedTags(selectedTags) {
       this.selectedTags = selectedTags
     },
@@ -62,6 +66,7 @@ export default {
       this.tags.forEach((item) => {
         item.selected = false
       })
+      this.showModal = false
     }
   }
 }

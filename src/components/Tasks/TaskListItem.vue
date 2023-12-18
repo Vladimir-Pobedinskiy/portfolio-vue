@@ -4,7 +4,7 @@
       <div class="task-list-item__title-wrapper">
         <span class="task-list-item__title p1">{{ task.title }}</span>
         <button class="task-list-item__title-edit-btn" type="button" aria-label="Открыть редактирование задачи" @click="openEditInput">
-          <UIIcon icon-name="icon:icon-edit" class-name="icon-edit" width="23px" height="23px" />
+          <UIIcon icon-name="mdi-edit-outline" class-name="icon-edit" width="32px" height="32px" />
         </button>
       </div>
       <div class="task-list-item__input-wrapper" :class="{ 'visually-hidden': inputHiddenFlag }">
@@ -75,7 +75,6 @@ export default {
     },
     editSelectedTags(selectedTags) {
       this.changeTaskItemTags([this.currentIndex, selectedTags])
-      this.$vfm.closeAll('ModalTags')
     }
   }
 }
@@ -159,10 +158,8 @@ export default {
 
   &__remove-btn {
     margin-left: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex: 1 1 7%;
+    width: 32px;
+    height: 32px;
 
     @media (max-width: 400px){
       transform: translateY(150%);

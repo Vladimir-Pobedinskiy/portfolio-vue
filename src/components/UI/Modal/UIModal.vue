@@ -1,12 +1,10 @@
 <template>
   <VueFinalModal
-    v-model="showModal"
     class="modal-container"
     content-class="modal-content"
     overlay-class="modal-overlay"
     content-transition="vfm-fade"
     overlay-transition="vfm-fade"
-    swipe-to-close="left"
     :modalId="modalSettings.name"
     :lock-scroll="modalSettings.lockScroll"
     :click-to-close="modalSettings.clickToClose"
@@ -14,7 +12,7 @@
     :hide-overlay="modalSettings.hideOverlay"
   >
     <div class="modal-inner">
-      <button class="modal-close-btn" @click="showModal = false" aria-label="Закрыть модальное окно">
+      <button class="modal-close-btn" @click="$emit('closeModal')" aria-label="Закрыть модальное окно">
         <UIIcon icon-name="mdi-close" class-name="icon-close" width="32px" height="32px" />
       </button>
       <div v-if="$slots.header" class="modal-header">
@@ -25,9 +23,6 @@
       </div>
     </div>
   </VueFinalModal>
-  <button v-if="$slots.btnOpenModal" @click="showModal = true" :class="btnOpenClassName" aria-label="Открыть модальное окно">
-    <slot name="btnOpenModal" />
-  </button>
 </template>
 <script>
 import { VueFinalModal } from 'vue-final-modal'
@@ -38,26 +33,14 @@ export default {
     modalSettings: {
       type: Object,
       required: true
-    },
-    selectedTags: {
-      type: Array,
-      required: false
-    },
-    btnOpenClassName: {
-      type: String,
-      required: false
     }
   },
-  data() {
-    return {
-      showModal: false
-    }
-  }
+  emits: ['closeModal']
 }
 </script>
 
 <style lang="scss">
-.vfm {
+.vfm.modal-container {
   position: fixed;
   left: 0;
   top: 0;
