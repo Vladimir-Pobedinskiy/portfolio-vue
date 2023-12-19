@@ -1,5 +1,5 @@
 <template>
-  <div v-show="isActive">
+  <div v-show="isActive" class="tabs-panel" :class="{'active': isActive}">
     <slot />
   </div>
 </template>
@@ -8,18 +8,26 @@
 import { ref, inject, watch } from 'vue'
 export default {
   name: 'UITabPanel',
-  setup() {
-    const tabs = ref(inject('tabs'))
-    const selectedIndex = ref(inject('selectedIndex'))
+  props: {
+    name: {
+      type: String,
+      required: true
+    }
+  },
+  setup(props) {
+    const tabName = ref(inject('tabName'))
     const isActive = ref(false)
 
-    watch(selectedIndex, (value) => {
+    watch(tabName, (value) => {
       console.log(value)
-      isActive.value = value === tabs.value.indexOf(tabs.value)
-      console.log(isActive.value)
+      // if (String(value + 1) === props.name) {
+      //   console.log(props.name)
+      //   isActive.value = true
+      // }
     })
 
     return {
+      tabName,
       isActive
     }
   }

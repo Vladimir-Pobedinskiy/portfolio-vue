@@ -25,14 +25,14 @@
         </div>
       </div>
 
-      <UITabs>
-        <UITabPanel>
+      <UITabs :tabs="tabs">
+        <UITabPanel name="1">
           <p>111111111111</p>
         </UITabPanel>
-        <UITabPanel>
+        <UITabPanel name="2">
           <p>222222222222</p>
         </UITabPanel>
-        <UITabPanel>
+        <UITabPanel name="3">
           <p>333333</p>
         </UITabPanel>
       </UITabs>
@@ -66,7 +66,8 @@ export default {
         gradientLength: '30px'
       },
       marqueeImages: [],
-      accordion: {}
+      accordion: {},
+      tabs: []
     }
   },
   computed: {
@@ -90,6 +91,7 @@ export default {
         this.breadcrumbs = response.data.breadcrumbs
         this.marqueeImages = response.data.marqueeImages
         this.accordion = response.data.accordion
+        this.tabs = response.data.tabs
         this.endLoading()
       } catch (error) {
         this.endLoading()

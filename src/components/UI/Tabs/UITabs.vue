@@ -1,8 +1,8 @@
 <template>
   <div class="tabs offset">
-    <ul class="">
-      <li v-for="(tab, i) in tabs" :key="i" class="" :class="{ 'active': selectedIndex === i }" @click="selectTab(i)">
-        {{ tab }}
+    <ul class="tabs-btns">
+      <li v-for="(tab, i) in tabs" :key="i" class="tabs-btn" @click="getTabName(tab.name)">
+        {{ tab.title }}
       </li>
     </ul>
     <slot />
@@ -10,24 +10,25 @@
 </template>
 
 <script>
-import { ref, provide } from 'vue'
+import { provide } from 'vue'
 export default {
   name: 'UITabs',
-  setup() {
-    const selectedIndex = ref(0)
-    const tabs = ref(['таб 1', 'таб 2', 'таб 3'])
-
-    function selectTab(index) {
-      this.selectedIndex = index
+  props: {
+    tabs: {
+      type: Array,
+      required: true
+    }
+  },
+  setup(props) {
+    function getTabName(name) {
+      console.log(name)
+      return name
     }
 
-    provide('tabs', tabs)
-    provide('selectedIndex', selectedIndex)
+    provide('tabName', getTabName)
 
     return {
-      tabs,
-      selectedIndex,
-      selectTab
+      getTabName
     }
   }
 

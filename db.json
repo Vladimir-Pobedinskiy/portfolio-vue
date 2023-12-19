@@ -425,7 +425,21 @@
           "selected": false
         }
       ]
-    }
+    },
+    "tabs": [
+      {
+        "title": "tab 1",
+        "name": "1"
+      },
+      {
+        "title": "tab 2",
+        "name": "2"
+      },
+      {
+        "title": "tab 3",
+        "name": "3"
+      }
+    ]
   },
   "login": {
     "user": {
