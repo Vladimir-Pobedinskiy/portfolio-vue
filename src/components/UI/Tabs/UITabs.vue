@@ -1,14 +1,8 @@
 <template>
   <div class="tabs">
     <ul class="tabs-nav">
-      <li
-        v-for="(tabBtn, i) in tabsNav" :key="i"
-        class="tabs-nav__item"
-        @click="onTabBtn(tabBtn)"
-      >
-        <button
-          class="tabs-nav__btn btn-secondary btn-secondary-small"
-          :class="{ 'active': tabBtn.selected }" type="button">
+      <li v-for="(tabBtn, i) in tabsNav" :key="i" class="tabs-nav__item" @click="onTabBtn(tabBtn)">
+        <button class="tabs-nav__btn btn-secondary btn-secondary-small" :class="{ 'active': tabBtn.selected }" type="button">
           {{ tabBtn.title }}
         </button>
       </li>
@@ -33,7 +27,7 @@ export default {
     const initFirstTab = ref(null)
 
     function getFirstTabBtn() {
-      tabsNav.value.forEach((tabBtn, index) => {
+      tabsNav.value.forEach((tabBtn) => {
         if (tabBtn.name === 'tab-1') {
           tabBtn.selected = true
           initFirstTab.value = tabBtn.name
