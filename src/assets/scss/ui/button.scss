@@ -159,6 +159,17 @@
     }
   }
 
+  &.active {
+    background-color: $color-gray-dark;
+    color: $color-white;
+    transition: background-color 0.4s ease, color 0.4s ease, fill 0.4s ease;
+
+    svg {
+      fill: $color-white;
+      transition: fill 0.4s ease, transform 0.4s ease;
+    }
+  }
+
   // btn-secondary-small
   &.btn-secondary-small {
     min-height: 42px;
@@ -173,4 +184,3 @@
   }
 
 }
-

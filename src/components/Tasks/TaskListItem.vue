@@ -82,15 +82,15 @@ export default {
 
 <style lang="scss">
 .task-list-item {
-  margin-bottom: 20px;
+  margin-top: 20px;
   padding: 12px;
   width: 100%;
   border-radius: 16px;
   background-color: $color-white;
   box-shadow: 0 30px 30px rgba(0, 0, 0, 0.04);
 
-  &:last-child {
-    margin-bottom: 0;
+  &:first-child {
+    margin-top: 0;
   }
 
   @media (min-width:$mobile) {

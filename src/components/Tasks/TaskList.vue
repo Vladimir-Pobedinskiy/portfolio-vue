@@ -1,12 +1,12 @@
 <template>
-  <div class="task-list">
+  <TransitionGroup tag="div" name="fade" class="task-list">
     <TaskListItem
       v-for="(task, index) in taskList" :key="index"
       :task="task"
       :current-index="index"
       @deleteCurrentTask="deleteCurrentTask(index)"
     />
-  </div>
+  </TransitionGroup>
 </template>
 
 <script>
@@ -30,8 +30,10 @@ export default {
 
 <style lang="scss">
 .task-list {
+  position: relative;
   margin: 0 auto;
   width: 100%;
   max-width: 1000px;
+  will-change: transform, opacity;
 }
 </style>

@@ -426,20 +426,25 @@
         }
       ]
     },
-    "tabs": [
-      {
-        "title": "tab 1",
-        "name": "1"
-      },
-      {
-        "title": "tab 2",
-        "name": "2"
-      },
-      {
-        "title": "tab 3",
-        "name": "3"
-      }
-    ]
+    "tabs": {
+      "tabsNav": [
+        {
+          "title": "tab 1",
+          "name": "tab-1",
+          "selected": false
+        },
+        {
+          "title": "tab 2",
+          "name": "tab-2",
+          "selected": false
+        },
+        {
+          "title": "tab 3",
+          "name": "tab-3",
+          "selected": false
+        }
+      ]
+    }
   },
   "login": {
     "user": {

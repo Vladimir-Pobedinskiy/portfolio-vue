@@ -1,12 +1,46 @@
-/* fade-in-from-top */
-.fade-in-from-top-enter-active,
-.fade-in-from-top-leave-active {
-  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+/* slide-up-from-bottom */
+.slide-up-from-bottom-enter-active {
+  will-change: transform, opacity;
+  animation: fadeInFromBottom 0.3s;
+  animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.82);
 }
 
-.fade-in-from-top-enter,
-.fade-in-from-top-leave-to {
-  transform: translateY(-6px);
+@keyframes fadeInFromBottom {
+  from {
+    transform: translateY(3px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// TransitionGroup
+
+/* 1. declare transition */
+.fade-move,
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.4s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+/* 2. declare enter from and leave to state */
+.fade-enter-from {
   opacity: 0;
-  visibility: hidden;
+  transform: scaleY(0.01) translate(30px, 0);
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+.fade-leave-to {
+  opacity: 0;
+  transform: scaleY(0.01) translate(30px, 0);
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+/* 3. ensure leaving items are taken out of layout flow so that moving
+      animations can be calculated correctly. */
+.fade-leave-active {
+  position: absolute;
 }

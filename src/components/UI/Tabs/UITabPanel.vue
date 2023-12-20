@@ -1,35 +1,52 @@
 <template>
-  <div v-show="isActive" class="tabs-panel" :class="{'active': isActive}">
-    <slot />
-  </div>
+  <transition name="slide-up-from-bottom" appear>
+    <div v-show="isActive" class="tabs-panel" :class="{ 'active': isActive }">
+      <slot />
+    </div>
+  </transition>
 </template>
 
 <script>
-import { ref, inject, watch } from 'vue'
+import { ref, toRefs, inject, watch } from 'vue'
 export default {
   name: 'UITabPanel',
   props: {
-    name: {
+    panelName: {
       type: String,
       required: true
     }
   },
   setup(props) {
-    const tabName = ref(inject('tabName'))
+    const { panelName } = toRefs(props)
+    const tabBtnName = ref(inject('tabBtnName'))
+    const initFirstTab = ref(inject('initFirstTab'))
     const isActive = ref(false)
 
-    watch(tabName, (value) => {
-      console.log(value)
-      // if (String(value + 1) === props.name) {
-      //   console.log(props.name)
-      //   isActive.value = true
-      // }
+    function getfirstPanel() {
+      if (initFirstTab.value === panelName.value) {
+        isActive.value = true
+      }
+    }
+    getfirstPanel()
+
+    watch(tabBtnName, (value) => {
+      if (value === panelName.value) {
+        isActive.value = true
+      } else {
+        isActive.value = false
+      }
     })
 
     return {
-      tabName,
+      tabBtnName,
       isActive
     }
   }
 }
 </script>
+
+<style lang="scss">
+  .tabs-panel {
+    will-change: transform, opacity;
+  }
+</style>

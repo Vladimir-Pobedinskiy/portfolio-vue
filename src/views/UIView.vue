@@ -25,17 +25,22 @@
         </div>
       </div>
 
-      <UITabs :tabs="tabs">
-        <UITabPanel name="1">
-          <p>111111111111</p>
-        </UITabPanel>
-        <UITabPanel name="2">
-          <p>222222222222</p>
-        </UITabPanel>
-        <UITabPanel name="3">
-          <p>333333</p>
-        </UITabPanel>
-      </UITabs>
+      <div class="ui-accordion offset">
+        <div class="container">
+          <UITabs :tabs-nav="tabsNav">
+            <UITabPanel panel-name="tab-1">
+              <p>111111111111</p>
+            </UITabPanel>
+            <UITabPanel panel-name="tab-2">
+              <p>222222222222</p>
+            </UITabPanel>
+            <UITabPanel panel-name="tab-3">
+              <p>333333</p>
+              <button class="btn">кнопка</button>
+            </UITabPanel>
+          </UITabs>
+        </div>
+      </div>
 
     </div>
   </template>
@@ -67,7 +72,7 @@ export default {
       },
       marqueeImages: [],
       accordion: {},
-      tabs: []
+      tabsNav: []
     }
   },
   computed: {
@@ -91,7 +96,7 @@ export default {
         this.breadcrumbs = response.data.breadcrumbs
         this.marqueeImages = response.data.marqueeImages
         this.accordion = response.data.accordion
-        this.tabs = response.data.tabs
+        this.tabsNav = response.data.tabs.tabsNav
         this.endLoading()
       } catch (error) {
         this.endLoading()
