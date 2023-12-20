@@ -25,17 +25,28 @@
         </div>
       </div>
 
-      <div class="ui-accordion offset">
+      <div class="ui-tabs offset">
         <div class="container">
           <UITabs :tabs-nav="tabsNav">
             <UITabPanel panel-name="tab-1">
-              <p>111111111111</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde corrupti fugit totam similique officiis blanditiis sequi architecto laboriosam, facere, neque, laborum obcaecati et harum voluptatibus sint labore quidem esse distinctio.</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde corrupti fugit totam similique officiis blanditiis sequi architecto laboriosam, facere, neque, laborum obcaecati et harum voluptatibus sint labore quidem esse distinctio.</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde corrupti fugit totam similique officiis blanditiis sequi architecto laboriosam, facere, neque, laborum obcaecati et harum voluptatibus sint labore quidem esse distinctio.</p>
+              <button class="btn">кнопка</button>
             </UITabPanel>
             <UITabPanel panel-name="tab-2">
-              <p>222222222222</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde corrupti fugit totam similique officiis blanditiis sequi architecto laboriosam, facere, neque, laborum obcaecati et harum voluptatibus sint labore quidem esse distinctio.</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde corrupti fugit totam similique officiis blanditiis sequi architecto laboriosam, facere, neque, laborum obcaecati et harum voluptatibus sint labore quidem esse distinctio.</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde corrupti fugit totam similique officiis blanditiis sequi architecto laboriosam, facere, neque, laborum obcaecati et harum voluptatibus sint labore quidem esse distinctio.</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde corrupti fugit totam similique officiis blanditiis sequi architecto laboriosam, facere, neque, laborum obcaecati et harum voluptatibus sint labore quidem esse distinctio.</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde corrupti fugit totam similique officiis blanditiis sequi architecto laboriosam, facere, neque, laborum obcaecati et harum voluptatibus sint labore quidem esse distinctio.</p>
+              <button class="btn">кнопка</button>
             </UITabPanel>
             <UITabPanel panel-name="tab-3">
-              <p>333333</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde corrupti fugit totam similique officiis blanditiis sequi architecto laboriosam, facere, neque, laborum obcaecati et harum voluptatibus sint labore quidem esse distinctio.</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde corrupti fugit totam similique officiis blanditiis sequi architecto laboriosam, facere, neque, laborum obcaecati et harum voluptatibus sint labore quidem esse distinctio.</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde corrupti fugit totam similique officiis blanditiis sequi architecto laboriosam, facere, neque, laborum obcaecati et harum voluptatibus sint labore quidem esse distinctio.</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde corrupti fugit totam similique officiis blanditiis sequi architecto laboriosam, facere, neque, laborum obcaecati et harum voluptatibus sint labore quidem esse distinctio.</p>
               <button class="btn">кнопка</button>
             </UITabPanel>
           </UITabs>

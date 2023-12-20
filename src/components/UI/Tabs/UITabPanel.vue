@@ -1,9 +1,7 @@
 <template>
-  <transition name="slide-up-from-bottom" appear>
-    <div v-show="isActive" class="tabs-panel" :class="{ 'active': isActive }">
-      <slot />
-    </div>
-  </transition>
+  <div v-show="isActive" class="tabs-panel" :class="{ 'active': isActive }">
+    <slot />
+  </div>
 </template>
 
 <script>
@@ -48,5 +46,11 @@ export default {
 <style lang="scss">
   .tabs-panel {
     will-change: transform, opacity;
+
+    &.active {
+      animation-name: fadeInFromBottom;
+      animation-duration: 0.4s;
+      animation-timing-function: ease-out;
+    }
   }
 </style>
