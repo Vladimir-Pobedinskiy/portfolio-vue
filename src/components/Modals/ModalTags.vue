@@ -1,16 +1,18 @@
 <template>
   <div class="modal-tags">
-    <UIModal v-model="showModal" :modal-settings="modalSettings" @closeModal="closeModal">
-      <template #header>
-        <span class="modal-tags-title s2">Выберите теги</span>
-      </template>
-      <template #body>
-        <TaskTagList :tags="tags" @handleSelectedTags="handleSelectedTags" />
-        <button class="modal-tags-btn-save btn btn-small" :disabled="!selectedTags.length" type="button" @click="editSelectedTags">
-          Сохранить
-        </button>
-      </template>
-    </UIModal>
+    <teleport to="body">
+      <UIModal v-model="showModal" :modal-settings="modalSettings">
+        <template #header>
+          <span class="modal-tags-title s2">Выберите теги</span>
+        </template>
+        <template #body>
+          <TaskTagList :tags="tags" @handleSelectedTags="handleSelectedTags" />
+          <button class="modal-tags-btn-save btn btn-small" :disabled="!selectedTags.length" type="button" @click="editSelectedTags">
+            Сохранить
+          </button>
+        </template>
+      </UIModal>
+    </teleport>
 
     <button :class="currentTags.length ? 'modal-tags-btn-open' : 'btn btn-small'" aria-label="Открыть модальное окно" @click="openModal">
       <UIIcon v-if="currentTags.length" icon-name="mdi-edit-outline" class-name="icon-edit" width="32px" height="32px" />
@@ -53,9 +55,6 @@ export default {
   methods: {
     openModal() {
       this.showModal = true
-    },
-    closeModal() {
-      this.showModal = false
     },
     handleSelectedTags(selectedTags) {
       this.selectedTags = selectedTags

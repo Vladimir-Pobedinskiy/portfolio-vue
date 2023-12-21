@@ -1,5 +1,5 @@
 <template>
-    <template v-if="loading">
+  <template v-if="loading">
     <AppLoading :loading="loading" />
   </template>
   <template v-else>

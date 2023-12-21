@@ -1,12 +1,14 @@
 <template>
-  <UIModal :modal-settings="modalSettings">
-    <template #header>
-      <h2 class="modal-error-title s2">Ошибка!</h2>
-    </template>
-    <template #body>
-      <p class="p1">Что то пошло не так, сервер недоступен! Попробуйте зайти позже. Извините за временные неудобства!</p>
-    </template>
-  </UIModal>
+  <teleport to="body">
+    <UIModal :modal-settings="modalSettings">
+      <template #header>
+        <h2 class="modal-error-title s2">Ошибка!</h2>
+      </template>
+      <template #body>
+        <p class="p1">Что то пошло не так, сервер недоступен! Попробуйте зайти позже. Извините за временные неудобства!</p>
+      </template>
+    </UIModal>
+  </teleport>
 </template>
 
 <script>

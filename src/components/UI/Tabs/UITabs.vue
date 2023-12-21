@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { ref, provide, toRefs } from 'vue'
+import { ref, provide, toRefs, readonly } from 'vue'
 export default {
   name: 'UITabs',
   props: {
@@ -27,8 +27,8 @@ export default {
     const initFirstTab = ref(null)
 
     function getFirstTabBtn() {
-      tabsNav.value.forEach((tabBtn) => {
-        if (tabBtn.name === 'tab-1') {
+      tabsNav.value.forEach((tabBtn, index) => {
+        if (index === 0) {
           tabBtn.selected = true
           initFirstTab.value = tabBtn.name
         } else {
@@ -47,7 +47,7 @@ export default {
     }
 
     provide('tabBtnName', tabBtnName)
-    provide('initFirstTab', initFirstTab)
+    provide('initFirstTab', readonly(initFirstTab))
 
     return {
       tabBtnName,
