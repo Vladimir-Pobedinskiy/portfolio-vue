@@ -1,5 +1,5 @@
 <template>
-  <div v-show="isActive" class="tabs-panel" :class="{ 'active': isActive }">
+  <div v-show="isActive" :class="[className, { 'active': isActive }]">
     <slot />
   </div>
 </template>
@@ -10,6 +10,10 @@ export default {
   name: 'UITabPanel',
   props: {
     panelName: {
+      type: String,
+      required: true
+    },
+    className: {
       type: String,
       required: true
     }

@@ -60,8 +60,6 @@ export default {
 </script>
 
 <style lang="scss">
-.tabs {
-}
 
 .tabs-nav {
   margin-bottom: 24px;
