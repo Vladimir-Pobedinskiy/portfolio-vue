@@ -1,5 +1,10 @@
+/**
+  isOnlyOneOpen (true) - открывается один item, остальные закрываются
+  initItemOpen - задает какой item будет открытым при рендеринге страницы (варианты: index, all(все открыты)),
+    если ничего не задано то все items закрыты
+*/
 <template>
-  <UIAccordion :is-only-one-open="isOnlyOneOpen" :init-item-open="initItemOpen">
+  <UIAccordion>
     <UIAccordionItem v-for="(item, i) in accordionList" :key="i" :item="item" ref="accordionItem" @onAccordionItem="onAccordionItem">
       <template #header>
         <span class="accordion-item-title h4">{{ item.title }}</span>
@@ -21,12 +26,14 @@ export default {
     accordionList: {
       type: Array,
       required: true
-    }
-  },
-  data() {
-    return {
-      isOnlyOneOpen: true,
-      initItemOpen: '1'
+    },
+    isOnlyOneOpen: {
+      type: Boolean,
+      default: false
+    },
+    initItemOpen: {
+      type: String,
+      required: false
     }
   },
   mounted() {
