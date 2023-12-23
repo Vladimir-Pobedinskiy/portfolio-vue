@@ -30,7 +30,7 @@
       <section class="ui-view__accordion offset">
         <div class="container">
           <h2 class="ui-view__accordion-title section-title h2">{{ accordion.title }}</h2>
-          <UIAccordion :accordion-list="accordion.accordionList" :is-only-one-open="true" init-item-open="1" />
+          <UIAccordionView :accordion-list="accordion.accordionList" />
         </div>
       </section>
 
@@ -43,11 +43,11 @@ import { mapActions, mapGetters } from 'vuex'
 import AppLoading from '@/components/App/AppLoading'
 import axios from 'axios'
 import UIViewTabs from '@/components/UIView/UIViewTabs'
-import UIViewMarquee from '@/components/UIView/UIViewMarquee.vue'
-import UIAccordion from '@/components/UI/Accordion/UIAccordion'
+import UIViewMarquee from '@/components/UIView/UIViewMarquee'
+import UIAccordionView from '@/components/UIView/UIViewAccordion'
 export default {
   name: 'UIView',
-  components: { AppLoading, UIViewTabs, UIViewMarquee, UIAccordion },
+  components: { AppLoading, UIViewTabs, UIViewMarquee, UIAccordionView },
   data() {
     return {
       breadcrumbs: [],

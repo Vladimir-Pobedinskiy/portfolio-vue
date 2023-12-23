@@ -1,5 +1,5 @@
 <template>
-  <div class="accordion-item" :class="{ 'active': item.selected }">
+  <div ref="accordionItem" class="accordion-item" :class="{ 'active': item.selected }">
     <div class="accordion-item__header h4" @click="onAccordionItem">
       <slot name="header" />
       <div class="accordion-item__header-icon-wrapper">
@@ -7,7 +7,7 @@
       </div>
     </div>
 
-    <div v-if="$slots.content" ref="body" class="accordion-item__body">
+    <div v-if="$slots.content" ref="content" class="accordion-item__content">
       <slot name="content" />
     </div>
   </div>
@@ -20,16 +20,12 @@ export default {
     item: {
       type: Object,
       required: true
-    },
-    currentIndex: {
-      type: Number,
-      required: true
     }
   },
   emits: ['onAccordionItem'],
   methods: {
     onAccordionItem() {
-      this.$emit('onAccordionItem', [this.item, this.currentIndex])
+      this.$emit('onAccordionItem', [this.item, this.$refs.content])
     }
   }
 }
@@ -67,7 +63,7 @@ export default {
     }
   }
 
-  &__body {
+  &__content {
     display: flex;
     flex-direction: column;
     overflow: hidden;
