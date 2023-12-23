@@ -99,19 +99,19 @@ body.lock {
 }
 
 .title {
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   text-transform: uppercase;
 
   @media (min-width:$desktop) {
-    margin-bottom: 32px;
+    margin-bottom: 40px;
   }
 }
 
 .section-title {
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 
   @media (min-width:$desktop) {
-    margin-bottom: 32px;
+    margin-bottom: 40px;
   }
 }
 
