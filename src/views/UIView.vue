@@ -7,9 +7,9 @@
 
       <div class="container">
         <UIBreadcrumbs :breadcrumbs="breadcrumbs" />
-        <h1 class="ui-view__title title h1">В UI компонентах реализовано:</h1>
+        <h1 class="ui-view__title title h1">{{ description.title }}</h1>
         <ul class="description-list">
-          <li class="description-item p1" v-for="(item, i) in descriptionList" :key="i">{{ item }}</li>
+          <li class="description-item p1" v-for="(item, i) in description.descriptionList" :key="i">{{ item }}</li>
         </ul>
       </div>
 
@@ -51,7 +51,7 @@ export default {
   data() {
     return {
       breadcrumbs: [],
-      descriptionList: [],
+      description: {},
       tabs: {},
       marquee: {},
       accordion: {}
@@ -75,7 +75,7 @@ export default {
         this.startLoading()
         const response = await axios.get('/api/ui/')
         this.breadcrumbs = response.data.breadcrumbs
-        this.descriptionList = response.data.descriptionList
+        this.description = response.data.description
         this.tabs = response.data.tabs
         this.marquee = response.data.marquee
         this.accordion = response.data.accordion
@@ -89,15 +89,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-
-.ui-accordion__title.section-title {
-  margin-bottom: 32px;
-
-  @media (min-width:$desktop) {
-    margin-bottom: 48px;
-  }
-}
-
-</style>

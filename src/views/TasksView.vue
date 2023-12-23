@@ -6,10 +6,10 @@
     <div class="tasks-view offset-page-br">
       <div class="container">
         <UIBreadcrumbs :breadcrumbs="breadcrumbs" />
-        <h1 class="tasks-view__title title h1">В этом приложении реализовано:</h1>
+        <h1 class="tasks-view__title title h1">{{ description.title }}</h1>
 
         <ul class="description-list">
-          <li class="description-item p1" v-for="(item, i) in descriptionList" :key="i">{{ item }}</li>
+          <li class="description-item p1" v-for="(item, i) in description.descriptionList" :key="i">{{ item }}</li>
         </ul>
 
         <section class="tasks-view__section offset">
@@ -48,7 +48,7 @@ export default {
   data() {
     return {
       breadcrumbs: [],
-      descriptionList: [],
+      description: {},
       textareaValue: '',
       tags: [
         { title: 'home', selected: false },
@@ -78,7 +78,7 @@ export default {
       try {
         this.startLoading()
         const response = await axios.get('/api/tasks/')
-        this.descriptionList = response.data.descriptionList
+        this.description = response.data.description
         this.breadcrumbs = response.data.breadcrumbs
         this.endLoading()
       } catch (error) {
