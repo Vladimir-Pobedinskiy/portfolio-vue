@@ -96,6 +96,7 @@ export default {
     return {
       breadcrumbs: [],
       descriptionList: [],
+      tabsNav: [],
       marqueeSettings: {
         duration: 40,
         pauseOnHover: true,
@@ -106,8 +107,7 @@ export default {
         gradientLength: '30px'
       },
       marqueeImages: [],
-      accordion: {},
-      tabsNav: []
+      accordion: {}
     }
   },
   computed: {

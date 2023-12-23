@@ -4,46 +4,38 @@
       <h2 class="hero-swiper__title h1">Герои</h2>
       <div class="hero-swiper__navigation-wrapper">
         <span class="visually-hidden">Стрелки навигации по слайдеру</span>
-        <div class="hero-swiper__button-prev swiper-button-prev">
+        <button class="hero-swiper__button-prev swiper-button-prev" type="button">
           <span class="visually-hidden">К предыдущему слайду</span>
           <UIIcon icon-name="mdi-arrow-forward" class-name="hero-swiper__button-icon hero-swiper__button--prev-icon" width="34px" height="34px" />
-        </div>
-        <div class="hero-swiper__button-next swiper-button-next">
+        </button>
+        <button class="hero-swiper__button-next swiper-button-next" type="button">
           <span class="visually-hidden">К следующему слайду</span>
           <UIIcon icon-name="mdi-arrow-forward" class-name="hero-swiper__button-icon hero-swiper__button--next-icon" width="34px" height="34px" />
-        </div>
+        </button>
       </div>
     </div>
     <div class="hero-swiper__inner">
 
-      <swiper
-        class="hero-swiper__list hero-list"
-        :slidesPerView="swiperOptions.slidesPerView"
-        :spaceBetween="swiperOptions.spaceBetween"
-        :speed="swiperOptions.speed"
-        :autoplay="swiperOptions.autoplay"
-        keyboard
-        :pagination="swiperOptions.pagination"
-        :navigation="swiperOptions.navigation"
-        :breakpoints="swiperOptions.breakpoints"
-      >
+      <UISlider :modules="modules" :swiper-options="swiperOptions" class-name="hero-swiper__list">
         <swiper-slide v-for="(hero, i) in heroList" :key="i" class="hero-swiper__slide">
           <HeroCard :hero="hero" />
         </swiper-slide>
-      </swiper>
+      </UISlider>
 
-      <div class="swiper-pagination hero-swiper__pagination"></div>
     </div>
   </section>
 </template>
 
 <script>
 import HeroCard from '@/components/Hero/HeroCard'
+import UISlider from '@/components/UI/Slider/UISlider'
+
+import { SwiperSlide } from 'swiper/vue'
+import { Navigation, Autoplay, Keyboard } from 'swiper/modules'
+
 export default {
-  name: 'HeroList',
-  components: {
-    HeroCard
-  },
+  name: 'HeroSlider',
+  components: { HeroCard, UISlider, SwiperSlide },
   props: {
     heroList: {
       type: Array,
@@ -52,6 +44,7 @@ export default {
   },
   data() {
     return {
+      modules: [Navigation, Autoplay, Keyboard],
       swiperOptions: {
         slidesPerView: 1.2,
         spaceBetween: 8,
@@ -59,13 +52,10 @@ export default {
         autoplay: {
           delay: 4000
         },
+        keyboard: true,
         navigation: {
           nextEl: '.hero-swiper__button-next',
           prevEl: '.hero-swiper__button-prev'
-        },
-        pagination: {
-          el: '.hero-swiper__pagination',
-          clickable: true
         },
         breakpoints: {
           320: {

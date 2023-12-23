@@ -12,7 +12,7 @@
           <li class="description-item p1" v-for="(item, i) in descriptionList" :key="i">{{ item }}</li>
         </ul>
 
-        <HeroList :hero-list="heroList" />
+        <HeroSlider :hero-list="heroList" />
       </div>
     </div>
   </template>
@@ -22,10 +22,10 @@
 import { mapActions, mapGetters } from 'vuex'
 import AppLoading from '@/components/App/AppLoading'
 import axios from 'axios'
-import HeroList from '@/components/Hero/HeroList'
+import HeroSlider from '@/components/Hero/HeroSlider'
 
 export default {
-  components: { AppLoading, HeroList },
+  components: { AppLoading, HeroSlider },
   name: 'HeroesView',
   data() {
     return {
