@@ -68,6 +68,13 @@ export default {
   display: grid;
   grid-template-columns: 100%;
   grid-gap: 24px;
+  will-change: transform, opacity;
+
+  &.active {
+    animation-name: fadeInFromBottom;
+    animation-duration: 0.4s;
+    animation-timing-function: ease-out;
+  }
 
   @media (min-width:$tablet) {
     grid-template-columns: repeat(12, 1fr);

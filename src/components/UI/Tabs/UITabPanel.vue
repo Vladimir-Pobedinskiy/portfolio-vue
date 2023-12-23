@@ -46,15 +46,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-  .tabs-panel {
-    will-change: transform, opacity;
-
-    &.active {
-      animation-name: fadeInFromBottom;
-      animation-duration: 0.4s;
-      animation-timing-function: ease-out;
-    }
-  }
-</style>
