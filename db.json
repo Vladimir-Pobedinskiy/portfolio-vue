@@ -443,18 +443,18 @@
       "title": "Компонент табы",
       "tabsNav": [
         {
-          "title": "tab 1",
-          "name": "tab-1",
+          "title": "Wizard",
+          "name": "wizard",
           "selected": false
         },
         {
-          "title": "tab 2",
-          "name": "tab-2",
+          "title": "Archer",
+          "name": "archer",
           "selected": false
         },
         {
-          "title": "tab 3",
-          "name": "tab-3",
+          "title": "Giant",
+          "name": "giant",
           "selected": false
         }
       ]

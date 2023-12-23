@@ -16,7 +16,7 @@
       <section class="ui-view__tabs offset">
         <div class="container">
           <h2 class="ui-view__tabs-title section-title h2">{{ tabs.title }}</h2>
-          <UIViewTabs :tabs="tabs" />
+          <UIViewTabs :tabs-nav="tabs.tabsNav" />
         </div>
       </section>
 

@@ -1,6 +1,6 @@
 <template>
-  <UITabs :tabs-nav="tabs.tabsNav">
-    <UITabPanel class-name="tabs-panel" panel-name="tab-1">
+  <UITabs :tabs-nav="tabsNav">
+    <UITabPanel class-name="tabs-panel" panel-name="wizard">
       <div class="tabs-panel__left-side">
         <div class="tabs-panel__img-wrapper">
           <img src="/img/hero/wizard.png" alt="image">
@@ -14,7 +14,7 @@
         </div>
       </div>
     </UITabPanel>
-    <UITabPanel class-name="tabs-panel" panel-name="tab-2">
+    <UITabPanel class-name="tabs-panel" panel-name="archer">
       <div class="tabs-panel__left-side">
         <div class="tabs-panel__img-wrapper">
           <img src="/img/hero/archer.png" alt="image">
@@ -28,7 +28,7 @@
         </div>
       </div>
     </UITabPanel>
-    <UITabPanel class-name="tabs-panel" panel-name="tab-3">
+    <UITabPanel class-name="tabs-panel" panel-name="giant">
       <div class="tabs-panel__left-side">
         <div class="tabs-panel__img-wrapper">
           <img src="/img/hero/giant.png" alt="image">
@@ -55,8 +55,8 @@ export default {
   name: 'UIViewTabs',
   components: { UITabs, UITabPanel },
   props: {
-    tabs: {
-      type: Object,
+    tabsNav: {
+      type: Array,
       required: true
     }
   }
