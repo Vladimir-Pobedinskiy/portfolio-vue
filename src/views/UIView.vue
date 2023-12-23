@@ -15,16 +15,16 @@
 
       <section class="ui-view__tabs offset">
         <div class="container">
-          <h2 class="ui-view__tabs-title section-title h2">Компонент табы</h2>
+          <h2 class="ui-view__tabs-title section-title h2">{{ tabs.title }}</h2>
           <UIViewTabs :tabs="tabs" />
         </div>
       </section>
 
       <section class="ui-view__marquee offset">
         <div class="container">
-          <h2 class="ui-view__marquee-title section-title h2">Бесконечная строка героев</h2>
+          <h2 class="ui-view__marquee-title section-title h2">{{ marquee.title }}</h2>
         </div>
-        <UIViewMarquee :marquee-images="marqueeImages" />
+        <UIViewMarquee :marquee-images="marquee.marqueeImages" />
       </section>
 
       <section class="ui-view__accordion offset">
@@ -53,7 +53,7 @@ export default {
       breadcrumbs: [],
       descriptionList: [],
       tabs: {},
-      marqueeImages: [],
+      marquee: {},
       accordion: {}
     }
   },
@@ -77,7 +77,7 @@ export default {
         this.breadcrumbs = response.data.breadcrumbs
         this.descriptionList = response.data.descriptionList
         this.tabs = response.data.tabs
-        this.marqueeImages = response.data.marqueeImages
+        this.marquee = response.data.marquee
         this.accordion = response.data.accordion
         this.endLoading()
       } catch (error) {
