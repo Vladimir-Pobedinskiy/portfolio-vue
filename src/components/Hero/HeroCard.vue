@@ -24,7 +24,7 @@ export default {
   props: {
     hero: {
       type: Object,
-      requaired: true
+      required: true
     }
   }
 }

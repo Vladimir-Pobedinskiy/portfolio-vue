@@ -1,4 +1,4 @@
-/* Брейкпоинты */
+/* Breakpoints */
 export const screens = {
   mobile: '480px',
   mobileBig: '576px',
@@ -9,7 +9,7 @@ export const screens = {
   desktopBig: '1400px'
 }
 
-/* Блокировка скролла */
+/* Блокировка scroll */
 export const scrollController = {
   scrollPosition: 0,
   paddingOffset: 0,

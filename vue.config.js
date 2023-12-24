@@ -77,9 +77,8 @@ module.exports = defineConfig({
         // },
       ]
     },
-    workboxPluginMode: 'GenerateSW', // Режим сервис-воркера
+    workboxPluginMode: 'GenerateSW',
     workboxOptions: {
-      // Опции сервис-воркера
       skipWaiting: true,
       clientsClaim: true
     }

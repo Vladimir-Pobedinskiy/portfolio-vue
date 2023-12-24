@@ -24,12 +24,12 @@ export default {
     const initFirstTab = ref(inject('initFirstTab'))
     const isActive = ref(false)
 
-    function getfirstPanel() {
+    function getFirstPanel() {
       if (initFirstTab.value === panelName.value) {
         isActive.value = true
       }
     }
-    getfirstPanel()
+    getFirstPanel()
 
     watch(tabBtnName, (value) => {
       if (value === panelName.value) {

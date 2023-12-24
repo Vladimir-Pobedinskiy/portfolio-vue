@@ -157,7 +157,7 @@ export default {
       },
       schema: Yup.object().shape({
         surname: Yup.string().nullable(),
-        name: Yup.string().required('Имя обязателено для заполнения'),
+        name: Yup.string().required('Имя обязательно для заполнения'),
         tel: Yup.string().required('Телефон обязателен для заполнения').min(18, 'Неверный формат номера телефона'),
         email: Yup.string().required('Email обязателен для заполнения').email('Неверный формат электронной почты'),
         password: Yup.string().required('Пароль обязателен для заполнения').min(6, 'Пароль должен содержать минимум 6 символов'),
