@@ -135,7 +135,8 @@ import { passwordVisibility } from '@/utils/utils'
 import { IMaskDirective } from 'vue-imask'
 import { mapGetters, mapActions } from 'vuex'
 import AppLoading from '@/components/App/AppLoading'
-import axios from 'axios'
+// import axios from 'axios'
+import { supabase } from '@/supabase'
 
 export default {
   name: 'AuthSignUpPhysical',
@@ -181,7 +182,12 @@ export default {
     async onSubmit(values, actions) {
       try {
         this.startLoading()
-        await axios.post('/api/registration/', { ...this.form })
+        // await axios.post('/api/registration/', { ...this.form })
+        const response = await supabase.auth.signUp({
+          email: this.form.user.email,
+          password: this.form.user.password
+        })
+        console.log('1', response)
         this.form.user.surname = ''
         this.form.user.name = ''
         this.form.user.tel = ''

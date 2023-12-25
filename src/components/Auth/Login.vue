@@ -28,6 +28,15 @@
           </label>
         </div>
       </div>
+      <div class="sign-up__form-item">
+        <div class="sign-up__form-label-wrap label-wrap" :class="{ 'error': errors.email }">
+          <label class="label">
+            <Field v-model="form.user.email" class="label__input l-input" type="email" name="email" placeholder=" " />
+            <span class="label__input-title l-input">Электронная почта</span>
+            <span class="error-message marker">{{ errors.email }}</span>
+          </label>
+        </div>
+      </div>
       <div class="login__form-item">
         <div class="login__form-label-wrap label-wrap" :class="{ 'error': errors.password }">
           <label class="label">
@@ -81,7 +90,8 @@ import { passwordVisibility } from '@/utils/utils'
 import { IMaskDirective } from 'vue-imask'
 import { mapGetters, mapActions } from 'vuex'
 import AppLoading from '@/components/App/AppLoading'
-import axios from 'axios'
+// import axios from 'axios'
+import { supabase } from '@/supabase'
 
 export default {
   name: 'AuthLogin',
@@ -94,11 +104,13 @@ export default {
       form: {
         user: {
           tel: '',
+          email: '',
           password: ''
         }
       },
       schema: Yup.object().shape({
         tel: Yup.string().required('Телефон обязателен для заполнения').min(18, 'Неверный формат номера телефона'),
+        email: Yup.string().required('Email обязателен для заполнения').email('Неверный формат электронной почты'),
         password: Yup.string().required('Пароль обязателен для заполнения').min(6, 'Пароль должен содержать минимум 6 символов')
       })
     }
@@ -119,7 +131,11 @@ export default {
     async onSubmit(values, actions) {
       try {
         this.startLoading()
-        await axios.post('/api/login/', { ...this.form })
+        // await axios.post('/api/login/', { ...this.form })
+        await supabase.auth.signInWithPassword({
+          email: this.form.user.email,
+          password: this.form.user.password
+        })
         this.form.user.tel = ''
         this.form.user.password = ''
         actions.resetForm()
