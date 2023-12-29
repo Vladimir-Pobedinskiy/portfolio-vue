@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import HomeView from '@/views/HomeView'
-import HeroesView from '@/views/HeroesView'
-import HeroView from '@/views/HeroView'
-import TasksView from '@/views/TasksView'
-import UIView from '@/views/UIView'
-import LoginView from '@/views/LoginView'
-import RegistrationView from '@/views/RegistrationView'
-import NotFoundView from '@/views/NotFoundView'
+import HomeView from '@/views/home-view'
+import HeroesView from '@/views/heroes-view'
+import HeroView from '@/views/hero-view'
+import TasksView from '@/views/tasks-view'
+import UIView from '@/views/ui-view'
+import LoginView from '@/views/login-view'
+import RegistrationView from '@/views/registration-view'
+import NotFoundView from '@/views/not-found-view'
 
 const routes = [
   {

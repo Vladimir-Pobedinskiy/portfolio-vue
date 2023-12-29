@@ -12,22 +12,6 @@
       @submit="onSubmit"
       v-slot="{ errors }"
     >
-      <div class="login__form-item">
-        <div class="login__form-label-wrap label-wrap" :class="{ 'error': errors.tel }">
-          <label class="label">
-            <Field
-              v-model="form.user.tel"
-              v-imask="{ mask: '+7 (000) 000-00-00' }"
-              class="label__input l-input"
-              type="tel"
-              name="tel"
-              placeholder="+7 "
-            />
-            <span class="label__input-title l-input">Телефон</span>
-            <span class="error-message marker">{{ errors.tel }}</span>
-          </label>
-        </div>
-      </div>
       <div class="sign-up__form-item">
         <div class="sign-up__form-label-wrap label-wrap" :class="{ 'error': errors.email }">
           <label class="label">
@@ -103,13 +87,11 @@ export default {
     return {
       form: {
         user: {
-          tel: '',
           email: '',
           password: ''
         }
       },
       schema: Yup.object().shape({
-        tel: Yup.string().required('Телефон обязателен для заполнения').min(18, 'Неверный формат номера телефона'),
         email: Yup.string().required('Email обязателен для заполнения').email('Неверный формат электронной почты'),
         password: Yup.string().required('Пароль обязателен для заполнения').min(6, 'Пароль должен содержать минимум 6 символов')
       })
@@ -132,11 +114,12 @@ export default {
       try {
         this.startLoading()
         // await axios.post('/api/login/', { ...this.form })
-        await supabase.auth.signInWithPassword({
+        const { user, error } = await supabase.auth.signInWithPassword({
           email: this.form.user.email,
           password: this.form.user.password
         })
-        this.form.user.tel = ''
+        console.log('login', user)
+        console.log('login', error)
         this.form.user.password = ''
         actions.resetForm()
         this.endLoading()
