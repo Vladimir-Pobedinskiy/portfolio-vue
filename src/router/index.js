@@ -7,6 +7,7 @@ import TasksView from '@/views/tasks-view'
 import UIView from '@/views/ui-view'
 import LoginView from '@/views/login-view'
 import RegistrationView from '@/views/registration-view'
+import PersonalAccountView from '@/views/personal-account-view'
 import NotFoundView from '@/views/not-found-view'
 
 const routes = [
@@ -44,6 +45,11 @@ const routes = [
     path: '/registration',
     name: 'RegistrationView',
     component: RegistrationView
+  },
+  {
+    path: '/personal-account',
+    name: 'PersonalAccountView',
+    component: PersonalAccountView
   },
   {
     path: '/:catchAll(.*)*',

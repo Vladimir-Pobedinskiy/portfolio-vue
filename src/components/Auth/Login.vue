@@ -105,7 +105,8 @@ export default {
   methods: {
     ...mapActions({
       startLoading: 'startLoading',
-      endLoading: 'endLoading'
+      endLoading: 'endLoading',
+      setUser: 'setUser'
     }),
     togglePasswordVisibility(event) {
       passwordVisibility(event)
@@ -114,15 +115,17 @@ export default {
       try {
         this.startLoading()
         // await axios.post('/api/login/', { ...this.form })
-        const { user, error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await supabase.auth.signInWithPassword({
           email: this.form.user.email,
           password: this.form.user.password
         })
-        console.log('login', user)
-        console.log('login', error)
+        this.form.user.email = ''
         this.form.user.password = ''
         actions.resetForm()
+        this.setUser(data.user)
+        this.$router.push({ name: 'PersonalAccountView' })
         this.endLoading()
+        if (error) throw error
       } catch (error) {
         if (error.statusCode === 422) {
           actions.setErrors(error.data.errors)
@@ -148,7 +151,16 @@ export default {
   &__password-recovery-btn {
     position: relative;
     background-color: transparent;
-    transition: color 0.3s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 102%;
+      width: 100%;
+      height: 1px;
+      background-color: $color-gray-dark;
+    }
   }
 
   &__btn-submit.btn {
@@ -168,8 +180,20 @@ export default {
   }
 
   &__sign-up-btn {
+    position: relative;
     background-color: transparent;
     transition: color 0.3s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 103%;
+      width: 100%;
+      height: 1px;
+      background-color: $color-gray-dark;
+      transition: all 0.3s ease;
+    }
   }
 }
 

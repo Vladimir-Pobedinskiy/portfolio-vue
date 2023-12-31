@@ -168,13 +168,15 @@ export default {
   },
   computed: {
     ...mapGetters({
-      loading: 'loading'
+      loading: 'loading',
+      user: 'user'
     })
   },
   methods: {
     ...mapActions({
       startLoading: 'startLoading',
-      endLoading: 'endLoading'
+      endLoading: 'endLoading',
+      setUser: 'setUser'
     }),
     togglePasswordVisibility(event) {
       passwordVisibility(event)
@@ -183,11 +185,10 @@ export default {
       try {
         this.startLoading()
         // await axios.post('/api/registration/', { ...this.form })
-        const response = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signUp({
           email: this.form.user.email,
           password: this.form.user.password
         })
-        console.log('1', response)
         this.form.user.surname = ''
         this.form.user.name = ''
         this.form.user.tel = ''
@@ -195,7 +196,10 @@ export default {
         this.form.user.password = ''
         this.form.user.repeatPassword = ''
         actions.resetForm()
+        this.setUser(data.user)
+        this.$router.push({ name: 'PersonalAccountView' })
         this.endLoading()
+        if (error) throw error
       } catch (error) {
         if (error.statusCode === 422) {
           actions.setErrors(error.data.errors)
@@ -246,7 +250,6 @@ export default {
       width: 100%;
       height: 1px;
       background-color: $color-gray-dark;
-      transition: all 0.3s ease;
     }
   }
 }

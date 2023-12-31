@@ -22,12 +22,8 @@
         "url": "/about"
       },
       {
-        "title": "Login",
-        "url": "/login"
-      },
-      {
-        "title": "Sign up",
-        "url": "/registration"
+        "title": "Personal account",
+        "url": "/personal-account"
       }
     ]
   },
