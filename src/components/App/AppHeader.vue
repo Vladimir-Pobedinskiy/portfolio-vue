@@ -10,7 +10,7 @@
             </li>
           </ul>
         </div>
-        <button class="header__burger-btn burger-btn" :class="{ 'active': isOpen === 'navigation' }" type="button" @click="toggleIsOpen('navigation')">
+        <button class="header__burger-btn burger-btn" :class="{ 'active': isOpen === 'navigation' }" type="button" @click="toggleState('navigation')">
           <span class="burger-btn__label">
             <span class="visually-hidden">открыть меню</span>
           </span>
@@ -41,7 +41,7 @@ export default {
   watch: {
     $route() {
       if (this.isOpen === 'navigation') {
-        this.toggleIsOpen(this.isOpen)
+        this.toggleState(this.isOpen)
       }
     },
     isOpen(value) {
@@ -62,13 +62,13 @@ export default {
   },
   methods: {
     ...mapActions({
-      toggleIsOpen: 'toggleIsOpen'
+      toggleState: 'toggleState'
     }),
     setupHammer() {
       const hammer = new Hammer.Manager(this.$refs.navigation)
       hammer.add(new Hammer.Swipe({ direction: Hammer.DIRECTION_HORIZONTAL }))
       hammer.on('swipeleft', () => {
-        this.toggleIsOpen(this.isOpen)
+        this.toggleState(this.isOpen)
       })
       this.mc = hammer
     },
