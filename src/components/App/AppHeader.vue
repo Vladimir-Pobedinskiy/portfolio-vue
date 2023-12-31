@@ -28,8 +28,7 @@ export default {
   name: 'AppHeader',
   data() {
     return {
-      mc: null,
-      destroyScreen: parseInt(screens.desktop)
+      mc: null
     }
   },
   computed: {
@@ -73,7 +72,7 @@ export default {
       this.mc = hammer
     },
     handleWindowResize() {
-      if (window.innerWidth >= this.destroyScreen) {
+      if (window.innerWidth >= parseInt(screens.desktop)) {
         this.mc.set({ enable: false })
       } else {
         this.mc.set({ enable: true })
