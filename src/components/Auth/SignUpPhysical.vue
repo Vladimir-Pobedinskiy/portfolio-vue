@@ -185,7 +185,7 @@ export default {
       try {
         this.startLoading()
         // await axios.post('/api/registration/', { ...this.form })
-        const { data, error } = await supabase.auth.signUp({
+        const response = await supabase.auth.signUp({
           email: this.form.user.email,
           password: this.form.user.password
         })
@@ -196,10 +196,10 @@ export default {
         this.form.user.password = ''
         this.form.user.repeatPassword = ''
         actions.resetForm()
-        this.setUser(data.user)
+        this.setUser(response.data.user)
         this.$router.push({ name: 'PersonalAccountView' })
         this.endLoading()
-        if (error) throw error
+        if (response.error) throw Error
       } catch (error) {
         if (error.statusCode === 422) {
           actions.setErrors(error.data.errors)
