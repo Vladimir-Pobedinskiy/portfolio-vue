@@ -3,12 +3,12 @@ import createPersistedState from 'vuex-persistedstate'
 
 import { navLinks } from './navLinks'
 import { menu } from './menu'
+import { auth } from './auth'
 import { tasks } from './tasks'
 
 export const store = createStore({
   state: {
-    loading: false,
-    user: null
+    loading: false
   },
   mutations: {
     START_LOADING(state) {
@@ -16,12 +16,6 @@ export const store = createStore({
     },
     END_LOADING(state) {
       state.loading = false
-    },
-    SET_USER(state, user) {
-      state.user = user
-    },
-    CLEAR_USER(state) {
-      state.user = null
     }
   },
   actions: {
@@ -30,24 +24,15 @@ export const store = createStore({
     },
     endLoading({ commit }) {
       commit('END_LOADING')
-    },
-    setUser({ commit }, user) {
-      commit('SET_USER', user)
-    },
-    clearUser({ commit }) {
-      commit('CLEAR_USER')
     }
   },
   getters: {
     loading(state) {
       return state.loading
-    },
-    user(state) {
-      return state.user
     }
   },
   modules: {
-    navLinks, menu, tasks
+    navLinks, menu, auth, tasks
   },
   plugins: [
     createPersistedState({
