@@ -1,24 +1,24 @@
 export const menu = {
   state: {
-    open: null
+    isOpen: null
   },
   mutations: {
-    TOGGLE_OPEN(state, payload) {
-      if (state.open === payload) {
-        state.open = null
+    TOGGLE_IS_OPEN(state, payload) {
+      if (state.isOpen === payload) {
+        state.isOpen = null
       } else {
-        state.open = payload
+        state.isOpen = payload
       }
     }
   },
   actions: {
-    toggleOpen({ commit }, payload) {
-      commit('TOGGLE_OPEN', payload)
+    toggleIsOpen({ commit }, payload) {
+      commit('TOGGLE_IS_OPEN', payload)
     }
   },
   getters: {
-    open(state) {
-      return state.open
+    isOpen(state) {
+      return state.isOpen
     }
   }
 }

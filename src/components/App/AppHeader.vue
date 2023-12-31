@@ -3,14 +3,14 @@
     <div class="container">
       <div class="header__inner">
         <router-link class="header__logo h4" :to="{ name: 'HomeView' }">PORTFOLIO</router-link>
-        <div ref="navigation" class="header__nav-list-wrapper" :class="{ 'active': open === 'navigation' }">
+        <div ref="navigation" class="header__nav-list-wrapper" :class="{ 'active': isOpen === 'navigation' }">
           <ul class="nav-list">
             <li v-for="(item, i) in navLinks" :key="i" class="nav-item">
               <router-link class="nav-link p1 hover-from-center" :to="`${item.url}`">{{ item.title }}</router-link>
             </li>
           </ul>
         </div>
-        <button class="header__burger-btn burger-btn" :class="{ 'active': open === 'navigation' }" type="button" @click="toggleOpen('navigation')">
+        <button class="header__burger-btn burger-btn" :class="{ 'active': isOpen === 'navigation' }" type="button" @click="toggleIsOpen('navigation')">
           <span class="burger-btn__label">
             <span class="visually-hidden">открыть меню</span>
           </span>
@@ -35,16 +35,16 @@ export default {
   computed: {
     ...mapGetters({
       navLinks: 'navLinks',
-      open: 'open'
+      isOpen: 'isOpen'
     })
   },
   watch: {
     $route() {
-      if (this.open === 'navigation') {
-        this.toggleOpen(this.open)
+      if (this.isOpen === 'navigation') {
+        this.toggleIsOpen(this.isOpen)
       }
     },
-    open(value) {
+    isOpen(value) {
       if (value === 'navigation') {
         scrollController.disabledScroll()
       } else {
@@ -62,13 +62,13 @@ export default {
   },
   methods: {
     ...mapActions({
-      toggleOpen: 'toggleOpen'
+      toggleIsOpen: 'toggleIsOpen'
     }),
     setupHammer() {
       const hammer = new Hammer.Manager(this.$refs.navigation)
       hammer.add(new Hammer.Swipe({ direction: Hammer.DIRECTION_HORIZONTAL }))
       hammer.on('swipeleft', () => {
-        this.toggleOpen(this.open)
+        this.toggleIsOpen(this.isOpen)
       })
       this.mc = hammer
     },
