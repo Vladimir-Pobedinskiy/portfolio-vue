@@ -15,7 +15,8 @@ function getBaseUrl(isDev, isDemo, isProd) {
 }
 
 module.exports = defineConfig({
-
+  // нужно ли транспилировать зависимости (dependencies) через Babel.
+  transpileDependencies: true,
   // Базовый URL-адрес сборки вашего приложения, по которому оно будет опубликовано (именуемая как baseUrl до версии Vue CLI 3.3).
   // Это аналог опции webpack output.publicPath, но Vue CLI также использует это значение в других целях, поэтому вы должны всегда
   // использовать publicPath вместо изменения опции output.publicPath
