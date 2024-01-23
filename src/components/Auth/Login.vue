@@ -93,7 +93,7 @@ export default {
       },
       schema: Yup.object().shape({
         email: Yup.string().required('Email обязателен для заполнения').email('Неверный формат электронной почты'),
-        password: Yup.string().required('Пароль обязателен для заполнения').min(6, 'Пароль должен содержать минимум 6 символов')
+        password: Yup.string().required('Пароль обязателен для заполнения').min(6, 'Неверный пароль')
       })
     }
   },
@@ -115,23 +115,24 @@ export default {
       try {
         this.startLoading()
         // await axios.post('/api/login/', { ...this.form })
-        const response = await supabase.auth.signInWithPassword({
+        const { data, error } = await supabase.auth.signInWithPassword({
           email: this.form.user.email,
           password: this.form.user.password
         })
+        if (error) throw error
         this.form.user.email = ''
         this.form.user.password = ''
         actions.resetForm()
-        this.setUser(response.data.user)
+        this.setUser(data.user)
         this.$router.push({ name: 'PersonalAccountView' })
-        this.endLoading()
-        if (response.error) throw Error
       } catch (error) {
         if (error.statusCode === 422) {
           actions.setErrors(error.data.errors)
         }
-        this.endLoading()
+        actions.setErrors({ email: ' ', password: `${error.name}` })
         console.error('Error fetching AuthLogin:', error)
+      } finally {
+        this.endLoading()
       }
     }
   }

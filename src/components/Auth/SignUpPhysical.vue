@@ -185,10 +185,11 @@ export default {
       try {
         this.startLoading()
         // await axios.post('/api/registration/', { ...this.form })
-        const response = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signUp({
           email: this.form.user.email,
           password: this.form.user.password
         })
+        if (error) throw error
         this.form.user.surname = ''
         this.form.user.name = ''
         this.form.user.tel = ''
@@ -196,16 +197,16 @@ export default {
         this.form.user.password = ''
         this.form.user.repeatPassword = ''
         actions.resetForm()
-        this.setUser(response.data.user)
+        this.setUser(data.user)
         this.$router.push({ name: 'PersonalAccountView' })
-        this.endLoading()
-        if (response.error) throw Error
       } catch (error) {
         if (error.statusCode === 422) {
           actions.setErrors(error.data.errors)
         }
-        this.endLoading()
+        actions.setErrors({ surname: ' ', name: ' ', tel: ' ', email: ' ', password: ' ', repeatPassword: `${error.name}` })
         console.error('Error fetching AuthSignUpPhysical:', error)
+      } finally {
+        this.endLoading()
       }
     }
   }
